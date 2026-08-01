@@ -1458,6 +1458,36 @@ Como todo o conteúdo já vem no bundle, navegar entre banners é só remontar o
 requisição**. O roteador intercepta cliques em links internos, atualiza a URL com `history.pushState` e
 remonta. Onde houver suporte, a troca passa por `document.startViewTransition`.
 
+**Posição de rolagem**
+
+| Origem da navegação | Onde a página abre |
+|---|---|
+| Clique num link | no topo — é o que se espera ao seguir um link |
+| Voltar ou Avançar | **onde estava**, na posição de antes |
+
+O navegador tentaria restaurar sozinho, mas erra: quando ele age, o `#app` ainda está vazio e o
+documento não tem altura. Por isso o roteador assume o controle com `history.scrollRestoration = "manual"`
+e restaura depois de montar.
+
+As posições ficam num `Map` em memória, indexado por uma chave que viaja no estado do histórico. Guardar
+em `replaceState` a cada rolagem seria a alternativa, mas os navegadores limitam a frequência dessas
+chamadas — e aqui não é preciso sobreviver a um recarregamento.
+
+⚠️ Isso **depende de as imagens reservarem espaço** (ver abaixo). Sem altura reservada, o documento
+ainda está curto na hora de restaurar e a rolagem para antes do ponto certo.
+
+**Toda `<img>` sai com `width` e `height`**
+
+As medidas reais de cada arquivo ficam em `src/content/imagens.js`, **gerado** por `npm run dimensoes` —
+que lê o cabeçalho de cada PNG, WebP e SVG de `public/img` e `public/icons`, sem dependência externa.
+
+```
+npm run dimensoes   # depois de acrescentar ou trocar qualquer imagem
+```
+
+Roda sozinho dentro do `npm run check`, que também reprova se alguma `<img>` sair sem as medidas. Além
+da restauração de rolagem, isso elimina o pulo de layout enquanto as imagens carregam.
+
 Só entram as rotas declaradas no JSON. Um link para fora desse conjunto — a biblioteca de componentes,
 por exemplo — segue como navegação normal do navegador.
 
@@ -1556,6 +1586,9 @@ scripts/              # verificações executadas por `npm run check`
 | 01/08/26 | Home assume a raiz; biblioteca de componentes vai para `/styleguide/` | "Início" na navegação aponta para `/`, e quem chega ao site espera a exposição, não a biblioteca |
 | 01/08/26 | Cards da home leem imagem e destino do próprio `pages`, pelo slug | Repetir o caminho do hero no JSON criaria duas fontes para o mesmo dado |
 | 01/08/26 | Cor de fundo movida do `body` para o `html` | O fundo inline no `<head>` fez o body pintar o próprio fundo por cima do pattern, apagando-o em todas as páginas |
+| 01/08/26 | Voltar e Avançar restauram a posição de rolagem | Voltar de um banner jogava para o topo da home, perdendo o lugar da leitura |
+| 01/08/26 | Medidas das imagens geradas de `public/`, e obrigatórias em toda `<img>` | Sem espaço reservado, a restauração de rolagem erra o alvo e a página pula durante o carregamento |
+| 01/08/26 | Favicon com o "S" extraído do próprio SVG do logo | Usar uma fonte parecida daria uma letra diferente da marca |
 | 01/08/26 | Máscara da imagem do Banner 1 reproduzida como gradiente CSS | O SVG do Figma é só um fade vertical, cujas coordenadas só fazem sentido no frame dele |
 | 01/08/26 | Buracos das ruínas apagados no próprio arquivo do hero, em vez de retângulos em CSS | Os "Tapa buraco" do Figma são posições absolutas que só valem naquela escala |
 | 01/08/26 | Navegação mobile dentro do botão de menu, com estado no header | O painel é irmão anterior do botão no DOM e não seria alcançável por seletor a partir dele |

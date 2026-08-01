@@ -1,6 +1,7 @@
 import { icon, audioDescriptionIcon } from "./icon.js";
 import { sectionHeader } from "./content.js";
 import { flipbook } from "./flipbook.js";
+import { medidas } from "./medidas.js";
 
 /**
  * Audiodescription — player fixo na base.
@@ -251,7 +252,7 @@ function timelineItem({ year, title, image, subtitle, description }, i) {
         <div class="timeline__image">
           ${
             image
-              ? `<img src="${image.src}" alt="${image.alt ?? `${year ?? `Marco ${i + 1}`} — ${title ?? ""}`.trim()}" loading="lazy" decoding="async">`
+              ? `<img src="${image.src}"${medidas(image.src)} alt="${image.alt ?? `${year ?? `Marco ${i + 1}`} — ${title ?? ""}`.trim()}" loading="lazy" decoding="async">`
               : ""
           }
         </div>

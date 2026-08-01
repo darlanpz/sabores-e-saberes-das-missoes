@@ -1,3 +1,5 @@
+import { medidas } from "./medidas.js";
+
 /**
  * Footer — bloco de acessibilidade + apoiadores.
  *
@@ -51,7 +53,7 @@ function blocoApoiadores({ title, logos }) {
 function itemLogo({ src, alt, width, href }) {
   // A largura vem do Figma e varia por logo; a altura é sempre 48px.
   const estilo = width ? ` style="width:${width}px"` : "";
-  const img = `<img class="footer__logo" src="${src}" alt="${alt}"${estilo} loading="lazy" decoding="async">`;
+  const img = `<img class="footer__logo" src="${src}"${medidas(src)} alt="${alt}"${estilo} loading="lazy" decoding="async">`;
 
   return `
     <li class="footer__logo-item">

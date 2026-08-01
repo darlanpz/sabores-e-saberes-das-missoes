@@ -32,5 +32,5 @@ export function icon(name, { size = 24, fill = false, label } = {}) {
 
 /** Selo de audiodescrição — não existe no Feather, é asset próprio. */
 export function audioDescriptionIcon() {
-  return `<img src="/icons/audio-description.svg" alt="" width="24" height="24">`;
+  return `<img src="/icons/audio-description.svg" alt="" width="24" height="24" loading="lazy">`;
 }

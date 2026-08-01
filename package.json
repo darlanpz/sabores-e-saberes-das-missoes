@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "npm run build && node scripts/check-components.mjs && node scripts/check-conteudo.mjs && node scripts/check-page.mjs"
+    "dimensoes": "node scripts/gerar-dimensoes.mjs",
+    "check": "npm run dimensoes && npm run build && node scripts/check-components.mjs && node scripts/check-conteudo.mjs && node scripts/check-page.mjs"
   },
   "devDependencies": {
     "vite": "^7.1.5"

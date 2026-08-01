@@ -32,7 +32,8 @@ Para adicionar uma página: uma entrada em `pages`, um `<slug>/index.html` de 12
 | `npm run dev` | servidor de desenvolvimento |
 | `npm run build` | gera `dist/` |
 | `npm run preview` | serve o build |
-| `npm run check` | build + verificações automáticas |
+| `npm run dimensoes` | remede as imagens — rodar após acrescentar ou trocar alguma |
+| `npm run check` | dimensões + build + verificações automáticas |
 
 ## O que `npm run check` verifica
 

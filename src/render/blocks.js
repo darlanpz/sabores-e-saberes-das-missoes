@@ -2,6 +2,7 @@ import { panel, card, textSection, contentList, sectionHeader } from "../compone
 import { video, timeline } from "../components/media.js";
 // Renomeado: o bloco de vídeo já usa `icon` como nome de campo.
 import { icon as glifo } from "../components/icon.js";
+import { medidas } from "../components/medidas.js";
 
 /**
  * Tradutores de bloco: cada tipo do JSON vira um componente existente.
@@ -37,7 +38,7 @@ const TIPOS = {
 
     return `
     <figure class="fade-image${variantes ? ` ${variantes}` : ""}">
-      <img class="fade-image__img" src="${src}" alt="${alt ?? ""}" loading="lazy" decoding="async">
+      <img class="fade-image__img" src="${src}"${medidas(src)} alt="${alt ?? ""}" loading="lazy" decoding="async">
     </figure>`;
   },
 
@@ -96,7 +97,7 @@ const TIPOS = {
       ${
         image
           ? `<figure class="intro__figure">
-              <img src="${image.src}" alt="${image.alt ?? ""}" fetchpriority="high">
+              <img src="${image.src}"${medidas(image.src)} alt="${image.alt ?? ""}" fetchpriority="high">
             </figure>`
           : ""
       }
@@ -125,7 +126,7 @@ function cartaoBanner({ slug, title, description, tags = [] }, page) {
         <span class="banner-card__media">
           ${
             hero
-              ? `<img src="${hero.src}" alt="" loading="lazy" decoding="async"${
+              ? `<img src="${hero.src}"${medidas(hero.src)} alt="" loading="lazy" decoding="async"${
                   hero.position ? ` style="object-position:${hero.position}"` : ""
                 }>`
               : ""

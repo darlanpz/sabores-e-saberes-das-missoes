@@ -147,6 +147,23 @@ verificar("banner4", [
   ["sem undefined vazando", !html4.includes("undefined")],
 ]);
 
+/* --- Espaço reservado das imagens ------------------------------------------ */
+
+const paginasHtml = slugs.map((s) => renderPage(site, pages[s], s, pages)).join("");
+const imgs = [...paginasHtml.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
+const semMedida = imgs.filter((tag) => !/\bwidth="\d+"/.test(tag) || !/\bheight="\d+"/.test(tag));
+
+verificar("imagens", [
+  [
+    `as ${imgs.length} <img> reservam espaço com width e height`,
+    semMedida.length === 0,
+  ],
+]);
+if (semMedida.length) {
+  console.log(`  sem medida:\n    ${semMedida.slice(0, 5).join("\n    ")}`);
+  console.log("  rode: npm run dimensoes");
+}
+
 /* --- Home ------------------------------------------------------------------ */
 
 const htmlHome = renderPage(site, pages.home, "home", pages);
@@ -230,6 +247,16 @@ verificar("entradas", [
     const semScript = corpo.replace(/<script[\s\S]*?<\/script>/g, "").trim();
     return [`${entradaDe(s)} não tem conteúdo solto no <body>`, semScript === '<div id="app"></div>'];
   }),
+  ...slugs.map((s) => [
+    `${entradaDe(s)} declara o favicon`,
+    readFileSync(join(RAIZ, entradaDe(s)), "utf8").includes('rel="icon" href="/favicon.svg"'),
+  ]),
+  [
+    "arquivos do favicon existem",
+    ["favicon.svg", "favicon-96.png", "apple-touch-icon.png"].every((f) =>
+      existsSync(join(RAIZ, "public", f)),
+    ),
+  ],
 ]);
 
 process.exit(falhou ? 1 : 0);

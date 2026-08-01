@@ -1,10 +1,11 @@
 import { icon } from "./icon.js";
+import { medidas } from "./medidas.js";
 
 /** Logo — SVG exportado do Figma, nunca reconstruído em texto. */
 export function logo({ className = "header__logo" } = {}) {
   return `
     <a class="${className}" href="/" aria-label="Sabores e Saberes das Missões — início">
-      <img class="logo" src="/icons/logo.svg" alt="">
+      <img class="logo" src="/icons/logo.svg"${medidas("/icons/logo.svg")} alt="">
     </a>`;
 }
 

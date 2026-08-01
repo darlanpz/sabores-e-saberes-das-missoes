@@ -1,5 +1,6 @@
 import { icon } from "./icon.js";
 import { button } from "./button.js";
+import { medidas } from "./medidas.js";
 
 /** Cabeçalho de seção — ícone + rótulo, abre todo painel. */
 export function sectionHeader({ iconName, label }) {
@@ -33,7 +34,7 @@ export function card({ title, meta, action, thumb }) {
 
   const conteudoThumb = thumb.iconName
     ? icon(thumb.iconName, { size: 32 })
-    : `<img src="${thumb.src}" alt="${thumb.alt ?? ""}" loading="lazy" decoding="async">`;
+    : `<img src="${thumb.src}"${medidas(thumb.src)} alt="${thumb.alt ?? ""}" loading="lazy" decoding="async">`;
 
   return `
     <article class="card card--with-thumb">

@@ -2,6 +2,7 @@ import { header } from "../components/navigation.js";
 import { player, modal } from "../components/media.js";
 import { footer } from "../components/footer.js";
 import { renderBlock } from "./blocks.js";
+import { medidas } from "../components/medidas.js";
 
 /**
  * Hero — faixa de topo.
@@ -14,7 +15,7 @@ function hero({ src, alt, position }) {
   const enquadramento = position ? ` style="object-position:${position}"` : "";
   return `
     <div class="hero">
-      <img class="hero__image" src="${src}" alt="${alt ?? ""}"${enquadramento} fetchpriority="high">
+      <img class="hero__image" src="${src}"${medidas(src)} alt="${alt ?? ""}"${enquadramento} fetchpriority="high">
     </div>`;
 }
 
