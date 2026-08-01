@@ -1,0 +1,171 @@
+/* Home — abertura da exposição e grade de acesso aos banners. */
+
+/* --------------------------------------------------------------------------
+   Abertura
+   -------------------------------------------------------------------------- */
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-12) var(--space-8);
+}
+
+.intro__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.intro__title {
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  max-width: none;
+}
+
+.intro__lead {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-accent);
+  max-width: 46ch;
+}
+
+.intro__text {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  max-width: 56ch;
+}
+
+.intro__figure {
+  margin: 0;
+  align-self: center;
+}
+
+.intro__figure img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Grade de banners
+   -------------------------------------------------------------------------- */
+
+.banner-grid {
+  display: grid;
+  gap: var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.banner-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    translate var(--duration-fast) var(--ease-out);
+}
+
+.banner-card:hover {
+  background-color: color-mix(in srgb, var(--color-secondary) 82%, var(--color-text));
+  translate: 0 -2px;
+}
+
+/* A proporção é a da própria arte dos heros: nada é recortado. */
+.banner-card__media {
+  display: block;
+  aspect-ratio: 1720 / 480;
+  background-color: var(--color-primary);
+}
+
+.banner-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.banner-card__title {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-h3);
+  line-height: var(--leading-tight);
+  color: var(--color-accent);
+}
+
+.banner-card__text {
+  font-size: var(--text-meta);
+  line-height: var(--leading-body);
+}
+
+/* O que existe dentro do banner: vídeo, quadrinho, quiz e afins. */
+.banner-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.banner-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.banner-card__tag .icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+@media (width >= 768px) {
+  /* Texto à esquerda, imagem compondo à direita. A coluna da imagem é `auto`
+     para ela ocupar só o que precisa e deixar o resto ao texto. */
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: var(--space-12);
+    padding-block: var(--space-15) var(--space-12);
+  }
+
+  .intro__figure {
+    align-self: center;
+  }
+
+  .intro__figure img {
+    max-width: 440px;
+  }
+
+  .banner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Sobrando um card no fim, ele atravessa as duas colunas mas mantém a
+     largura de uma, e se centraliza — em vez de ficar encostado à esquerda. */
+  .banner-grid__item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - var(--space-6) / 2);
+  }
+}

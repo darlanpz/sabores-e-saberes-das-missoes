@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Base — reset, fundo e regras globais
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/* A cor de fundo é pintada AQUI, não no body.
+   O pattern abaixo é um pseudo-elemento com `z-index: -1`, e a ordem de pintura
+   do CSS coloca camadas negativas ANTES do fundo do body — um fundo opaco no
+   body cobriria o pattern por completo. Com a cor no html, a sequência fica:
+   fundo do html → pattern → conteúdo. */
+html {
+  background-color: var(--color-primary);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 8.3 Pattern de fundo.
+   Vai num pseudo-elemento porque `opacity` não se aplica a `background-image`.
+   `fixed` mantém o tile alinhado durante o scroll, como no Figma. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--opacity-pattern);
+  background-image: url("/img/pattern-missoes.webp");
+  background-repeat: repeat;
+  background-size: var(--pattern-tile);
+  background-position: top left;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-accent);
+  /* Cinzel já é uma fonte de caixa alta por desenho — nunca uppercase por cima. */
+  text-transform: none;
+}
+
+h1 {
+  font-size: var(--text-h1);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+}
+
+h3 {
+  font-size: var(--text-h3);
+}
+
+p {
+  max-width: 60ch;
+}
+
+/* 11. Foco visível — distinto do traço de hover do menu, que é decorativo. */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Utilitário de texto acessível oculto. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 9. Movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

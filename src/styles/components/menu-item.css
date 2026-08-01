@@ -1,0 +1,42 @@
+/* menu-item — item de navegação.
+   Estados: default · hover · active (aria-current="page").
+   O sublinhado é a pincelada "Detalhes linha", não um border-bottom. */
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-action);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-none);
+  text-transform: capitalize;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--color-accent);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.menu-item::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-image: url("/icons/detalhes-linha.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.menu-item:hover::after,
+.menu-item[aria-current="page"]::after {
+  opacity: 1;
+}
+
+.menu-item[aria-current="page"] {
+  color: var(--color-text);
+}

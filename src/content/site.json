@@ -1,0 +1,680 @@
+{
+  "$comentario": "Conteúdo de todas as páginas do site. Alterar texto, imagem ou ordem dos blocos aqui — o HTML é gerado a partir deste arquivo. Ver .spec/style-guide.md, seção 'Conteúdo em JSON'.",
+  "site": {
+    "nome": "Sabores e Saberes das Missões",
+    "nav": [
+      {
+        "label": "Início",
+        "href": "/",
+        "slug": "home"
+      },
+      {
+        "label": "Banner 1",
+        "href": "/banner1/",
+        "slug": "banner1"
+      },
+      {
+        "label": "Banner 2",
+        "href": "/banner2/",
+        "slug": "banner2"
+      },
+      {
+        "label": "Banner 3",
+        "href": "/banner3/",
+        "slug": "banner3"
+      },
+      {
+        "label": "Banner 4",
+        "href": "/banner4/",
+        "slug": "banner4"
+      },
+      {
+        "label": "Banner 5",
+        "href": "/banner5/",
+        "slug": "banner5"
+      }
+    ],
+    "footer": {
+      "accessibility": {
+        "title": "ACESSIBILIDADE",
+        "text": "Esta exposição conta com audiodescrição dos banners e resumos acessíveis dos conteúdos disponíveis nos QR Codes, legendas e janelas de Libras nos vídeos e apostila com descrição dos textos em Braille, promovendo uma experiência inclusiva para todos os públicos."
+      },
+      "supporters": {
+        "title": "Apoiadores",
+        "logos": [
+          {
+            "src": "/img/logos/logo-06.webp",
+            "alt": "Instituto Federal Farroupilha",
+            "width": 176
+          },
+          {
+            "src": "/img/logos/logo-05.webp",
+            "alt": "Tecnologia em Gastronomia — curso superior",
+            "width": 161
+          },
+          {
+            "src": "/img/logos/logo-04.svg",
+            "alt": "Gestão de Turismo",
+            "width": 134
+          },
+          {
+            "src": "/img/logos/logo-03.webp",
+            "alt": "PGDTTG — Pós-graduação em Desenvolvimento Territorial, Turismo e Gastronomia",
+            "width": 128
+          },
+          {
+            "src": "/img/logos/logo-02.webp",
+            "alt": "Unijuí — Universidade Regional",
+            "width": 153
+          },
+          {
+            "src": "/img/logos/logo-01.webp",
+            "alt": "Desenvolvimento Regional Unijuí — Mestrado e Doutorado",
+            "width": 120
+          },
+          {
+            "src": "/img/logos/logo-07.webp",
+            "alt": "Educação nas Ciências — Mestrado e Doutorado",
+            "width": 119
+          }
+        ]
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Sabores e Saberes das Missões",
+      "description": "Exposição sobre os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro.",
+      "blocks": [
+        {
+          "type": "intro",
+          "column": "full",
+          "title": "Projeto Sabores e Saberes das Missões",
+          "lead": "Uma exposição sobre os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro.",
+          "text": "Dos primeiros sistemas alimentares Guarani às cozinhas que seguem se transformando hoje, esta é uma história construída pelas relações sociais, históricas, culturais, ambientais e econômicas que marcam este território. Percorra os cinco banners e descubra o que cada povo trouxe para a mesa missioneira.",
+          "image": {
+            "src": "/img/banner1/banner-1-1.webp",
+            "alt": "Cruz de Lorena em pedra, símbolo das Reduções Jesuítico-Guarani"
+          }
+        },
+        {
+          "type": "banners",
+          "column": "full",
+          "items": [
+            {
+              "slug": "banner1",
+              "title": "Patrimônios alimentares das Missões",
+              "description": "A abertura da exposição: o que são os patrimônios alimentares missioneiros e como essa cultura foi construída ao longo do tempo.",
+              "tags": [
+                {
+                  "icon": "search",
+                  "label": "Pesquisas científicas"
+                }
+              ]
+            },
+            {
+              "slug": "banner2",
+              "title": "Das tradições Guarani floresceram nossas raízes",
+              "description": "Muito antes da chegada dos jesuítas, os povos Guarani desenvolveram os primeiros sistemas alimentares da região.",
+              "tags": [
+                {
+                  "icon": "video",
+                  "label": "Vídeo"
+                },
+                {
+                  "icon": "book-open",
+                  "label": "Quadrinho"
+                },
+                {
+                  "icon": "help-circle",
+                  "label": "Quiz"
+                }
+              ]
+            },
+            {
+              "slug": "banner3",
+              "title": "O encontro de diferentes culturas",
+              "description": "Reduções Jesuítico-Guarani, domínio português e a presença de africanos escravizados: séculos de trocas que formaram a identidade alimentar missioneira.",
+              "tags": [
+                {
+                  "icon": "message-circle",
+                  "label": "Entrevista"
+                }
+              ]
+            },
+            {
+              "slug": "banner4",
+              "title": "Sabores de muitas culturas que escolheram ficar",
+              "description": "As migrações do século XIX e a linha do tempo que mostra o que cada povo trouxe para a mesa missioneira.",
+              "tags": [
+                {
+                  "icon": "clock",
+                  "label": "Linha do tempo"
+                },
+                {
+                  "icon": "file-text",
+                  "label": "Receitas"
+                }
+              ]
+            },
+            {
+              "slug": "banner5",
+              "title": "Patrimônios alimentares na contemporaneidade",
+              "description": "Como esses saberes seguem vivos hoje, com os trabalhos dos alunos do Curso de Tecnologia em Gastronomia do IFFar — São Borja.",
+              "tags": [
+                {
+                  "icon": "book-open",
+                  "label": "Trabalhos acadêmicos"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "banner1": {
+      "title": "Banner 1 - Patrimônios alimentares das Missões",
+      "description": "Conheça os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro.",
+      "hero": {
+        "src": "/img/banner1/banner-1-hero.webp",
+        "alt": "Ruínas da igreja de São Miguel Arcanjo, em São Miguel das Missões, iluminadas contra o céu noturno"
+      },
+      "audio": {
+        "src": "/audio/audiodescricao-exemplo.wav",
+        "label": "Audiodescrição"
+      },
+      "blocks": [
+        {
+          "type": "panel",
+          "column": "main",
+          "header": {
+            "icon": "search",
+            "label": "Pesquisas e publicações científicas"
+          },
+          "items": [
+            {
+              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
+              "meta": "Aline Prestes Roque",
+              "action": {
+                "label": "Ler dissertação",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
+              "meta": "Aline Prestes Roque",
+              "action": {
+                "label": "Ler dissertação",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
+              "meta": "Aline Prestes Roque",
+              "action": {
+                "label": "Ler dissertação",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
+              "meta": "Aline Prestes Roque",
+              "action": {
+                "label": "Ler dissertação",
+                "icon": "file-text",
+                "href": "#"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "title": "Bem-vindo(a)!",
+          "body": "Conheça os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro. Descubra como essa cultura foi construída pelas relações sociais, históricas, culturais, ambientais e econômicas que marcam este território."
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "title": "Explore",
+          "body": "Em cada banner, escaneie o QR Code com a câmera do seu celular. Eles dão acesso a conteúdos complementares:"
+        },
+        {
+          "type": "list",
+          "column": "aside",
+          "items": [
+            {
+              "icon": "search",
+              "label": "Pesquisas científicas"
+            },
+            {
+              "icon": "video",
+              "label": "Vídeos"
+            },
+            {
+              "icon": "message-circle",
+              "label": "Entrevistas"
+            },
+            {
+              "icon": "file-text",
+              "label": "Receitas"
+            },
+            {
+              "icon": "book-open",
+              "label": "Materiais educativos"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner1/banner-1-1.webp",
+          "alt": "Cruz de Lorena em pedra, símbolo das Reduções Jesuítico-Guarani"
+        },
+        {
+          "type": "quote",
+          "column": "aside",
+          "text": "Conhecer a nossa cultura alimentar é reconhecer as raízes que nos unem e as memórias que alimentam nossa identidade."
+        }
+      ]
+    },
+    "banner2": {
+      "title": "Banner 2 - Das tradições Guarani floresceram nossas raízes",
+      "description": "Muito antes da chegada dos jesuítas, os povos Guarani desenvolveram os primeiros sistemas alimentares da região das Missões.",
+      "sticky": "main",
+      "hero": {
+        "src": "/img/banner2/banner-2-hero.webp",
+        "alt": "Casal Guarani em trajes tradicionais, diante da mata",
+        "position": "50% 0%"
+      },
+      "audio": {
+        "src": "/audio/audiodescricao-exemplo.wav",
+        "label": "Audiodescrição"
+      },
+      "comic": {
+        "label": "Quadrinho sobre a alimentação Guarani",
+        "pages": [
+          {
+            "src": "/img/quadrinho/pagina-01.webp",
+            "alt": "Página 1 do quadrinho"
+          },
+          {
+            "src": "/img/quadrinho/pagina-02.webp",
+            "alt": "Página 2 do quadrinho"
+          },
+          {
+            "src": "/img/quadrinho/pagina-03.webp",
+            "alt": "Página 3 do quadrinho"
+          },
+          {
+            "src": "/img/quadrinho/pagina-04.webp",
+            "alt": "Página 4 do quadrinho"
+          },
+          {
+            "src": "/img/quadrinho/pagina-05.webp",
+            "alt": "Página 5 do quadrinho"
+          },
+          {
+            "src": "/img/quadrinho/pagina-06.webp",
+            "alt": "Página 6 do quadrinho"
+          },
+          {
+            "src": "/img/quadrinho/pagina-07.webp",
+            "alt": "Página 7 do quadrinho"
+          }
+        ],
+        "cta": {
+          "text": "Já leu a história, responda o desafio!",
+          "action": {
+            "label": "Responder o quiz",
+            "href": "#"
+          }
+        }
+      },
+      "blocks": [
+        {
+          "type": "video",
+          "column": "full",
+          "label": "Vídeo imersivo",
+          "src": "/video/exemplo.mp4",
+          "poster": "/video/exemplo-poster.webp"
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "title": "Das tradições Guarani floresceram nossas raízes",
+          "body": "Muito antes da chegada dos jesuítas à região, os povos Guarani que habitavam este território desenvolveram os primeiros sistemas alimentares da região das Missões. Seus conhecimentos sobre a caça, a pesca, a coleta e o cultivo deram origem a práticas que continuam vivas na cultura alimentar missioneira."
+        },
+        {
+          "type": "panel",
+          "column": "main",
+          "items": [
+            {
+              "title": "Veja a história em quadrinhos sobre a alimentação dos povos Guarani e responda um desafio.",
+              "thumb": {
+                "src": "/img/quadrinho/pagina-01.webp",
+                "alt": "Primeira página do quadrinho",
+                "width": 120,
+                "height": 180
+              },
+              "action": {
+                "label": "Ler quadrinho",
+                "icon": "book-open",
+                "opens": "modal-quadrinho"
+              }
+            },
+            {
+              "title": "Já leu a história, responda o desafio!",
+              "thumb": {
+                "src": "/img/banner2/banner-2-3.webp",
+                "alt": "",
+                "width": 120,
+                "height": 120
+              },
+              "action": {
+                "label": "Responder o quiz",
+                "icon": "play",
+                "iconFill": true,
+                "href": "#"
+              }
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner2/banner-2-1.webp",
+          "alt": "Mandioca, milho, pinhão e abóbora — alimentos base da cultura Guarani"
+        },
+        {
+          "type": "quote",
+          "column": "aside",
+          "text": "Os saberes e sabores Guarani continuam vivos, alimentando a memória, a cultura e a identidade das Missões."
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner2/banner-2-2.webp",
+          "alt": "Peixes assando sobre o moquém, estrutura de madeira montada sobre a fogueira",
+          "blend": "screen",
+          "rounded": true
+        }
+      ]
+    },
+    "banner3": {
+      "title": "Banner 3 - O encontro de diferentes culturas transformou os sabores das Missões",
+      "description": "Reduções Jesuítico Guarani: séculos de conflitos, encontros e trocas que formaram a identidade alimentar missioneira.",
+      "sticky": "main",
+      "hero": {
+        "src": "/img/banner3/banner-3-hero.webp",
+        "alt": "Jesuítas e indígenas Guarani reunidos, em cena das Reduções",
+        "position": "50% 0%"
+      },
+      "audio": {
+        "src": "/audio/audiodescricao-exemplo.wav",
+        "label": "Audiodescrição"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "column": "aside",
+          "title": "O encontro de diferentes culturas transformou os sabores das Missões",
+          "body": "Reduções Jesuítico Guarani: séculos de conflitos, encontros e trocas que formaram a identidade alimentar missioneira."
+        },
+        {
+          "type": "video",
+          "column": "main",
+          "icon": "message-circle",
+          "label": "Acesse a entrevista com pesquisadores sobre como indígenas, espanhóis, portugueses e africanos moldaram a cultura alimentar missioneira.",
+          "src": "/video/exemplo.mp4",
+          "poster": "/video/exemplo-poster.webp"
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner3/banner-3-1.webp",
+          "alt": "Um homem africano escravizado e um colonizador português, lado a lado"
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "body": "Jesuítas espanhóis e povos Guarani. Formação, destruição e reorganização das Missões. O domínio português. A presença de africanos escravizados. Dessa convivência nasceram os saberes, sabores, ingredientes e técnicas que você vê aqui."
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner3/banner-3-2.webp",
+          "alt": "Panelas de barro com pratos da cozinha missioneira"
+        },
+        {
+          "type": "quote",
+          "column": "aside",
+          "text": "A miscigenação cultural dá origem à identidade missioneira."
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner3/banner-3-3.webp",
+          "alt": "Cuia de mate com bomba, sobre traçado decorativo"
+        }
+      ]
+    },
+    "banner4": {
+      "title": "Banner 4 - Sabores de muitas culturas que escolheram ficar",
+      "description": "A partir do século XIX, a região das Missões passou a receber novos grupos migratórios que ampliaram a cozinha missioneira.",
+      "sticky": "aside",
+      "hero": {
+        "src": "/img/banner4/banner-4-hero.webp",
+        "alt": "Imigrantes em trajes típicos apresentando pratos da cozinha missioneira",
+        "position": "50% 0%"
+      },
+      "audio": {
+        "src": "/audio/audiodescricao-exemplo.wav",
+        "label": "Audiodescrição"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "column": "aside",
+          "title": "Sabores de muitas culturas que escolheram ficar",
+          "body": "Novos povos, novas tradições: o encontro que ampliou a cozinha missioneira."
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "body": "A partir do século XIX, a região das Missões passou a receber novos grupos migratórios: alemães, italianos, poloneses, austríacos, russos e outros povos."
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner4/banner-4-1.webp",
+          "alt": "Pães, embutidos e queijos trazidos pelos imigrantes"
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "body": "Em suas bagagens vieram hábitos, receitas, ingredientes e técnicas culinárias que, ao encontrarem os alimentos e costumes locais, deram origem a novas formas de cozinhar e compartilhar."
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner4/banner-4-2.webp",
+          "alt": "Massas, cucas e conservas servidas em travessas"
+        },
+        {
+          "type": "quote",
+          "column": "aside",
+          "text": "Cada povo que chegou trouxe um pouco de sua mesa e deixou um pouco dela nas Missões."
+        },
+        {
+          "type": "timeline",
+          "column": "main",
+          "header": {
+            "icon": "file-text",
+            "label": "Conheça a linha do tempo das migrações e veja receitas tradicionais que preservam a memória de quem chegou às Missões."
+          },
+          "items": [
+            {
+              "year": "Muito antes de 1626",
+              "title": "Povos Guarani",
+              "image": null,
+              "description": "Primeiros sistemas alimentares das Missões"
+            },
+            {
+              "year": "1626 – 1634",
+              "title": "Jesuítas espanhóis",
+              "image": null,
+              "description": "Fundação das Reduções Jesuítico-Guarani e organização agrícola e pecuária"
+            },
+            {
+              "year": "1750",
+              "title": "Portugueses",
+              "image": null,
+              "description": "Novos temperos, técnicas de conservação e confeitaria"
+            },
+            {
+              "year": "Século XVIII",
+              "title": "Africanos",
+              "image": null,
+              "description": "Saberes culinários, novos temperos e formas de preparo dos alimentos"
+            },
+            {
+              "year": "Século XIX",
+              "title": "Alemães",
+              "image": null,
+              "description": "Panificação, conservas, embutidos e laticínios"
+            },
+            {
+              "year": "Século XIX",
+              "title": "Italianos",
+              "image": null,
+              "description": "Massas, vinhos e valorização da agricultura familiar"
+            },
+            {
+              "year": "Século XIX",
+              "title": "Poloneses, austríacos, russos e outros",
+              "image": null,
+              "description": "Novas receitas, técnicas culinárias e diversificação alimentar"
+            },
+            {
+              "year": "Hoje",
+              "title": "A identidade alimentar missioneira",
+              "image": null,
+              "description": "A identidade alimentar missioneira foi construída ao longo de séculos pelo encontro entre povos, culturas e territórios. Cada migração trouxe novos ingredientes, saberes e tradições que, adaptados aos alimentos locais, continuam vivos na mesa e na memória das Missões."
+            }
+          ]
+        }
+      ]
+    },
+    "banner5": {
+      "title": "Banner 5 - Patrimônios alimentares missioneiros na contemporaneidade",
+      "description": "Mais de quatro séculos de saberes que seguem se transformando na cultura alimentar missioneira.",
+      "sticky": "main",
+      "hero": {
+        "src": "/img/banner5/banner-5-hero.webp",
+        "alt": "Pesquisadores e produtores missioneiros reunidos em campo",
+        "position": "50% 0%"
+      },
+      "audio": {
+        "src": "/audio/audiodescricao-exemplo.wav",
+        "label": "Audiodescrição"
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "column": "aside",
+          "title": "Patrimônios alimentares missioneiros na contemporaneidade",
+          "body": "Mais de quatro séculos de saberes que seguem se transformando."
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "body": "A cultura alimentar missioneira continua sendo construída todos os dias. Ao longo de mais de quatro séculos, conhecimentos dos povos originários, colonizadores e imigrantes foram incorporados, transformados e adaptados à realidade regional."
+        },
+        {
+          "type": "panel",
+          "column": "main",
+          "header": {
+            "icon": "book-open",
+            "label": "Veja os trabalhos dos alunos do Curso de Tecnologia em Gastronomia do IFFar — São Borja, com os alimentos regionais missioneiros apresentados a partir do conceito da 'inovação baseada na tradição' e as redes sociais do curso."
+          },
+          "items": [
+            {
+              "title": "Título do trabalho",
+              "meta": "Aluno",
+              "action": {
+                "label": "Ler trabalho",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "Título do trabalho",
+              "meta": "Aluno",
+              "action": {
+                "label": "Ler trabalho",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "Título do trabalho",
+              "meta": "Aluno",
+              "action": {
+                "label": "Ler trabalho",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "Título do trabalho",
+              "meta": "Aluno",
+              "action": {
+                "label": "Ler trabalho",
+                "icon": "file-text",
+                "href": "#"
+              }
+            },
+            {
+              "title": "Título do trabalho",
+              "meta": "Aluno",
+              "action": {
+                "label": "Ler trabalho",
+                "icon": "file-text",
+                "href": "#"
+              }
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner5/banner-5-1.webp",
+          "alt": "Cuia de mate sobre traçado decorativo"
+        },
+        {
+          "type": "text",
+          "column": "aside",
+          "body": "Hoje, esses patrimônios permanecem vivos nas cozinhas, nas propriedades rurais, nos restaurantes, nas agroindústrias, nas universidades, na mesa das famílias e no coração de cada missioneiro."
+        },
+        {
+          "type": "image",
+          "column": "aside",
+          "src": "/img/banner5/banner-5-2.webp",
+          "alt": "Costelas assando em espetos, no fogo de chão",
+          "blend": "screen",
+          "rounded": true
+        },
+        {
+          "type": "quote",
+          "column": "aside",
+          "text": "Só preservamos aquilo que conhecemos. Só valorizamos aquilo que compreendemos.",
+          "body": "Que esta viagem pelos sabores missioneiros desperte o orgulho de uma herança construída por diferentes povos e compartilhada entre gerações. Preservá-la é fortalecer a identidade, a memória e o futuro das Missões."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+/* Modal Revista/Quadrinho — leitor em tela cheia.
+   O convite ao quiz é a última página do próprio quadrinho, não um bloco
+   separado: o modal não tem nada além do leitor e do botão de fechar. */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  overflow-y: auto; /* rede de segurança em telas muito baixas */
+  background-color: var(--color-overlay);
+  backdrop-filter: blur(var(--overlay-blur));
+  animation: modal-in var(--duration-base) var(--ease-out);
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+@keyframes modal-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal__reader {
+  width: min(840px, 100%);
+}
+
+/* A revista cresce até a altura total da tela, mantendo a proporção.
+   A reserva é só a margem de 24px de cima e de baixo — a barra de navegação
+   o próprio flipbook desconta. */
+.modal .flipbook {
+  --reserva: calc(var(--space-6) * 2);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.modal__close:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

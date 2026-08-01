@@ -1,0 +1,27 @@
+/* Revelação do conteúdo — sobe e aparece conforme entra em cena.
+
+   O estado inicial só existe depois que o JS marca os elementos: o HTML da
+   página é montado por script, então não há risco de o conteúdo ficar invisível
+   caso a revelação não chegue a rodar. */
+
+.revelar {
+  opacity: 0;
+  translate: 0 var(--space-4);
+  transition:
+    opacity var(--duration-slow) var(--ease-out) var(--revelar-atraso, 0ms),
+    translate var(--duration-slow) var(--ease-out) var(--revelar-atraso, 0ms);
+}
+
+.revelar--visivel {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Quem pediu menos movimento vê o conteúdo direto, sem deslocamento nem espera. */
+@media (prefers-reduced-motion: reduce) {
+  .revelar {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}

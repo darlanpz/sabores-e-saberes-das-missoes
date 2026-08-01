@@ -1,0 +1,66 @@
+/* Footer — fundo sólido, cobre o pattern.
+   O padding inferior reserva espaço para o player fixo de audiodescrição. */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  /* Respiro entre o fim do conteúdo e o rodapé. */
+  margin-top: var(--space-12);
+  padding: var(--space-6) var(--container-pad) calc(var(--player-height) + var(--space-6));
+  background-color: var(--color-primary);
+}
+
+.footer__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* O bloco de apoiadores respira mais entre o título e as logos. */
+.footer__block--supporters {
+  gap: var(--space-6);
+}
+
+.footer__title {
+  font-size: var(--text-h3);
+  line-height: var(--leading-tight);
+  color: var(--color-accent);
+}
+
+.footer__text {
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  max-width: none;
+}
+
+.footer__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* 60px entre colunas; no mobile as linhas ficam mais próximas. */
+  gap: var(--space-6) var(--space-15);
+  opacity: var(--opacity-logos);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__logo-item {
+  display: flex;
+  align-items: center;
+}
+
+.footer__logo {
+  height: var(--icon-md); /* 48px — a largura vem de cada logo */
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (width >= 768px) {
+  .footer__logos {
+    gap: var(--space-15);
+  }
+}

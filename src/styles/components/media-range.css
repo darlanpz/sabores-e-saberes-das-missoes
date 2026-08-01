@@ -1,0 +1,94 @@
+/* Trilha de mídia — compartilhada pelo player de audiodescrição e pelo de vídeo.
+   `<input type="range">` estilizado: o range nativo entrega arrasto, teclado
+   (setas, Home/End) e semântica de slider sem reimplementação.
+
+   O corte entre percorrido e restante é um linear-gradient posicionado por
+   --played, que o JS atualiza a cada timeupdate. */
+
+.media-range {
+  --played: 0%;
+  --track-h: 12px;
+
+  appearance: none;
+  width: 100%;
+  height: var(--icon-sm); /* área de toque de 24px, trilha visual de 12px */
+  background: transparent;
+  cursor: pointer;
+}
+
+.media-range::-webkit-slider-runnable-track {
+  height: var(--track-h);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    to right,
+    var(--color-track) 0 var(--played),
+    var(--color-primary) var(--played) 100%
+  );
+}
+
+.media-range::-moz-range-track {
+  height: var(--track-h);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    to right,
+    var(--color-track) 0 var(--played),
+    var(--color-primary) var(--played) 100%
+  );
+}
+
+/* Marcador: no Figma é o ícone `circle` em fill, na cor accent.
+   Um círculo em CSS é visualmente idêntico e sobrevive ao arrasto do thumb
+   nativo, que não aceita SVG. */
+.media-range::-webkit-slider-thumb {
+  appearance: none;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  margin-top: calc((var(--track-h) - var(--icon-sm)) / 2);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.media-range::-moz-range-thumb {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.media-range:hover::-webkit-slider-thumb,
+.media-range:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+.media-range:hover::-moz-range-thumb,
+.media-range:active::-moz-range-thumb {
+  transform: scale(1.15);
+}
+
+.media-range:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+
+/* Variante compacta — sobre o vídeo, onde a barra é mais discreta. */
+.media-range--slim {
+  --track-h: 6px;
+
+  height: var(--space-4);
+}
+
+.media-range--slim::-webkit-slider-thumb {
+  width: var(--space-4);
+  height: var(--space-4);
+  margin-top: calc((var(--track-h) - var(--space-4)) / 2);
+}
+
+.media-range--slim::-moz-range-thumb {
+  width: var(--space-4);
+  height: var(--space-4);
+}

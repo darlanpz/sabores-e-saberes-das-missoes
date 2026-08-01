@@ -1,0 +1,116 @@
+/* Header — barra do topo, sem fundo próprio (o pattern aparece através dela).
+
+   Mobile: a navegação vive dentro do botão de menu, num painel que abre abaixo
+   do header. Desktop: o botão some e a navegação encosta à direita. */
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Logo à esquerda, navegação à direita. */
+  justify-content: space-between;
+  padding: var(--space-4);
+  width: 100%;
+}
+
+.header__logo {
+  width: 99px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.header .header__menu-button {
+  flex-shrink: 0;
+}
+
+/* --- Navegação no mobile: painel do menu ----------------------------------- */
+
+.header__nav {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  left: var(--space-4);
+  right: var(--space-4);
+  z-index: 10;
+  flex-direction: column;
+  align-items: stretch;
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-secondary);
+  box-shadow: var(--shadow-modal);
+
+  /* Fechado: desliza um pouco para cima e some.
+     `visibility` — e não `display` — porque ela é animável e ainda assim tira
+     os links do alcance do teclado e do leitor de tela. O atraso nela segura o
+     painel em cena até a saída terminar. */
+  visibility: hidden;
+  opacity: 0;
+  translate: 0 calc(var(--space-2) * -1);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    translate var(--duration-fast) var(--ease-out),
+    visibility 0s linear var(--duration-fast);
+}
+
+.header[data-menu="aberto"] .header__nav {
+  visibility: visible;
+  opacity: 1;
+  translate: 0 0;
+  /* A entrada é mais lenta que a saída, e a visibilidade vale já no primeiro
+     quadro para o painel poder receber foco. */
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    translate var(--duration-base) var(--ease-out);
+}
+
+/* Empilhados, o alinhamento ao centro de cada item não faz sentido. */
+.header__nav .menu-item {
+  justify-content: flex-start;
+}
+
+@media (width >= 768px) {
+  .header {
+    padding: var(--space-6) var(--space-12);
+  }
+
+  .header__logo {
+    width: 162px;
+    height: 69px;
+  }
+
+  /* Volta a ser uma linha na própria barra, encostada à direita — sempre à
+     vista, sem estado de aberto e sem transição. */
+  .header__nav {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    /* Encosta na direita mesmo se o header ganhar outro filho no meio. */
+    margin-inline-start: auto;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+
+  .header__nav .menu-item {
+    justify-content: center;
+  }
+
+  /* Especificidade acima de `.menu-button`, que é importado depois e definiria
+     `display: flex` por último na cascata. Quem manda na visibilidade é o
+     layout que hospeda o componente, não o componente. */
+  .header .header__menu-button {
+    display: none;
+  }
+}
+
+/* Logo — SVG único, nunca reconstruído em texto. */
+.logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

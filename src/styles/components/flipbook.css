@@ -1,0 +1,243 @@
+/* Flipbook — leitor de quadrinho/revista com virada de página por arrasto.
+
+   Modelo: a folha que vira (`leaf`) gira em torno da lombada, que fica na
+   borda esquerda dela. Em 0° ela cobre a metade direita; em 180°, a esquerda.
+   A mesma folha serve para os dois sentidos — muda só o ângulo de partida.
+
+   No mobile some a página da esquerda e a folha ocupa a largura toda: uma
+   página por vez, virando para fora da tela. */
+
+.flipbook {
+  --spread-ratio: 840 / 594;
+  --page-ratio: 420 / 594;
+
+  /* Altura da barra de navegação + o gap até ela. */
+  --barra: 86px;
+  /* Espaço fora do componente (margens de quem o hospeda). */
+  --reserva: 48px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  /* A largura sai da altura disponível: a revista cresce até encostar nos
+     limites da tela mantendo a proporção. A barra herda essa largura, e é o
+     que alinha os botões com as bordas da revista. */
+  width: min(100%, calc((100dvh - var(--reserva) - var(--barra)) * 420 / 594));
+  margin-inline: auto;
+}
+
+.flipbook__spread {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: var(--page-ratio);
+  perspective: 2000px;
+  filter: drop-shadow(var(--shadow-modal));
+  touch-action: pan-y; /* o arrasto horizontal é nosso; o vertical rola a página */
+  user-select: none;
+  cursor: grab;
+}
+
+.flipbook__spread:active {
+  cursor: grabbing;
+}
+
+.flipbook__page,
+.flipbook__face {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-text);
+}
+
+.flipbook__page {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+}
+
+/* Lugar sem página: capa fechada, contracapa, ou o fim de um quadrinho com
+   número ímpar de páginas. Fica transparente — e como o spread usa
+   `drop-shadow`, que segue o canal alfa, a sombra abraça só o papel que existe
+   e o livro fechado lê como uma folha só. */
+.flipbook__blank {
+  background-color: transparent;
+}
+
+.flipbook__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* o arrasto é do spread, não da imagem */
+}
+
+/* --- Página de encerramento (CTA) ------------------------------------------ */
+
+.flipbook__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  width: 100%;
+  height: 100%;
+  padding: var(--space-6);
+  background-color: var(--color-primary);
+  text-align: center;
+}
+
+.flipbook__cta-text {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  color: var(--color-accent);
+  max-width: 20ch;
+}
+
+/* --- Folha que vira -------------------------------------------------------- */
+
+.flipbook__leaf {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--angle, 0) * -1deg));
+  will-change: transform;
+}
+
+.flipbook__leaf[hidden] {
+  display: none;
+}
+
+/* Só anima ao soltar; durante o arrasto o ângulo segue o ponteiro. */
+.flipbook__leaf--settling {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.flipbook__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.flipbook__face--back {
+  transform: rotateY(180deg);
+}
+
+/* Sombra que acompanha a dobra, mais forte no meio do movimento. */
+.flipbook__face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to left, var(--color-overlay), transparent 60%);
+  opacity: var(--fold, 0);
+  pointer-events: none;
+}
+
+/* --- Vinco central --------------------------------------------------------- */
+
+.flipbook__gutter {
+  display: none;
+}
+
+/* --- Barra de navegação ----------------------------------------------------
+   Abaixo da revista, com os botões nas pontas e o contador ao centro. As
+   colunas `1fr auto 1fr` mantêm o contador no centro exato mesmo quando um
+   dos botões some nos extremos. */
+
+.flipbook__bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  margin-inline: auto;
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+/* Com uma página só, a barra encolhe junto para os botões continuarem
+   alinhados com as bordas do papel. */
+.flipbook[data-spread="capa"] .flipbook__bar,
+.flipbook[data-spread="contracapa"] .flipbook__bar {
+  width: 50%;
+}
+
+.flipbook__nav--prev {
+  justify-self: start;
+}
+
+.flipbook__nav--next {
+  justify-self: end;
+}
+
+.flipbook__nav[hidden] {
+  display: none;
+}
+
+.flipbook__status {
+  font-size: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+@media (width >= 768px) {
+  .flipbook {
+    width: min(100%, calc((100dvh - var(--reserva) - var(--barra)) * 840 / 594));
+  }
+
+  .flipbook__spread {
+    aspect-ratio: var(--spread-ratio);
+    transition: translate var(--duration-base) var(--ease-out);
+  }
+
+  /* Com uma página só, a caixa continua do tamanho do spread — o que muda é a
+     posição. Deslocar meia página põe o papel no centro da tela, e o livro
+     desliza para cá enquanto abre, em vez de saltar. */
+  .flipbook[data-spread="capa"] .flipbook__spread {
+    translate: -25% 0;
+  }
+
+  .flipbook[data-spread="contracapa"] .flipbook__spread {
+    translate: 25% 0;
+  }
+
+  .flipbook__page--left {
+    display: block;
+  }
+
+  /* Volta a ser meia folha: a lombada passa para o meio do spread. */
+  .flipbook__leaf {
+    inset: 0 0 0 50%;
+  }
+
+  /* Vinco central — multiply a 30%, como no Figma.
+     Só existe com o livro aberto: capa e contracapa não têm lombada à vista. */
+  .flipbook[data-spread="duplo"] .flipbook__gutter {
+    display: block;
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+    width: 97px;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-overlay) 45% 55%,
+      transparent
+    );
+    pointer-events: none;
+  }
+}
+
+/* A página da esquerda só existe no spread (desktop). */
+@media (width < 768px) {
+  .flipbook__page--left {
+    display: none;
+  }
+}

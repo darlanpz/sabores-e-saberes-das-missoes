@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Design tokens — Sabores e Saberes
+   Fonte da verdade: .spec/style-guide.md
+   Nenhum valor deste arquivo deve ser repetido literalmente em outro lugar.
+   ========================================================================== */
+
+:root {
+  /* --- 3.1 Paleta principal ---------------------------------------------- */
+  --color-primary: #19120d;
+  --color-secondary: #4a3427;
+  --color-accent: #e8c37d;
+  --color-text: #f7ebd8;
+
+  /* --- 3.2 Derivados e overlays ------------------------------------------ */
+  --color-text-muted: rgb(247 235 216 / 70%);
+  --color-overlay: rgb(0 0 0 / 40%);
+  --overlay-blur: 40px; /* desfoque do fundo atrás do modal */
+  --color-overlay-soft: rgb(0 0 0 / 20%); /* véu sobre o pôster do vídeo */
+  --color-scrim: rgb(25 18 13 / 40%); /* fundo do play central */
+  --color-scrim-strong: rgb(25 18 13 / 90%); /* base da barra de controles */
+  --color-scrim-none: rgb(25 18 13 / 0%); /* topo do degradê da barra */
+  --color-border-subtle: rgb(247 235 216 / 20%);
+  --color-track: rgb(25 18 13 / 50%); /* trecho já reproduzido da trilha */
+  --opacity-icon-disabled: 0.4;
+  --opacity-pattern: 0.2;
+  --opacity-logos: 0.9;
+
+  /* Estados interativos do accent — derivados da própria paleta,
+     nunca de um tom novo. Ver style-guide 3.3. */
+  --color-accent-hover: color-mix(in srgb, var(--color-accent) 85%, var(--color-text));
+  --color-accent-active: color-mix(in srgb, var(--color-accent) 88%, var(--color-primary));
+
+  /* --- 3.3 Semânticas ------------------------------------------------------
+     Quentes e terrosas por desenho: mesma faixa de claridade e saturação do
+     accent (hsl 39/70%/70%), variando principalmente o matiz.
+     A cor vai no ícone e na borda — superfície e texto não mudam por estado. */
+  --color-danger: #e06552;  /* hsl(8, 70%, 60%)  — telha/cerâmica */
+  --color-warning: #ea9d2a; /* hsl(36, 82%, 54%) — ocre/âmbar     */
+  --color-success: #9bbf69; /* hsl(85, 40%, 58%) — sálvia/oliva   */
+  --color-info: var(--color-text); /* o estado mais silencioso: neutro */
+
+  --color-feedback-surface: var(--color-secondary);
+  --color-feedback-fg: var(--color-text);
+
+  /* --- 4. Tipografia ------------------------------------------------------ */
+  --font-heading: "Cinzel", georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  /* Mobile-first: os valores desktop entram no breakpoint md. */
+  --text-h1: 1.5rem;          /* 24px */
+  --text-h2: 1.25rem;         /* 20px */
+  --text-h3: 1.25rem;         /* 20px */
+  --text-body: 1rem;          /* 16px */
+  --text-card-title: 1rem;    /* 16px */
+  --text-label: 1rem;         /* 16px */
+  --text-action: 1.25rem;     /* 20px — não reduz no mobile (área de toque) */
+  --text-meta: 1rem;          /* 16px */
+  --text-small: 0.875rem;     /* 14px */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-heading: 1.4;
+  --leading-body: 1.5;
+  --leading-none: 1;
+
+  /* --- 5.1 Espaçamento — --space-N = N × 4px ----------------------------- */
+  --space-1: 0.25rem;   /* 4px  */
+  --space-2: 0.5rem;    /* 8px  */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-15: 3.75rem;  /* 60px */
+
+  /* --- 5.2 Layout --------------------------------------------------------- */
+  --container-max: 1280px;
+  --container-pad: var(--space-4);
+  --content-max: 370px;
+  --column-text: 459px;
+  --column-panel: 711px;
+  --gutter: var(--space-4);
+
+  /* --- 6. Bordas e sombras ------------------------------------------------ */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+  --shadow-modal: 0 0 14px rgb(0 0 0 / 25%);
+  /* Sobe a partir da base: o player fica ancorado no rodapé da viewport e a
+     sombra precisa cair sobre o conteúdo que passa por baixo dele. */
+  --shadow-dock: 0 -8px 32px rgb(0 0 0 / 45%);
+
+  /* --- 7. Ícones ----------------------------------------------------------- */
+  --icon-stroke: 1.5;
+  --icon-sm: 24px;
+  --icon-md: 48px;
+  --icon-lg: 72px;
+
+  /* --- 8.3 Pattern de fundo ------------------------------------------------ */
+  --pattern-tile: 1270px 1072px;
+
+  /* --- 9. Movimento -------------------------------------------------------- */
+  --duration-fast: 100ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* --- 11. Acessibilidade --------------------------------------------------- */
+  --focus-ring-width: 2px;
+  --focus-ring-color: var(--color-text);
+  --focus-ring-offset: 2px;
+
+  /* Altura do player fixo — o padding inferior do rodapé depende dela. */
+  --player-height: 190px;
+}
+
+@media (width >= 768px) {
+  :root {
+    --container-pad: var(--space-12);
+    --content-max: 1184px;
+    --gutter: var(--space-6);
+    --player-height: 144px;
+
+    --text-h1: 2.25rem;         /* 36px */
+    --text-h2: 1.5rem;          /* 24px */
+    --text-body: 1.25rem;       /* 20px */
+    --text-card-title: 1.25rem; /* 20px */
+    --text-label: 1.25rem;      /* 20px */
+    --text-small: 1rem;         /* 16px */
+  }
+}

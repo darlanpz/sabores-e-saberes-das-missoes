@@ -1,0 +1,41 @@
+/* Hero — faixa de topo na largura total da tela, com altura fixa de 320px.
+   A arte é entregue em 1720 × 480, já tratada: o entorno é transparente e as
+   bordas esmaecem, de modo que ela se dissolve sozinha no fundo da página. */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Centralizado: a arte é mais alta que a faixa, e o recorte precisa sair
+     igualmente de cima e de baixo para as ruínas ficarem enquadradas. */
+  object-position: center;
+  /* Esmaecimento na base. A faixa recorta a arte, então o esmaecimento que ela
+     traz de fábrica fica de fora e a imagem terminaria num corte reto sobre o
+     conteúdo. Este gradiente devolve a transição para o fundo da página. */
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+
+/* Vinheta radial, para heros que ainda não vêm com ela aplicada.
+   As imagens entregues já trazem a vinheta embutida — usar as duas escureceria
+   as bordas em dobro. Valores convertidos do Figma: lá o gradiente vive numa
+   caixa de 1279 × 917,703 deslocada -99px, o que aqui vira centro em -13,75%
+   e raio vertical de 127,5%. */
+.hero--vinheta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 57% 127.5% at 50% -13.75%,
+    rgb(0 0 0 / 0%) 0%,
+    rgb(0 0 0 / 50%) 48%,
+    rgb(0 0 0 / 100%) 100%
+  );
+}

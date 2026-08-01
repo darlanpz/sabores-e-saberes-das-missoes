@@ -1,0 +1,56 @@
+/* Tooltip — rótulo curto no hover e no foco de controles só de ícone.
+   O nome acessível continua vindo do aria-label do botão; o balão é
+   decoração visual, por isso vive num pseudo-elemento e não é lido duas vezes.
+
+   Uso: [data-tooltip="Parar"] em um elemento position:relative. */
+
+/* `:where()` zera a especificidade: isto é só um padrão de contexto de
+   posicionamento, que qualquer componente sobrescreve. Sem o `:where()`, esta
+   regra empata com `.modal__close` e, por vir depois na cascata, venceria —
+   devolvendo o botão para o fluxo e tirando-o do canto. */
+:where([data-tooltip]) {
+  position: relative;
+}
+
+[data-tooltip]::after,
+[data-tooltip]::before {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  translate: -50% 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  z-index: 10;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-size: var(--text-meta);
+  line-height: var(--leading-none);
+  white-space: nowrap;
+}
+
+/* Setinha */
+[data-tooltip]::before {
+  content: "";
+  bottom: calc(100% + var(--space-2) - 4px);
+  border: 4px solid transparent;
+  border-top-color: var(--color-primary);
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:hover::before,
+[data-tooltip]:focus-visible::after,
+[data-tooltip]:focus-visible::before {
+  opacity: 1;
+}
+
+/* Controle desabilitado ainda explica por que está desabilitado. */
+[data-tooltip]:disabled {
+  pointer-events: auto;
+}

@@ -1,0 +1,172 @@
+/* Layout das páginas de conteúdo (banners).
+
+   O topo é uma pilha colada no alto da página: o header flutua sobre o hero,
+   que é uma faixa de 320px. O conteúdo vem logo abaixo, sem sobreposição — a
+   arte já termina esmaecida e se dissolve sozinha no fundo. */
+
+.page__top {
+  position: relative;
+}
+
+.page__top .header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+}
+
+/* Sem hero não há sobre o que flutuar: o header volta ao fluxo, senão cobriria
+   o começo do conteúdo. */
+.page__top--sem-hero .header {
+  position: static;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* --------------------------------------------------------------------------
+   Colunas
+
+   No mobile é tudo uma coluna só, na ordem em que os blocos aparecem no JSON.
+   `display: contents` nas colunas promove os blocos a filhos diretos daqui,
+   que é o que permite intercalar texto e painel sem duplicar markup.
+   -------------------------------------------------------------------------- */
+
+.page__columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.page__aside,
+.page__main {
+  display: contents;
+}
+
+.bloco {
+  order: var(--ordem, 0);
+}
+
+.page__full {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* Imagem ilustrativa da coluna de texto.
+   O fade da base já vem embutido no arquivo — não aplicar máscara por cima. */
+.fade-image {
+  width: 100%;
+  margin-block: 0;
+}
+
+.fade-image__img {
+  width: 100%;
+  height: auto;
+}
+
+/* Exceção à regra de não usar blend (ver style-guide 8.2): algumas artes ainda
+   vêm com halo claro em volta em vez de transparência, e o screen dissolve
+   esse entorno no fundo escuro. Declarada por imagem, no JSON. */
+.fade-image--screen .fade-image__img {
+  mix-blend-mode: screen;
+}
+
+/* Para as artes que ocupam uma caixa própria em vez de se dissolverem no fundo. */
+.fade-image--rounded .fade-image__img {
+  border-radius: var(--radius-md);
+}
+
+/* Player de audiodescrição, ancorado na base da viewport.
+   No mobile ele vai de borda a borda; só a partir do md recua para a largura
+   do conteúdo. */
+.page__player {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.page__player > * {
+  width: 100%;
+  max-width: var(--content-max);
+  pointer-events: auto;
+}
+
+/* Link de salto, visível só ao receber foco pelo teclado.
+   Não existe no mobile: sem navegação por Tab ele nunca chega a aparecer. */
+.pular-para-conteudo {
+  display: none;
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 200;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  text-decoration: none;
+  translate: 0 -200%;
+}
+
+.pular-para-conteudo:focus-visible {
+  translate: 0 0;
+}
+
+@media (width >= 768px) {
+  .pular-para-conteudo {
+    display: block;
+  }
+
+  .page__player {
+    padding-inline: var(--container-pad);
+  }
+}
+
+@media (width >= 1024px) {
+  /* As colunas voltam a existir: os blocos param de flutuar soltos e a ordem
+     de leitura passa a ser a espacial, não a do JSON. */
+  .page__columns {
+    display: grid;
+    grid-template-columns: var(--column-text) var(--column-panel);
+    align-items: start;
+    gap: var(--gutter);
+  }
+
+  .page__aside,
+  .page__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page__aside {
+    gap: var(--space-12);
+  }
+
+  .page__main {
+    gap: var(--space-4);
+  }
+
+  .bloco {
+    order: 0;
+  }
+
+  /* Coluna que acompanha a rolagem da outra.
+     Só tem efeito na coluna MAIS BAIXA das duas: num grid, a altura da linha é
+     a do item mais alto, e um elemento grudento precisa ser menor que o bloco
+     que o contém para ter curso. Colar a coluna mais alta não faz nada. */
+  .page__columns--cola-main .page__main,
+  .page__columns--cola-aside .page__aside {
+    position: sticky;
+    top: var(--space-12);
+  }
+}

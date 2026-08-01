@@ -1,0 +1,152 @@
+/* Audiodescription — player fixo na base da viewport.
+   Small (mobile, layout vertical) → Default (desktop, layout horizontal).
+
+   Estados de habilitação:
+   - parar   → só enquanto está tocando
+   - repetir → enquanto está tocando ou depois de terminar
+   Fora disso os dois ficam desabilitados, com a mesma opacidade de 40% do Figma. */
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--color-secondary);
+  /* Profundidade: a sombra sobe sobre o conteúdo que passa por baixo, e a
+     borda clara no topo desenha o vinco da peça. Sozinha, sombra preta sobre
+     fundo quase preto quase não aparece — é a borda que faz o volume ler. */
+  box-shadow:
+    var(--shadow-dock),
+    inset 0 1px 0 rgb(247 235 216 / 10%);
+  /* Sem overflow:hidden (o `overflow-clip` do Figma): ele cortaria os tooltips
+     dos controles, que sobem para fora da caixa. Nenhum filho transborda os
+     cantos arredondados, então o clip não fazia falta. */
+}
+
+.player__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.player__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-small);
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  max-width: none;
+}
+
+.player__label img {
+  flex-shrink: 0;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.player__time {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}
+
+/* A trilha vem de media-range.css — a mesma do player de vídeo. */
+
+/* --------------------------------------------------------------------------
+   Controles
+   -------------------------------------------------------------------------- */
+
+.player__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.player__play {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.player__play:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.player__play:active {
+  background-color: var(--color-accent-active);
+}
+
+/* O ícone alterna com o estado real do <audio>, não com um clique. */
+.player__icon--pause,
+.player[data-playing="true"] .player__icon--play {
+  display: none;
+}
+
+.player[data-playing="true"] .player__icon--pause {
+  display: block;
+}
+
+.player__control {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  color: var(--color-text);
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.player__control:hover:not(:disabled) {
+  opacity: 1;
+}
+
+.player__control:disabled {
+  opacity: var(--opacity-icon-disabled);
+  cursor: not-allowed;
+}
+
+/* Size=Default (desktop): vira uma linha só e o play sai do meio dos controles.
+   `.player--small` trava a variante Small em qualquer largura — é o que o
+   Figma chama de Size=Small e o que a biblioteca usa para exibir as duas. */
+@media (width >= 768px) {
+  .player:not(.player--small) {
+    flex-direction: row;
+    align-items: center;
+    /* 8px é o vale menor, entre parar e repetir. Os outros dois vãos chegam a
+       24px com a margem dos elementos abaixo. */
+    gap: var(--space-2);
+    padding: var(--space-6);
+  }
+
+  /* `display: contents` promove parar/play/repetir a filhos diretos do player.
+     É o que permite tirar o play do meio da linha de controles e mandá-lo para
+     a esquerda sem duplicar o markup por breakpoint. */
+  .player:not(.player--small) .player__actions {
+    display: contents;
+  }
+
+  .player:not(.player--small) .player__play {
+    order: -1;
+    width: var(--icon-lg);
+    height: var(--icon-lg);
+    margin-right: var(--space-4); /* 8 + 16 = 24 até o bloco de informação */
+  }
+
+  .player:not(.player--small) .player__info {
+    flex: 1 0 0;
+    min-width: 0;
+    gap: var(--space-6);
+    margin-right: var(--space-4); /* 8 + 16 = 24 até os controles */
+  }
+}

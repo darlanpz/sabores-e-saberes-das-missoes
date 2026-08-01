@@ -1,0 +1,102 @@
+/* Painel de conteúdo (Column) — container dos cards, dentro do banner. */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-secondary);
+}
+
+@media (width >= 768px) {
+  .panel {
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+}
+
+/* Caixa interna do painel — para conteúdo que não é uma lista de cards, como a
+   linha do tempo do Banner 4. Mesma superfície e mesmo raio dos cards. */
+.panel__box {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+}
+
+@media (width >= 768px) {
+  .panel__box {
+    padding: var(--space-6);
+  }
+}
+
+/* Cabeçalho de seção — ícone + rótulo, abre todo painel. */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text);
+}
+
+.section-header__label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-none);
+  max-width: none;
+}
+
+.section-header .icon {
+  flex-shrink: 0;
+}
+
+/* Text-section — título + parágrafo. */
+.text-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Título de seção — 36px no desktop, 24px no mobile. É o `--text-h1` do
+   sistema; o `h2` da base é menor e serviria de sub-nível, não para isto. */
+.text-section__title {
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  max-width: none;
+}
+
+.text-section__body {
+  color: var(--color-text);
+}
+
+/* Variante de destaque — só o título, em Cinzel, line-height maior. */
+.text-section--highlight .text-section__title {
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+}
+
+/* Lista de tipos de conteúdo — ícone + rótulo, sem gap entre itens. */
+.content-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.content-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  color: var(--color-text);
+}
+
+.content-list__label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-none);
+}
+
+.content-list .icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}

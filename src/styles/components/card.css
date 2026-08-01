@@ -1,0 +1,92 @@
+/* Card de item — card de conteúdo dentro do painel do banner. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  /* O botão abraça o próprio conteúdo. Sem isso o `stretch` padrão do flex o
+     faria ocupar a largura inteira do card. */
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  /* O texto continua ocupando a largura toda — quem não estica é só o botão. */
+  width: 100%;
+}
+
+.card__title {
+  font-family: var(--font-body);
+  font-size: var(--text-card-title);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  text-transform: none;
+  max-width: none;
+}
+
+.card__meta {
+  font-size: var(--text-meta);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  max-width: none;
+}
+
+/* Variante com miniatura — usada no card do quiz e do quadrinho.
+   No mobile a miniatura fica ACIMA do texto e do botão: na largura estreita não
+   sobra espaço para ela ao lado sem espremer o botão, que não quebra linha.
+   O card já é uma coluna por padrão, então aqui basta não virar linha. */
+
+/* Tamanho por card: 120 × 180 no quadrinho, 120 × 120 no quiz, 72 × 72 no
+   padrão. Enquanto não houver imagem, o bloco accent é o espaço reservado. */
+.card__thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--thumb-w, var(--icon-lg));
+  height: var(--thumb-h, var(--icon-lg));
+  border-radius: var(--radius-md);
+  background-color: var(--color-secondary);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+}
+
+.card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card--with-thumb .card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* mesma regra: o botão não estica */
+  gap: var(--space-4);
+  width: 100%;
+  min-width: 0;
+}
+
+@media (width >= 768px) {
+  .card {
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+
+  /* Espaço suficiente: a miniatura volta para o lado do texto. */
+  .card--with-thumb {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .card--with-thumb .card__content {
+    flex: 1 0 0;
+    gap: var(--space-6);
+  }
+}

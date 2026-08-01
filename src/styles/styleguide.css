@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Estilos exclusivos da página de demonstração.
+   Nada daqui entra no site — é o cromo em volta dos componentes.
+   ========================================================================== */
+
+.sg {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--space-6) var(--container-pad) var(--space-15);
+}
+
+.sg__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-8) var(--space-12);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.sg__eyebrow {
+  font-size: var(--text-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.sg__title {
+  font-size: var(--text-h1);
+}
+
+.sg__toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-2);
+}
+
+.sg__toc a {
+  font-size: var(--text-meta);
+}
+
+/* --- Seções --------------------------------------------------------------- */
+
+.sg-section {
+  padding-block: var(--space-12);
+  border-bottom: 1px solid var(--color-border-subtle);
+  scroll-margin-top: var(--space-6);
+}
+
+.sg-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.sg-section__number {
+  font-size: var(--text-meta);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+}
+
+.sg-section__note {
+  font-size: var(--text-meta);
+  color: var(--color-text-muted);
+  max-width: 70ch;
+}
+
+.sg-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.sg-block:last-child {
+  margin-bottom: 0;
+}
+
+.sg-block__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: var(--text-meta);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.sg-block__spec {
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 0.8125rem;
+  font-weight: var(--weight-regular);
+  color: var(--color-text-muted);
+}
+
+/* Palco — superfície neutra onde o componente é exibido. */
+.sg-stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border: 1px dashed var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.sg-stage--stack {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sg-stage--flush {
+  padding: 0;
+  border-style: solid;
+  overflow: hidden;
+}
+
+.sg-stage--narrow {
+  max-width: 520px;
+}
+
+/* Palco para componentes ancorados na base da viewport — o player.
+   Sem overflow:hidden, senão os tooltips dos controles seriam cortados. */
+.sg-stage--bottom {
+  display: block;
+  padding: var(--space-12) 0 0;
+  border-bottom: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.sg-stage--bottom .player {
+  margin-inline: auto;
+}
+
+.sg-stage--bottom-mobile .player {
+  max-width: 402px;
+}
+
+/* --- Grades de tokens ------------------------------------------------------ */
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.sg-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sg-swatch__chip {
+  height: 72px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.sg-swatch__name {
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 0.8125rem;
+  color: var(--color-text);
+}
+
+.sg-swatch__value {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.sg-swatch__use {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* Escala tipográfica */
+.sg-type {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.sg-type__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.sg-type__row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sg-type__sample {
+  color: var(--color-text);
+  max-width: none;
+}
+
+/* Escala de espaçamento */
+.sg-space {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sg-space__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.sg-space__bar {
+  height: 16px;
+  border-radius: 2px;
+  background-color: var(--color-accent);
+}
+
+.sg-space__name {
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  width: 12ch;
+  flex-shrink: 0;
+}
+
+/* Raios */
+.sg-radius {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.sg-radius__box {
+  display: grid;
+  place-items: end center;
+  width: 96px;
+  height: 96px;
+  padding: var(--space-2);
+  background-color: var(--color-secondary);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+}
+
+/* Ícones */
+.sg-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-4);
+}
+
+.sg-icons__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
+  text-align: center;
+}
+
+.sg-icons__name {
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Ícone com preenchimento — Feather é outline por padrão. */
+.icon--fill {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Viewport simulada para os componentes responsivos. */
+.sg-viewport {
+  width: 100%;
+  max-width: 402px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.sg-columns {
+  display: grid;
+  gap: var(--gutter);
+}
+
+@media (width >= 1024px) {
+  .sg-columns {
+    grid-template-columns: var(--column-text) var(--column-panel);
+    align-items: start;
+  }
+}

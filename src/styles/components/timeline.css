@@ -1,0 +1,126 @@
+/* Timeline (Banner 4) — sequência cronológica, marcada como <ol>.
+
+   O período troca de lado entre os breakpoints:
+   - mobile:  divisor | período, imagem, título, descrição
+   - desktop: período | divisor | imagem, título, descrição
+
+   Como no player, o markup é um só. `display: contents` no bloco de conteúdo
+   promove os quatro filhos a itens do grid do item, e aí basta posicioná-los.
+   A ordem do DOM é a do mobile. */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  /* O respiro entre itens vive aqui, e não no padding do último texto: assim
+     ele não depende de quais campos o item traz. */
+  gap: var(--space-12);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-6);
+  row-gap: var(--space-3);
+}
+
+.timeline__content {
+  display: contents;
+}
+
+/* Divisor — linha ondulada desenhada à mão, exportada do Figma.
+   Esticada na vertical de propósito (`preserveAspectRatio="none"` no arquivo):
+   é o que faz a linha percorrer o item inteiro, independente da altura. */
+.timeline__divider {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: stretch;
+  width: 3px;
+  /* Altura total do item + 48px: a margem negativa estica a linha para além
+     da área do grid, atravessando o vão até o item seguinte. */
+  margin-bottom: calc(var(--space-12) * -1);
+  background-image: url("/icons/timeline-divider.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.timeline__year,
+.timeline__image,
+.timeline__title,
+.timeline__subtitle,
+.timeline__description {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.timeline__year {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-h3); /* 20px no mobile */
+  line-height: var(--leading-tight);
+  color: var(--color-accent);
+  max-width: none;
+}
+
+/* Espaço reservado para a imagem: o bloco accent aparece enquanto não houver
+   arquivo, e a <img> ocupa exatamente a mesma caixa quando houver. */
+.timeline__image {
+  height: 180px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent);
+  overflow: hidden;
+}
+
+.timeline__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline__title {
+  font-size: var(--text-card-title);
+  line-height: var(--leading-none);
+  color: var(--color-text);
+  max-width: none;
+}
+
+.timeline__subtitle {
+  font-size: var(--text-meta);
+  line-height: var(--leading-body);
+  color: var(--color-accent);
+  max-width: none;
+}
+
+.timeline__description {
+  font-size: var(--text-meta);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  max-width: none;
+}
+
+@media (width >= 768px) {
+  .timeline__item {
+    grid-template-columns: minmax(0, 180px) auto 1fr;
+  }
+
+  .timeline__year {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: center;
+    text-align: right;
+    font-size: 2rem; /* 32px */
+  }
+
+  .timeline__divider {
+    grid-column: 2;
+  }
+
+  .timeline__image,
+  .timeline__title,
+  .timeline__subtitle,
+  .timeline__description {
+    grid-column: 3;
+  }
+}
