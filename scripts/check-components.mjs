@@ -205,7 +205,7 @@ const rodapeCustom = footer({
 const rodapeSemLogos = footer({ supporters: { logos: [] } });
 
 const footerChecks = [
-  ["logos vêm de img, não de texto", (rodapePadrao.match(/<img[^>]*\/img\/logos\//g) || []).length === 7],
+  ["logos vêm de img, não de texto", (rodapePadrao.match(/<img[^>]*\/img\/logos\//g) || []).length === 8],
   ["toda logo tem alt descritivo", !/<img(?![^>]*alt="[^"]+")[^>]*class="footer__logo"/.test(rodapePadrao)],
   ["título e texto de acessibilidade parametrizáveis", rodapeCustom.includes("Acesso para todos") && rodapeCustom.includes("Texto próprio de acessibilidade.")],
   ["título das logos parametrizável", rodapeCustom.includes("Realização")],

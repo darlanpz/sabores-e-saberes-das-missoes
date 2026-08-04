@@ -15,8 +15,8 @@ import { medidas } from "./medidas.js";
  *   supporters: {
  *     title: "Apoiadores",
  *     logos: [
- *       { src: "/img/logos/logo-01.webp", alt: "Instituto Federal Farroupilha", width: 120 },
- *       { src: "/img/logos/logo-04.svg", alt: "PGDTTG", width: 134, href: "https://…" },
+ *       { src: "/img/logos/logo-01.webp", alt: "Instituto Federal Farroupilha", width: 177 },
+ *       { src: "/img/logos/logo-04.webp", alt: "PGDTTG", width: 135, href: "https://…" },
  *     ],
  *   },
  * })
@@ -71,12 +71,13 @@ const ACESSIBILIDADE_PADRAO = {
 const APOIADORES_PADRAO = {
   title: "Apoiadores",
   logos: [
-    { src: "/img/logos/logo-06.webp", alt: "Instituto Federal Farroupilha", width: 176 },
-    { src: "/img/logos/logo-05.webp", alt: "Tecnologia em Gastronomia — curso superior", width: 161 },
-    { src: "/img/logos/logo-04.svg", alt: "Gestão de Turismo", width: 134 },
-    { src: "/img/logos/logo-03.webp", alt: "PGDTTG — Pós-graduação em Desenvolvimento Territorial, Turismo e Gastronomia", width: 128 },
-    { src: "/img/logos/logo-02.webp", alt: "Unijuí — Universidade Regional", width: 153 },
-    { src: "/img/logos/logo-01.webp", alt: "Desenvolvimento Regional Unijuí — Mestrado e Doutorado", width: 120 },
-    { src: "/img/logos/logo-07.webp", alt: "Educação nas Ciências — Mestrado e Doutorado", width: 119 },
+    { src: "/img/logos/logo-01.webp", alt: "Instituto Federal Farroupilha", width: 177 },
+    { src: "/img/logos/logo-02.webp", alt: "Tecnologia em Gastronomia — curso superior", width: 160 },
+    { src: "/img/logos/logo-03.webp", alt: "Gestão de Turismo", width: 148 },
+    { src: "/img/logos/logo-04.webp", alt: "PGDTTG — Pós-graduação em Desenvolvimento Territorial, Turismo e Gastronomia", width: 135 },
+    { src: "/img/logos/logo-05.webp", alt: "Unijuí — Universidade Regional", width: 153 },
+    { src: "/img/logos/logo-06.webp", alt: "Desenvolvimento Regional Unijuí — Mestrado e Doutorado", width: 120 },
+    { src: "/img/logos/logo-07.webp", alt: "Educação nas Ciências — Mestrado e Doutorado", width: 153 },
+    { src: "/img/logos/logo-08.webp", alt: "400 anos Missões Jesuíticas Guaranis — Secretaria da Cultura do Governo do Estado do Rio Grande do Sul", width: 312 },
   ],
 };

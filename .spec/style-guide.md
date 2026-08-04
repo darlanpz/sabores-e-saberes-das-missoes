@@ -1236,7 +1236,7 @@ footer({
   supporters: {
     title: "Apoiadores",
     logos: [
-      { src: "/img/logos/logo-06.webp", alt: "Instituto Federal Farroupilha", width: 176 },
+      { src: "/img/logos/logo-01.webp", alt: "Instituto Federal Farroupilha", width: 177 },
     ],
   },
 })
@@ -1260,8 +1260,11 @@ Com `logos: []` o bloco de apoiadores **desaparece inteiro**, título incluído.
 
 **Logos**
 
-Arquivos em `public/img/logos/`, **em WebP** — exportados do Figma a 2× da altura de exibição (96px) e
-convertidos. Os PNGs originais somavam 700KB; em WebP são 48KB.
+Arquivos em `public/img/logos/`, **em WebP lossless** — exportados do Figma a 2× da altura de exibição
+(96px) e convertidos. São logos chapadas com transparência: o lossless fica do mesmo tamanho que o
+lossy e não gera artefato nas bordas. Os 8 PNGs originais somavam 120KB; em WebP são 71KB.
+
+A numeração `logo-01`…`logo-08` segue a ordem de exibição no rodapé.
 
 | Propriedade | Valor |
 |---|---|
