@@ -35,6 +35,11 @@
       }
     ],
     "footer": {
+      "about": {
+        "title": "Saiba mais sobre a exposição",
+        "text": "Esta é uma exposição sobre os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro. ara mais informações sobre a exposição, entre em contato com a equipe do projeto.",
+        "email": "contato@saboresesaberesdasmissões.com.br"
+      },
       "accessibility": {
         "title": "ACESSIBILIDADE",
         "text": "Esta exposição conta com audiodescrição dos banners e resumos acessíveis dos conteúdos disponíveis nos QR Codes, legendas e janelas de Libras nos vídeos e apostila com descrição dos textos em Braille, promovendo uma experiência inclusiva para todos os públicos."

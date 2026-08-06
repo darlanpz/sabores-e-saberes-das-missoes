@@ -22,15 +22,24 @@ import { medidas } from "./medidas.js";
  * })
  *
  * @param {object} [opts]
+ * @param {{title?: string, text?: string, email?: string}} [opts.about]
  * @param {{title?: string, text?: string}} [opts.accessibility]
  * @param {{title?: string, logos?: Array<{src: string, alt: string, width?: number, href?: string}>}} [opts.supporters]
  */
-export function footer({ accessibility, supporters } = {}) {
+export function footer({ about, accessibility, supporters } = {}) {
+  const sobre = { ...about };
   const acessibilidade = { ...ACESSIBILIDADE_PADRAO, ...accessibility };
   const apoiadores = { ...APOIADORES_PADRAO, ...supporters };
 
   return `
     <footer class="footer">
+
+      <section class="footer__block">
+        <h2 class="footer__title">${sobre.title}</h2>
+        <p class="footer__text">${sobre.text}</p>
+        ${sobre.email ? `<a href="mailto:${sobre.email}" class="footer__link">${sobre.email}</a>` : ""}
+      </section>
+
       <section class="footer__block">
         <h2 class="footer__title">${acessibilidade.title}</h2>
         <p class="footer__text">${acessibilidade.text}</p>
