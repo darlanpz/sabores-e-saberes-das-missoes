@@ -1,5 +1,6 @@
 import { header } from "../components/navigation.js";
 import { player, modal, pdfModal } from "../components/media.js";
+import { quizModal } from "../components/quiz.js";
 import { footer } from "../components/footer.js";
 import { renderBlock } from "./blocks.js";
 import { medidas } from "../components/medidas.js";
@@ -94,5 +95,6 @@ export function renderPage(site, page, slug, pages = {}) {
     ${page.audio ? `<div class="page__player">${player(page.audio)}</div>` : ""}
 
     ${page.comic ? modal({ id: "modal-quadrinho", ...page.comic }) : ""}
+    ${page.quiz ? quizModal({ id: "modal-quiz", ...page.quiz }) : ""}
     ${documentos.map(pdfModal).join("")}`;
 }

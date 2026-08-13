@@ -21,6 +21,8 @@ const FOCAVEIS = [
    saíram do DOM. */
 let aberto = null;
 let anterior = null;
+let pilha = [];
+let travaPagina = null;
 let globaisRegistrados = false;
 
 function focaveis(raiz) {
@@ -29,27 +31,93 @@ function focaveis(raiz) {
   );
 }
 
+/** Bloqueia a página no ponto atual, inclusive em navegadores móveis. */
+function travarPagina() {
+  if (travaPagina) return;
+
+  const body = document.body;
+  const html = document.documentElement;
+  const scrollY = window.scrollY;
+  const scrollbar = Math.max(0, window.innerWidth - html.clientWidth);
+  const propriedades = ["position", "top", "left", "right", "width", "overflow", "paddingRight"];
+
+  travaPagina = {
+    scrollY,
+    htmlOverflow: html.style.overflow,
+    body: Object.fromEntries(propriedades.map((propriedade) => [propriedade, body.style[propriedade]])),
+  };
+
+  html.style.overflow = "hidden";
+  body.style.position = "fixed";
+  body.style.top = `-${scrollY}px`;
+  body.style.left = "0";
+  body.style.right = "0";
+  body.style.width = "100%";
+  body.style.overflow = "hidden";
+  if (scrollbar) body.style.paddingRight = `${scrollbar}px`;
+}
+
+/** Restaura os estilos e a posição exata em que a página estava. */
+function destravarPagina() {
+  if (!travaPagina) return;
+
+  const { scrollY, htmlOverflow, body: estilosBody } = travaPagina;
+  document.documentElement.style.overflow = htmlOverflow;
+  for (const [propriedade, valor] of Object.entries(estilosBody)) {
+    document.body.style[propriedade] = valor;
+  }
+  travaPagina = null;
+  window.scrollTo(0, scrollY);
+}
+
 function abrir(dialogo, gatilho) {
+  if (aberto && aberto !== dialogo) {
+    pilha.push({ dialogo: aberto, gatilho: anterior });
+    aberto.setAttribute("aria-hidden", "true");
+  }
+
   anterior = gatilho;
   aberto = dialogo;
+  aberto.removeAttribute("aria-hidden");
   const documento = dialogo.querySelector("iframe[data-modal-src]");
   if (documento && !documento.hasAttribute("src")) documento.src = documento.dataset.modalSrc;
   dialogo.hidden = false;
-  document.body.style.overflow = "hidden";
+  travarPagina();
   focaveis(dialogo)[0]?.focus();
 }
 
 function fechar() {
   if (!aberto) return;
+  const retorno = anterior;
   aberto.hidden = true;
+
+  const anteriorModal = pilha.pop();
+  if (anteriorModal) {
+    aberto = anteriorModal.dialogo;
+    anterior = anteriorModal.gatilho;
+    aberto.removeAttribute("aria-hidden");
+    retorno?.focus();
+    return;
+  }
+
   aberto = null;
-  document.body.style.overflow = "";
-  anterior?.focus();
+  anterior = null;
+  destravarPagina();
+  retorno?.focus();
 }
 
 function registrarGlobais() {
   if (globaisRegistrados) return;
   globaisRegistrados = true;
+
+  // Delegação permite abrir modais a partir de botões criados depois, como o
+  // CTA que só aparece ao chegar à última página do quadrinho.
+  document.addEventListener("click", (evento) => {
+    const gatilho = evento.target.closest?.("[data-abre]");
+    if (!gatilho) return;
+    const dialogo = document.getElementById(gatilho.dataset.abre);
+    if (dialogo) abrir(dialogo, gatilho);
+  });
 
   document.addEventListener("keydown", (evento) => {
     if (!aberto) return;
@@ -80,15 +148,12 @@ function registrarGlobais() {
 export function initModals(scope = document) {
   // Um diálogo aberto não sobrevive a uma troca de rota: o elemento dele sai
   // do DOM junto com a página.
+  destravarPagina();
   aberto = null;
   anterior = null;
-  document.body.style.overflow = "";
+  pilha = [];
 
-  for (const gatilho of scope.querySelectorAll("[data-abre]")) {
-    const dialogo = document.getElementById(gatilho.dataset.abre);
-    if (!dialogo) continue;
-
-    gatilho.addEventListener("click", () => abrir(dialogo, gatilho));
+  for (const dialogo of scope.querySelectorAll(".modal")) {
     dialogo.querySelector("[data-modal-close]")?.addEventListener("click", fechar);
 
     // Clique no overlay, fora do conteúdo.

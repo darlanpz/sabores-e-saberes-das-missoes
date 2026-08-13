@@ -106,6 +106,15 @@ verificar("banner2", [
   ["leitor de quadrinho na página", html2.includes('id="modal-quadrinho"') && html2.includes("data-flipbook")],
   ["botão abre o leitor, não navega", html2.includes('data-abre="modal-quadrinho"') && html2.includes('aria-haspopup="dialog"')],
   ["7 páginas + CTA no leitor", (JSON.parse(html2.match(/data-pages='([^']*)'/)[1]) || []).length === 8],
+  ["quiz com quatro perguntas", b2.quiz.questions.length === 4],
+  ["cada pergunta tem exatamente uma resposta correta", b2.quiz.questions.every((question) => question.options.filter((option) => option.correct).length === 1)],
+  ["ids das perguntas são únicos", new Set(b2.quiz.questions.map((question) => question.id)).size === b2.quiz.questions.length],
+  ["quiz renderiza todos os campos obrigatórios", (html2.match(/type="radio"/g) || []).length === 13 && (html2.match(/required/g) || []).length === 13],
+  ["número e título ficam dentro do cartão da pergunta", (html2.match(/fieldset class="quiz-question"[\s\S]{0,180}<div class="quiz-question__legend"/g) || []).length === 4],
+  ["painel abre o quiz", html2.includes('data-abre="modal-quiz"')],
+  ["fim do quadrinho aponta para o mesmo quiz", html2.includes('"opens":"modal-quiz"')],
+  ["modal do quiz está presente", html2.includes('class="modal modal--quiz"') && html2.includes("data-quiz-form")],
+  ["resultados cobrem todas as faixas", b2.quiz.results.some((result) => result.minRatio === 1) && b2.quiz.results.some((result) => result.minRatio === 0)],
 ]);
 
 /* --- Banner 3 -------------------------------------------------------------- */

@@ -15,6 +15,7 @@ import "./styles/components/panel.css";
 import "./styles/components/media-range.css";
 import "./styles/components/player.css";
 import "./styles/components/modal.css";
+import "./styles/components/quiz.css";
 import "./styles/components/flipbook.css";
 import "./styles/components/video.css";
 import "./styles/components/timeline.css";
@@ -34,6 +35,7 @@ import { initFlipbooks } from "./components/flipbook.js";
 import { initMenus } from "./components/menu.js";
 import { initReveal } from "./components/reveal.js";
 import { initModals } from "./components/modal.js";
+import { initQuizzes } from "./components/quiz.js";
 import { initRouter } from "./components/router.js";
 
 const app = document.querySelector("#app");
@@ -57,6 +59,7 @@ function montar(slug) {
   initVideos();
   initFlipbooks();
   initModals();
+  initQuizzes();
   initReveal();
 }
 

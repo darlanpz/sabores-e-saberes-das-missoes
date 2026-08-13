@@ -6,6 +6,7 @@ import { sectionHeader, card, panel, textSection, contentList, feedback } from "
 import { player, video, modal, pdfModal, timeline } from "../src/components/media.js";
 import { flipbook } from "../src/components/flipbook.js";
 import { footer } from "../src/components/footer.js";
+import { quizModal } from "../src/components/quiz.js";
 
 const USED = [
   "play", "pause", "stop-circle", "repeat", "circle", "fast-forward",
@@ -35,6 +36,14 @@ const out = [
   player({ src: "/audio/audiodescricao-exemplo.wav" }),
   video({ src: "/video/exemplo.mp4", poster: "/video/exemplo-poster.webp" }),
   modal({ pages: [{ src: "/img/quadrinho/pagina-01.webp", alt: "Página 1" }] }),
+  quizModal({
+    questions: [{
+      id: "teste",
+      text: "Pergunta?",
+      options: [{ text: "Resposta", correct: true }, { text: "Outra" }],
+    }],
+    results: [{ minRatio: 0, heading: "Resultado", message: "Mensagem", stars: 1 }],
+  }),
   pdfModal({
     id: "modal-pdf-teste",
     title: "Artigo de teste",

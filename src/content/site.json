@@ -348,9 +348,93 @@
           "text": "Já leu a história, responda o desafio!",
           "action": {
             "label": "Responder o quiz",
-            "href": "#"
+            "iconName": "play",
+            "iconFill": true,
+            "opens": "modal-quiz"
           }
         }
+      },
+      "quiz": {
+        "title": "Desafio dos Saberes e Sabores",
+        "intro": "Marque uma resposta em cada pergunta e descubra quanto você aprendeu sobre a alimentação das Missões.",
+        "submitLabel": "Ver minha pontuação",
+        "retryLabel": "Quero tentar novamente!",
+        "questions": [
+          {
+            "id": "primeiros-habitantes",
+            "text": "Quem vivia nas Missões antes da chegada dos padres jesuítas espanhóis e consumia alimentos como mandioca, erva-mate e peixes?",
+            "options": [
+              { "text": "Portugueses" },
+              { "text": "Italianos" },
+              { "text": "Indígenas Guarani", "correct": true }
+            ]
+          },
+          {
+            "id": "saberes-africanos",
+            "text": "Por que os povos africanos são importantes na história da alimentação das Missões?",
+            "options": [
+              { "text": "Porque ensinaram apenas a plantar milho." },
+              { "text": "Porque compartilharam conhecimentos, temperos, técnicas e receitas que fazem parte da alimentação do nosso dia a dia.", "correct": true },
+              { "text": "Porque foram os primeiros habitantes da região." }
+            ]
+          },
+          {
+            "id": "massas-risotos",
+            "text": "Quem trouxe os conhecimentos sobre as massas e os risotos para a região das Missões?",
+            "options": [
+              { "text": "Espanhóis" },
+              { "text": "Italianos", "correct": true },
+              { "text": "Africanos" }
+            ]
+          },
+          {
+            "id": "aprendizado",
+            "text": "O que aprendemos com essa história?",
+            "options": [
+              { "text": "Que apenas um povo criou a culinária missioneira." },
+              { "text": "Que a gastronomia missioneira nasceu do encontro de muitas culturas, tendo os saberes Guarani como sua base inicial.", "correct": true },
+              { "text": "Que os alimentos das Missões vieram todos de outros países." },
+              { "text": "Que cada povo manteve sua alimentação sem trocar conhecimentos com os outros." }
+            ]
+          }
+        ],
+        "results": [
+          {
+            "minRatio": 1,
+            "heading": "Parabéns! Você é um(a) Guardião(ã) dos Saberes e Sabores das Missões!",
+            "message": "Você conhece muito bem a história da alimentação missioneira! Continue valorizando as tradições da nossa terra e compartilhando esse conhecimento com seus amigos e familiares.",
+            "stars": 5,
+            "celebration": "confetti"
+          },
+          {
+            "minRatio": 0.75,
+            "heading": "Muito bem! Você está quase se tornando um(a) Guardião(ã)!",
+            "message": "Que tal voltar à história e descobrir a resposta que faltou? Você consegue!",
+            "stars": 4,
+            "celebration": "sparkles"
+          },
+          {
+            "minRatio": 0.5,
+            "heading": "Você está no caminho certo!",
+            "message": "Leia a história novamente e tente mais uma vez. A cada tentativa você aprende um pouco mais sobre as Missões!",
+            "stars": 3,
+            "celebration": "sparkles"
+          },
+          {
+            "minRatio": 0.01,
+            "heading": "Continue explorando!",
+            "message": "Os patrimônios alimentares das Missões guardam muitas histórias. Faça uma nova tentativa e descubra mais curiosidades!",
+            "stars": 2,
+            "celebration": "sparkles"
+          },
+          {
+            "minRatio": 0,
+            "heading": "Não desista! Todo grande explorador aprende tentando.",
+            "message": "Assista novamente à história, observe os detalhes e tente outra vez. Temos certeza de que você vai conseguir!",
+            "stars": 0,
+            "celebration": "sprout"
+          }
+        ]
       },
       "blocks": [
         {
@@ -396,7 +480,7 @@
                 "label": "Responder o quiz",
                 "icon": "play",
                 "iconFill": true,
-                "href": "#"
+                "opens": "modal-quiz"
               }
             }
           ]
