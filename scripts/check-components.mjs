@@ -3,7 +3,7 @@ import { icon } from "../src/components/icon.js";
 import { header, menuItem, menuButton, logo } from "../src/components/navigation.js";
 import { button, pillButton } from "../src/components/button.js";
 import { sectionHeader, card, panel, textSection, contentList, feedback } from "../src/components/content.js";
-import { player, video, modal, timeline } from "../src/components/media.js";
+import { player, video, modal, pdfModal, timeline } from "../src/components/media.js";
 import { flipbook } from "../src/components/flipbook.js";
 import { footer } from "../src/components/footer.js";
 
@@ -35,6 +35,12 @@ const out = [
   player({ src: "/audio/audiodescricao-exemplo.wav" }),
   video({ src: "/video/exemplo.mp4", poster: "/video/exemplo-poster.webp" }),
   modal({ pages: [{ src: "/img/quadrinho/pagina-01.webp", alt: "Página 1" }] }),
+  pdfModal({
+    id: "modal-pdf-teste",
+    title: "Artigo de teste",
+    preview: "https://drive.google.com/file/d/teste/preview",
+    href: "https://drive.google.com/file/d/teste/view",
+  }),
   timeline([{ year: "1750", title: "T", subtitle: "S", description: "D" }]),
   footer(),
   icon("play", { fill: true }), icon("info", { label: "Informação" }),

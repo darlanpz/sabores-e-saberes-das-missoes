@@ -203,6 +203,36 @@ export function modal({
     </div>`;
 }
 
+/** Modal para pré-visualizar um PDF externo, com link de reserva em nova guia. */
+export function pdfModal({ id, title, preview, href } = {}) {
+  return `
+    <div class="modal modal--pdf" id="${id}" role="dialog" aria-modal="true" aria-labelledby="${id}-title" hidden>
+      <div class="modal__document">
+        <div class="modal__document-header">
+          <h2 class="modal__document-title" id="${id}-title">${title}</h2>
+          <div class="modal__document-actions">
+            <a class="button" href="${href}" target="_blank" rel="noopener noreferrer">
+              ${icon("external-link")}
+              Abrir em nova guia
+            </a>
+            <button class="modal__close modal__close--inline" type="button" data-modal-close data-tooltip="Fechar" aria-label="Fechar visualização do PDF">
+              ${icon("x")}
+            </button>
+          </div>
+        </div>
+        <iframe
+          class="modal__pdf"
+          data-modal-src="${preview}"
+          title="Pré-visualização do PDF: ${title}"
+          allow="autoplay"
+        ></iframe>
+        <p class="modal__document-help">
+          Se a pré-visualização não carregar, use “Abrir em nova guia”.
+        </p>
+      </div>
+    </div>`;
+}
+
 /**
  * Timeline (Banner 4) — sequência cronológica.
  *

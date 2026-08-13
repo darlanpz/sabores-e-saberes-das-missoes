@@ -203,39 +203,47 @@
           },
           "items": [
             {
-              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
-              "meta": "Aline Prestes Roque",
+              "title": "Livro Sabores e Saberes de São Borja: da Gastronomia Tradicional à Contemporaneidade",
+              "meta": "Camila Nemitz de Oliveira Saraiva, Flávia de Araújo Pedron, Aline Prestes Roque",
               "action": {
-                "label": "Ler dissertação",
+                "label": "Visualizar PDF",
                 "icon": "file-text",
-                "href": "#"
+                "href": "https://drive.google.com/file/d/1LheP7llV5NpBCVtCjRIWmSSaSqAEU26p/view?usp=sharing",
+                "preview": "https://drive.google.com/file/d/1LheP7llV5NpBCVtCjRIWmSSaSqAEU26p/preview",
+                "opens": "modal-pdf-projeto-1"
               }
             },
             {
-              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
+              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: Estudo em três municípios missioneiros",
               "meta": "Aline Prestes Roque",
               "action": {
-                "label": "Ler dissertação",
+                "label": "Visualizar PDF",
                 "icon": "file-text",
-                "href": "#"
+                "href": "https://drive.google.com/file/d/1ZB5ktStd_Ax--0Fg-JDCQL2uAYhWcs7K/view?usp=sharing",
+                "preview": "https://drive.google.com/file/d/1ZB5ktStd_Ax--0Fg-JDCQL2uAYhWcs7K/preview",
+                "opens": "modal-pdf-projeto-2"
               }
             },
             {
-              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
-              "meta": "Aline Prestes Roque",
+              "title": "Gastronomia, cultura, e desenvolvimento: Um estudo no município de São Borja",
+              "meta": "Camila Nemitz de Oliveira Saraiva",
               "action": {
-                "label": "Ler dissertação",
+                "label": "Visualizar PDF",
                 "icon": "file-text",
-                "href": "#"
+                "href": "https://drive.google.com/file/d/1kNq-snKqZdslYlekdszzpghaxE5ZQELR/view?usp=sharing",
+                "preview": "https://drive.google.com/file/d/1kNq-snKqZdslYlekdszzpghaxE5ZQELR/preview",
+                "opens": "modal-pdf-projeto-3"
               }
             },
             {
-              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
-              "meta": "Aline Prestes Roque",
+              "title": "Os “Manuscritos de Angelis”: Uma análise sobre a alimentação no Tape (1615–1641)",
+              "meta": "Paula de Oliveira Sant’Ana",
               "action": {
-                "label": "Ler dissertação",
+                "label": "Visualizar PDF",
                 "icon": "file-text",
-                "href": "#"
+                "href": "https://drive.google.com/file/d/1lCjdk1LP014EjiTm7kpCiOhXXWOtIm6E/view?usp=sharing",
+                "preview": "https://drive.google.com/file/d/1lCjdk1LP014EjiTm7kpCiOhXXWOtIm6E/preview",
+                "opens": "modal-pdf-projeto-4"
               }
             }
           ]

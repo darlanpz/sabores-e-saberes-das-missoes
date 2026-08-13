@@ -34,11 +34,15 @@ export function footer({ about, accessibility, supporters } = {}) {
   return `
     <footer class="footer">
 
-      <section class="footer__block">
-        <h2 class="footer__title">${sobre.title}</h2>
-        <p class="footer__text">${sobre.text}</p>
-        ${sobre.email ? `<a href="mailto:${sobre.email}" class="footer__link">${sobre.email}</a>` : ""}
-      </section>
+      ${
+        sobre.title || sobre.text || sobre.email
+          ? `<section class="footer__block">
+              ${sobre.title ? `<h2 class="footer__title">${sobre.title}</h2>` : ""}
+              ${sobre.text ? `<p class="footer__text">${sobre.text}</p>` : ""}
+              ${sobre.email ? `<a href="mailto:${sobre.email}" class="footer__link">${sobre.email}</a>` : ""}
+            </section>`
+          : ""
+      }
 
       <section class="footer__block">
         <h2 class="footer__title">${acessibilidade.title}</h2>

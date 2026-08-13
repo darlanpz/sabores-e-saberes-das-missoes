@@ -1,5 +1,5 @@
 import { header } from "../components/navigation.js";
-import { player, modal } from "../components/media.js";
+import { player, modal, pdfModal } from "../components/media.js";
 import { footer } from "../components/footer.js";
 import { renderBlock } from "./blocks.js";
 import { medidas } from "../components/medidas.js";
@@ -49,6 +49,16 @@ export function renderPage(site, page, slug, pages = {}) {
   const cheios = blocos.filter(({ item }) => item.column === "full");
   const aside = blocos.filter(({ item }) => (item.column ?? "aside") === "aside");
   const main = blocos.filter(({ item }) => item.column === "main");
+  const documentos = blocos.flatMap(({ item }) =>
+    (item.items ?? [])
+      .filter(({ action }) => action?.preview && action?.href && action?.opens)
+      .map(({ title, action }) => ({
+        id: action.opens,
+        title,
+        preview: action.preview,
+        href: action.href,
+      })),
+  );
 
   const nav = site.nav.map(({ label, href, slug: item }) => ({
     label,
@@ -83,5 +93,6 @@ export function renderPage(site, page, slug, pages = {}) {
 
     ${page.audio ? `<div class="page__player">${player(page.audio)}</div>` : ""}
 
-    ${page.comic ? modal({ id: "modal-quadrinho", ...page.comic }) : ""}`;
+    ${page.comic ? modal({ id: "modal-quadrinho", ...page.comic }) : ""}
+    ${documentos.map(pdfModal).join("")}`;
 }

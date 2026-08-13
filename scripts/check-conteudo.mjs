@@ -211,7 +211,11 @@ verificar("banner1", [
   ["lista de tipos de conteúdo com 5 itens", (html.match(/content-list__item/g) || []).length === 5],
   ["frase de destaque presente", html.includes("as raízes que nos unem")],
   ["painel com 4 cards", (html.match(/class="card"/g) || []).length === 4],
-  ["botões das dissertações com link", (html.match(/class="button" href="#"/g) || []).length === 4],
+  ["quatro projetos reais", ["Livro Sabores e Saberes de São Borja", "Aline Prestes Roque", "Camila Nemitz de Oliveira Saraiva", "Paula de Oliveira Sant’Ana"].every((texto) => html.includes(texto))],
+  ["botões abrem os leitores", (html.match(/data-abre="modal-pdf-projeto-/g) || []).length === 4],
+  ["quatro leitores de PDF", (html.match(/class="modal modal--pdf"/g) || []).length === 4],
+  ["pré-visualizações usam o Drive", (html.match(/drive\.google\.com\/file\/d\/[^\"]+\/preview/g) || []).length === 4],
+  ["links de reserva abrem em nova guia", (html.match(/target="_blank"/g) || []).length === 4],
   ["imagem ilustrativa com fade", html.includes("fade-image__img")],
   ["player de audiodescrição presente", html.includes("data-player-audio")],
   [

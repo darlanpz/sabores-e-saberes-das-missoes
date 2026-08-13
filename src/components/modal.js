@@ -32,6 +32,8 @@ function focaveis(raiz) {
 function abrir(dialogo, gatilho) {
   anterior = gatilho;
   aberto = dialogo;
+  const documento = dialogo.querySelector("iframe[data-modal-src]");
+  if (documento && !documento.hasAttribute("src")) documento.src = documento.dataset.modalSrc;
   dialogo.hidden = false;
   document.body.style.overflow = "hidden";
   focaveis(dialogo)[0]?.focus();
