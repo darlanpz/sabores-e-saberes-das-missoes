@@ -153,6 +153,14 @@ verificar("banner4", [
   ],
   ["image nulo não vira <img> quebrada", !html4.includes('src="null"') && !html4.includes("<img src=\"\"")],
   ["dois parágrafos sem título", (html4.match(/<div class="text-section">\s*<p/g) || []).length === 2],
+  ["catálogo aparece depois da linha do tempo", html4.indexOf("recipe-catalog") > html4.indexOf("timeline")],
+  ["treze receitas no catálogo", (html4.match(/class="recipe-card"/g) || []).length === 13],
+  ["treze leitores de receita", (html4.match(/class="modal modal--recipe"/g) || []).length === 13],
+  ["cada receita tem identificador único", (() => {
+    const recipes = pages.banner4.blocks.find((block) => block.type === "recipes")?.items ?? [];
+    return recipes.length === new Set(recipes.map((recipe) => recipe.id)).size;
+  })()],
+  ["todas as receitas têm ingredientes e preparo", pages.banner4.blocks.find((block) => block.type === "recipes").items.every((recipe) => recipe.ingredients?.length && recipe.preparation?.length)],
   ["sem undefined vazando", !html4.includes("undefined")],
 ]);
 

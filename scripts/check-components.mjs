@@ -7,6 +7,7 @@ import { player, video, modal, pdfModal, timeline } from "../src/components/medi
 import { flipbook } from "../src/components/flipbook.js";
 import { footer } from "../src/components/footer.js";
 import { quizModal } from "../src/components/quiz.js";
+import { recipeCatalog } from "../src/components/recipe.js";
 
 const USED = [
   "play", "pause", "stop-circle", "repeat", "circle", "fast-forward",
@@ -51,6 +52,15 @@ const out = [
     href: "https://drive.google.com/file/d/teste/view",
   }),
   timeline([{ year: "1750", title: "T", subtitle: "S", description: "D" }]),
+  recipeCatalog({
+    items: [{
+      id: "teste",
+      title: "Receita de teste",
+      images: [{ src: "/img/receitas/quibebe.jpg", alt: "Prato" }],
+      ingredients: [{ items: [{ amount: "1", unit: "xícara", item: "Ingrediente" }] }],
+      preparation: [{ steps: ["Prepare a receita."] }],
+    }],
+  }),
   footer(),
   icon("play", { fill: true }), icon("info", { label: "Informação" }),
 ].join("\n");

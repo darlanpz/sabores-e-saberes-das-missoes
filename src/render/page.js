@@ -50,6 +50,7 @@ export function renderPage(site, page, slug, pages = {}) {
   const cheios = blocos.filter(({ item }) => item.column === "full");
   const aside = blocos.filter(({ item }) => (item.column ?? "aside") === "aside");
   const main = blocos.filter(({ item }) => item.column === "main");
+  const depois = blocos.filter(({ item }) => item.column === "after");
   const documentos = blocos.flatMap(({ item }) =>
     (item.items ?? [])
       .filter(({ action }) => action?.preview && action?.href && action?.opens)
@@ -88,6 +89,7 @@ export function renderPage(site, page, slug, pages = {}) {
         ${aside.length ? `<div class="page__aside">${aside.map(montar).join("")}</div>` : ""}
         ${main.length ? `<div class="page__main">${main.map(montar).join("")}</div>` : ""}
       </div>
+      ${depois.length ? `<div class="page__after">${depois.map(montar).join("")}</div>` : ""}
     </main>
 
     ${footer(site.footer)}

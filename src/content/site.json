@@ -364,37 +364,67 @@
             "id": "primeiros-habitantes",
             "text": "Quem vivia nas Missões antes da chegada dos padres jesuítas espanhóis e consumia alimentos como mandioca, erva-mate e peixes?",
             "options": [
-              { "text": "Portugueses" },
-              { "text": "Italianos" },
-              { "text": "Indígenas Guarani", "correct": true }
+              {
+                "text": "Portugueses"
+              },
+              {
+                "text": "Italianos"
+              },
+              {
+                "text": "Indígenas Guarani",
+                "correct": true
+              }
             ]
           },
           {
             "id": "saberes-africanos",
             "text": "Por que os povos africanos são importantes na história da alimentação das Missões?",
             "options": [
-              { "text": "Porque ensinaram apenas a plantar milho." },
-              { "text": "Porque compartilharam conhecimentos, temperos, técnicas e receitas que fazem parte da alimentação do nosso dia a dia.", "correct": true },
-              { "text": "Porque foram os primeiros habitantes da região." }
+              {
+                "text": "Porque ensinaram apenas a plantar milho."
+              },
+              {
+                "text": "Porque compartilharam conhecimentos, temperos, técnicas e receitas que fazem parte da alimentação do nosso dia a dia.",
+                "correct": true
+              },
+              {
+                "text": "Porque foram os primeiros habitantes da região."
+              }
             ]
           },
           {
             "id": "massas-risotos",
             "text": "Quem trouxe os conhecimentos sobre as massas e os risotos para a região das Missões?",
             "options": [
-              { "text": "Espanhóis" },
-              { "text": "Italianos", "correct": true },
-              { "text": "Africanos" }
+              {
+                "text": "Espanhóis"
+              },
+              {
+                "text": "Italianos",
+                "correct": true
+              },
+              {
+                "text": "Africanos"
+              }
             ]
           },
           {
             "id": "aprendizado",
             "text": "O que aprendemos com essa história?",
             "options": [
-              { "text": "Que apenas um povo criou a culinária missioneira." },
-              { "text": "Que a gastronomia missioneira nasceu do encontro de muitas culturas, tendo os saberes Guarani como sua base inicial.", "correct": true },
-              { "text": "Que os alimentos das Missões vieram todos de outros países." },
-              { "text": "Que cada povo manteve sua alimentação sem trocar conhecimentos com os outros." }
+              {
+                "text": "Que apenas um povo criou a culinária missioneira."
+              },
+              {
+                "text": "Que a gastronomia missioneira nasceu do encontro de muitas culturas, tendo os saberes Guarani como sua base inicial.",
+                "correct": true
+              },
+              {
+                "text": "Que os alimentos das Missões vieram todos de outros países."
+              },
+              {
+                "text": "Que cada povo manteve sua alimentação sem trocar conhecimentos com os outros."
+              }
             ]
           }
         ],
@@ -666,6 +696,1065 @@
               "title": "A identidade alimentar missioneira",
               "image": null,
               "description": "A identidade alimentar missioneira foi construída ao longo de séculos pelo encontro entre povos, culturas e territórios. Cada migração trouxe novos ingredientes, saberes e tradições que, adaptados aos alimentos locais, continuam vivos na mesa e na memória das Missões."
+            }
+          ]
+        },
+        {
+          "type": "recipes",
+          "column": "after",
+          "header": {
+            "icon": "book-open",
+            "label": "Caderno de receitas tradicionais das Missões"
+          },
+          "items": [
+            {
+              "id": "cuca-banana-doce-leite",
+              "title": "Cuca de banana ou maçã e doce de leite",
+              "images": [
+                {
+                  "src": "/img/receitas/cuca-banana-1.jpg",
+                  "alt": "Cuca coberta com rodelas de banana, doce de leite e farofa"
+                },
+                {
+                  "src": "/img/receitas/cuca-banana-2.jpg",
+                  "alt": "Fatia de cuca de banana e doce de leite"
+                }
+              ],
+              "ingredients": [
+                {
+                  "title": "Ingredientes da massa",
+                  "items": [
+                    {
+                      "amount": "2",
+                      "unit": "unidades",
+                      "item": "Ovos"
+                    },
+                    {
+                      "amount": "50",
+                      "unit": "ml",
+                      "item": "Água morna"
+                    },
+                    {
+                      "amount": "150",
+                      "unit": "g",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "350",
+                      "unit": "g",
+                      "item": "Farinha de trigo peneirada"
+                    },
+                    {
+                      "amount": "150",
+                      "unit": "g",
+                      "item": "Banana em cubos"
+                    },
+                    {
+                      "amount": "100",
+                      "unit": "g",
+                      "item": "Manteiga"
+                    },
+                    {
+                      "amount": "125",
+                      "unit": "ml",
+                      "item": "Leite morno"
+                    },
+                    {
+                      "amount": "10",
+                      "unit": "g",
+                      "item": "Fermento químico seco ou 45 g de fermento biológico fresco"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "pitada",
+                      "item": "Sal e 1 pitada de açúcar"
+                    }
+                  ]
+                },
+                {
+                  "title": "Ingredientes do recheio",
+                  "items": [
+                    {
+                      "amount": "4",
+                      "unit": "unidades",
+                      "item": "Bananas em rodelas"
+                    },
+                    {
+                      "amount": "5",
+                      "unit": "ml",
+                      "item": "Suco de limão"
+                    },
+                    {
+                      "amount": "40",
+                      "unit": "g",
+                      "item": "Açúcar cristal"
+                    },
+                    {
+                      "amount": "20",
+                      "unit": "g",
+                      "item": "Manteiga"
+                    },
+                    {
+                      "amount": "200",
+                      "unit": "g",
+                      "item": "Doce de leite"
+                    }
+                  ]
+                },
+                {
+                  "title": "Ingredientes da farofa",
+                  "items": [
+                    {
+                      "amount": "100",
+                      "unit": "g",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "100",
+                      "unit": "g",
+                      "item": "Manteiga gelada em cubos"
+                    },
+                    {
+                      "amount": "100",
+                      "unit": "g",
+                      "item": "Farinha de trigo"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Canela em pó"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "title": "Preparo da massa",
+                  "steps": [
+                    "Misture o fermento, a água morna, uma pitada de açúcar e uma colher da farinha. Deixe dobrar de volume.",
+                    "Acrescente os ovos, a manteiga derretida no leite morno, a farinha, o açúcar e a pitada de sal.",
+                    "Misture bem, acrescente os cubos de banana passados na farinha, coloque em uma travessa e deixe crescer por 1 hora."
+                  ]
+                },
+                {
+                  "title": "Preparo da farofa",
+                  "steps": [
+                    "Misture os ingredientes até formar uma farofa e reserve."
+                  ]
+                },
+                {
+                  "title": "Preparo do recheio",
+                  "steps": [
+                    "Aqueça uma frigideira em fogo alto e acrescente o suco de limão, o açúcar e a manteiga, até dourar levemente.",
+                    "Acrescente as rodelas de banana, misture, desligue e deixe esfriar."
+                  ]
+                },
+                {
+                  "title": "Montagem",
+                  "steps": [
+                    "Despeje metade da massa em uma forma untada e enfarinhada.",
+                    "Distribua colheradas do doce de leite e cubra com o restante da massa.",
+                    "Disponha as bananas caramelizadas, eliminando o excesso de calda.",
+                    "Cubra com a farofa e asse em forno preaquecido a 160 °C até dourar ou até que um palito saia seco."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "pao-milho",
+              "title": "Pão de milho",
+              "images": [
+                {
+                  "src": "/img/receitas/pao-milho.png",
+                  "alt": "Fatias de pão de milho em uma cesta"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "2",
+                      "unit": "xícaras",
+                      "item": "Farinha de milho"
+                    },
+                    {
+                      "amount": "1½ a 2",
+                      "unit": "xícaras",
+                      "item": "Água morna"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "colher de sopa",
+                      "item": "Fermento biológico seco, aproximadamente 10 g"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "colher de sopa",
+                      "item": "Banha, nata ou manteiga"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "colher de chá",
+                      "item": "Sal"
+                    },
+                    {
+                      "amount": "2 a 3",
+                      "unit": "xícaras",
+                      "item": "Farinha de trigo, o suficiente para dar o ponto"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Coloque a farinha de milho em uma tigela, despeje a água quente, misture e deixe descansar por cerca de 10 minutos para hidratar.",
+                    "Acrescente a banha, a nata ou a manteiga, o sal e o fermento, misturando até incorporar.",
+                    "Adicione a farinha de trigo aos poucos até obter uma massa homogênea, macia e levemente pegajosa. Não é necessário sovar.",
+                    "Transfira para uma forma de pão untada.",
+                    "Cubra e deixe crescer em local protegido até dobrar de volume, por 40 minutos a 1 hora.",
+                    "Preaqueça o forno a 180 °C.",
+                    "Asse por aproximadamente 30 minutos ou até dourar e produzir som oco ao bater levemente na superfície.",
+                    "Desenforme ainda morno e deixe esfriar sobre uma grade antes de fatiar."
+                  ]
+                }
+              ],
+              "note": "Para usar fermento biológico fresco, substitua o fermento seco por 30 g do fresco. A quantidade de farinha de trigo pode variar; adicione gradualmente até atingir o ponto."
+            },
+            {
+              "id": "pao-salame-queijo",
+              "title": "Pão de salame e queijo colonial",
+              "images": [
+                {
+                  "src": "/img/receitas/pao-salame-queijo.jpg",
+                  "alt": "Pão trançado recheado com salame e queijo"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "500",
+                      "unit": "g",
+                      "item": "Farinha de trigo"
+                    },
+                    {
+                      "amount": "300",
+                      "unit": "ml",
+                      "item": "Água, aproximadamente"
+                    },
+                    {
+                      "amount": "20",
+                      "unit": "g",
+                      "item": "Fermento biológico"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "colher de sopa",
+                      "item": "Sal"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "colher de sopa",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "colher de sopa",
+                      "item": "Orégano"
+                    },
+                    {
+                      "amount": "10",
+                      "unit": "ml",
+                      "item": "Azeite de oliva"
+                    },
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Salame fatiado"
+                    },
+                    {
+                      "amount": "200",
+                      "unit": "g",
+                      "item": "Requeijão"
+                    },
+                    {
+                      "amount": "200",
+                      "unit": "g",
+                      "item": "Queijo colonial ralado grosso"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Ovo para pincelar"
+                    },
+                    {
+                      "amount": "30",
+                      "unit": "g",
+                      "item": "Queijo ralado e orégano para cobertura"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Dissolva o fermento em ½ xícara de água morna com o açúcar e deixe descansar por 10 minutos.",
+                    "Misture a farinha, o sal, o orégano e o azeite.",
+                    "Adicione a água aos poucos até dar o ponto, deixando a massa mole como massa de panetone, e acrescente o fermento por último.",
+                    "Sove por pelo menos 15 minutos e deixe descansar por 30 minutos em uma tigela coberta.",
+                    "Divida a massa em duas partes e abra em tiras compridas.",
+                    "Coloque salame, queijo e requeijão no centro e enrole cada tira como rocambole.",
+                    "Una as pontas, trance as duas partes, feche como rosca e coloque em forma untada e enfarinhada.",
+                    "Deixe descansar por 30 minutos, pincele com ovo e salpique queijo e orégano.",
+                    "Asse em forno preaquecido a 180 °C até dourar."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "pierogui",
+              "title": "Pierógui",
+              "images": [
+                {
+                  "src": "/img/receitas/pierogui.jpg",
+                  "alt": "Pieróguis servidos com molho de linguiça"
+                }
+              ],
+              "ingredients": [
+                {
+                  "title": "Ingredientes da massa",
+                  "items": [
+                    {
+                      "amount": "500",
+                      "unit": "g",
+                      "item": "Farinha de trigo"
+                    },
+                    {
+                      "amount": "200",
+                      "unit": "ml",
+                      "item": "Água morna, aproximadamente"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Ovo"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "colheres de sopa",
+                      "item": "Óleo"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal"
+                    }
+                  ]
+                },
+                {
+                  "title": "Ingredientes do recheio",
+                  "items": [
+                    {
+                      "amount": "200",
+                      "unit": "g",
+                      "item": "Batata cozida e amassada"
+                    },
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Keschmier ou mistura de ricota com requeijão"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta, noz-moscada e tempero verde picado"
+                    }
+                  ]
+                },
+                {
+                  "title": "Ingredientes do molho",
+                  "items": [
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Linguiça calabresa em cubinhos"
+                    },
+                    {
+                      "amount": "10",
+                      "unit": "ml",
+                      "item": "Vinho branco seco"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Cebola em cubinhos"
+                    },
+                    {
+                      "amount": "100",
+                      "unit": "g",
+                      "item": "Manteiga ou nata"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta e óleo"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "title": "Preparo da massa",
+                  "steps": [
+                    "Misture a farinha, o ovo, o óleo, o sal e a água aos poucos. Sove até soltar das mãos e deixe descansar coberta por filme plástico.",
+                    "Abra com um rolo sem deixar muito fina, corte círculos, recheie e feche as laterais com garfo ou com os dedos.",
+                    "Cozinhe em água fervente até os pastéis boiarem."
+                  ]
+                },
+                {
+                  "title": "Preparo do recheio",
+                  "steps": [
+                    "Cozinhe as batatas, descasque e amasse ainda quentes.",
+                    "Misture o keschmier com as batatas, agregue os temperos e recheie a massa."
+                  ]
+                },
+                {
+                  "title": "Preparo do molho",
+                  "steps": [
+                    "Aqueça um pouco de óleo e manteiga e frite a calabresa.",
+                    "Adicione a cebola e doure. Acrescente o vinho branco e deixe evaporar.",
+                    "Acerte o tempero e coloque sobre os pieróguis."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sopa-agnolini",
+              "title": "Sopa de agnolini",
+              "images": [
+                {
+                  "src": "/img/receitas/sopa-agnolini.jpg",
+                  "alt": "Sopa de agnolini servida em uma tigela"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "2",
+                      "unit": "litros",
+                      "item": "Caldo de frango"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "pacote",
+                      "item": "Agnolini artesanal de frango"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "unidade",
+                      "item": "Cebola em cubinhos"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "dentes",
+                      "item": "Alho picado"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta branca e óleo"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Queijo parmesão ralado"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Salsinha finamente picada"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Frite a cebola em óleo ou manteiga.",
+                    "Misture o caldo à cebola. Se preferir, mantenha alguns pedaços de frango no caldo.",
+                    "Cozinhe os agnolinis no caldo e acerte o tempero.",
+                    "Quando estiverem cozidos, salpique salsinha e queijo parmesão."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "risoto-frango",
+              "title": "Risoto de frango",
+              "images": [
+                {
+                  "src": "/img/receitas/risoto-frango.jpg",
+                  "alt": "Risoto de frango finalizado com tempero verde"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Arroz branco ou arroz para risoto"
+                    },
+                    {
+                      "amount": "40",
+                      "unit": "ml",
+                      "item": "Vinho branco seco"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "unidades",
+                      "item": "Coxas e sobrecoxas cozidas no caldo e desfiadas grosseiramente"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Cebola em cubinhos"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "dentes",
+                      "item": "Alho em cubinhos"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "litros",
+                      "item": "Caldo quente de carne ou frango"
+                    },
+                    {
+                      "amount": "100",
+                      "unit": "g",
+                      "item": "Molho de tomate"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta, azeite, colorau e tempero verde picado"
+                    },
+                    {
+                      "amount": "50",
+                      "unit": "g",
+                      "item": "Manteiga"
+                    },
+                    {
+                      "amount": "60",
+                      "unit": "g",
+                      "item": "Queijo parmesão ralado"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Aqueça metade da manteiga com um fio de óleo.",
+                    "Acrescente a cebola e o alho até murcharem. Adicione o arroz e mexa até esbranquiçar.",
+                    "Tempere com sal, pimenta e colorau. Coloque o vinho e deixe evaporar, sempre mexendo.",
+                    "Acrescente o molho de tomate e duas conchas de caldo.",
+                    "Adicione o restante do caldo aos poucos, mexendo delicadamente e esperando quase secar entre as conchas.",
+                    "Quando o arroz estiver no ponto, desligue e incorpore o frango e a manteiga gelada em cubos, mexendo vigorosamente.",
+                    "Misture o queijo, ajuste sal e pimenta e finalize com tempero verde e queijo ralado. Sirva imediatamente."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "arroz-carreteiro",
+              "title": "Arroz de carreteiro",
+              "images": [
+                {
+                  "src": "/img/receitas/arroz-carreteiro.jpg",
+                  "alt": "Arroz de carreteiro servido em panela de ferro"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Charque bovino em cubos médios"
+                    },
+                    {
+                      "amount": "250",
+                      "unit": "g",
+                      "item": "Arroz branco"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "dentes",
+                      "item": "Alho picado em cubinhos"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta e banha de porco ou óleo"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Tempero verde picado"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Dessalgue o charque, se necessário.",
+                    "Aqueça uma panela de ferro, acrescente banha ou óleo e frite o charque até dourar bem.",
+                    "Acrescente o alho até soltar o aroma e misture o arroz para fritar.",
+                    "Adicione água quente e mantenha em fogo alto.",
+                    "Quando ferver, acerte o tempero, baixe o fogo e tampe.",
+                    "Quando secar, teste o ponto e acrescente mais água se necessário.",
+                    "Finalize com tempero verde e sirva."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "quibebe",
+              "title": "Quibébe",
+              "images": [
+                {
+                  "src": "/img/receitas/quibebe.jpg",
+                  "alt": "Quibébe de abóbora servido com carne"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "1",
+                      "unit": "kg",
+                      "item": "Abóbora sem casca e sementes, em pedaços"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Cebola em brunoise"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "dentes",
+                      "item": "Alho em brunoise"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "unidade",
+                      "item": "Pimentão vermelho em brunoise"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Banha de porco"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "colheres de sopa",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta e tempero verde picado"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "xícara",
+                      "item": "Farinha de mandioca"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Cubra a abóbora com água, adicione sal e cozinhe até ficar macia.",
+                    "Escorra, amasse e reserve.",
+                    "Derreta a banha em outra panela e frite a cebola, o alho e o pimentão.",
+                    "Junte o purê de abóbora ao refogado, mexendo sempre.",
+                    "Acrescente açúcar, pimenta e farinha de mandioca e cozinhe por mais de 10 minutos ou até dar o ponto.",
+                    "Retire do fogo e adicione salsinha e cebolinha."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "matambre-recheado",
+              "title": "Matambre recheado",
+              "images": [
+                {
+                  "src": "/img/receitas/matambre-recheado.jpg",
+                  "alt": "Matambre recheado fatiado"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Matambre bovino"
+                    },
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Bacon fatiado ou calabresa"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "unidade",
+                      "item": "Pimentão verde em palitos"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "unidade",
+                      "item": "Pimentão vermelho em palitos"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "unidades",
+                      "item": "Cenouras em palitos"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "unidades",
+                      "item": "Ovos cozidos cortados ao meio"
+                    },
+                    {
+                      "amount": "5",
+                      "unit": "dentes",
+                      "item": "Alho em brunoise"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal, pimenta-do-reino e banha suína"
+                    },
+                    {
+                      "amount": "3",
+                      "unit": "litros",
+                      "item": "Caldo de carne"
+                    },
+                    {
+                      "amount": "1,5",
+                      "unit": "m",
+                      "item": "Barbante"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "colheres de sopa",
+                      "item": "Amido de milho"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Limpe o matambre e passe sal e pimenta dos dois lados.",
+                    "Com a gordura voltada para baixo, recheie com legumes, bacon e ovos. Enrole como rocambole e amarre.",
+                    "Doure bem todos os lados em panela de ferro com banha.",
+                    "Acrescente o caldo, tampe e cozinhe por 2 a 3 horas. Como alternativa, use panela de pressão após dourar.",
+                    "Retire, solte o barbante e fatie.",
+                    "Coe o caldo da panela, reduza no fogo e engrosse, se necessário, com amido dissolvido em água fria."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ensopado-mandioca",
+              "title": "Ensopado de mandioca",
+              "images": [
+                {
+                  "src": "/img/receitas/ensopado-mandioca.jpg",
+                  "alt": "Ensopado de carne com mandioca"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "2",
+                      "unit": "kg",
+                      "item": "Espinhaço de ovelha"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "unidade",
+                      "item": "Cebola em brunoise"
+                    },
+                    {
+                      "amount": "5",
+                      "unit": "dentes",
+                      "item": "Alho pilado"
+                    },
+                    {
+                      "amount": "3",
+                      "unit": "colheres de sopa",
+                      "item": "Banha de porco"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "unidades",
+                      "item": "Tomates concassé"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "litros",
+                      "item": "Caldo de carne"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "kg",
+                      "item": "Mandioca em pedaços médios"
+                    },
+                    {
+                      "amount": "½",
+                      "unit": "unidade",
+                      "item": "Pimenta dedo-de-moça sem sementes"
+                    },
+                    {
+                      "amount": "A gosto",
+                      "unit": "",
+                      "item": "Sal e tempero verde"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Tempere o espinhaço com sal e frite na banha até dourar, de preferência em panela de ferro.",
+                    "Acrescente cebola, alho e pimenta e deixe murchar.",
+                    "Misture os tomates, tempero verde e caldo. Se necessário, adicione água até cobrir.",
+                    "Cozinhe até a carne ficar macia.",
+                    "Acrescente a mandioca e cozinhe até ficar macia sem desmanchar.",
+                    "Acerte o tempero e finalize com tempero verde."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sagu-creme",
+              "title": "Sagu com creme",
+              "images": [
+                {
+                  "src": "/img/receitas/sagu-creme.jpg",
+                  "alt": "Taça de sagu de vinho com creme"
+                }
+              ],
+              "ingredients": [
+                {
+                  "title": "Ingredientes do sagu",
+                  "items": [
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Sagu"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "litro",
+                      "item": "Vinho tinto seco"
+                    },
+                    {
+                      "amount": "500",
+                      "unit": "g",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "unidades",
+                      "item": "Cravos-da-índia"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "unidades",
+                      "item": "Canela em rama"
+                    }
+                  ]
+                },
+                {
+                  "title": "Ingredientes do creme",
+                  "items": [
+                    {
+                      "amount": "500",
+                      "unit": "ml",
+                      "item": "Leite"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "colher de chá",
+                      "item": "Açúcar de baunilha"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "caixa",
+                      "item": "Creme de leite"
+                    },
+                    {
+                      "amount": "1",
+                      "unit": "xícara",
+                      "item": "Açúcar ou ½ lata de leite condensado"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "colheres de sopa",
+                      "item": "Amido de milho"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "title": "Preparo do sagu",
+                  "steps": [
+                    "Lave e escorra o sagu, deixando um pouco de água. Reserve até começar a inchar.",
+                    "Leve ao fogo com o cravo, a canela e o vinho, mexendo sem parar.",
+                    "Quando começar a ficar transparente, coloque o açúcar aos poucos.",
+                    "Ferva até ficar transparente, mantendo as bolinhas inteiras, desligue e reserve."
+                  ]
+                },
+                {
+                  "title": "Preparo do creme",
+                  "steps": [
+                    "Misture os ingredientes em uma panela e cozinhe em fogo baixo, mexendo sempre, até obter um creme leve e liso."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ambrosia",
+              "title": "Ambrosia",
+              "images": [
+                {
+                  "src": "/img/receitas/ambrosia.jpg",
+                  "alt": "Ambrosia servida em uma tigela de vidro"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "3",
+                      "unit": "xícaras",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "6",
+                      "unit": "unidades",
+                      "item": "Claras de ovo"
+                    },
+                    {
+                      "amount": "10",
+                      "unit": "unidades",
+                      "item": "Gemas peneiradas"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "xícaras",
+                      "item": "Água"
+                    },
+                    {
+                      "amount": "4",
+                      "unit": "xícaras",
+                      "item": "Leite"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "unidades",
+                      "item": "Canela em rama"
+                    },
+                    {
+                      "amount": "6",
+                      "unit": "unidades",
+                      "item": "Cravos-da-índia"
+                    },
+                    {
+                      "amount": "2",
+                      "unit": "colheres de sopa",
+                      "item": "Suco de limão"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Coloque água, açúcar, canela e cravo em uma panela de fundo grosso. Cozinhe em fogo médio, mexendo até dissolver.",
+                    "Pare de mexer e espere a calda chegar ao ponto de fio grosso.",
+                    "Misture ligeiramente claras e gemas e acrescente leite e suco de limão.",
+                    "Adicione à calda quente e gire a panela levemente ou mexa delicadamente até empelotar.",
+                    "Baixe o fogo e cozinhe, mexendo de vez em quando para não grudar.",
+                    "Deixe encorpar e acrescente água, se necessário, para não queimar."
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "licor-butia",
+              "title": "Licor de butiá",
+              "images": [
+                {
+                  "src": "/img/receitas/licor-butia-1.jpg",
+                  "alt": "Butiás em conserva dentro de um vidro"
+                },
+                {
+                  "src": "/img/receitas/licor-butia-2.jpg",
+                  "alt": "Licor de butiá servido em pequenos copos"
+                }
+              ],
+              "ingredients": [
+                {
+                  "items": [
+                    {
+                      "amount": "1",
+                      "unit": "litro",
+                      "item": "Cachaça"
+                    },
+                    {
+                      "amount": "300",
+                      "unit": "g",
+                      "item": "Butiá higienizado"
+                    },
+                    {
+                      "amount": "150",
+                      "unit": "g",
+                      "item": "Açúcar"
+                    },
+                    {
+                      "amount": "100",
+                      "unit": "ml",
+                      "item": "Água"
+                    }
+                  ]
+                }
+              ],
+              "preparation": [
+                {
+                  "steps": [
+                    "Coloque o butiá dentro da garrafa de cachaça e deixe marinando por 15 dias.",
+                    "Faça uma calda de açúcar e água até o ponto de fio fino e reserve.",
+                    "Coe a cachaça e separe os butiás.",
+                    "Retire a polpa da metade dos frutos e bata com a calda.",
+                    "Misture a cachaça, os butiás inteiros e a calda de butiá.",
+                    "Sirva gelado, de preferência."
+                  ]
+                }
+              ]
             }
           ]
         }

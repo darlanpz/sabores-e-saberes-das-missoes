@@ -3,6 +3,7 @@ import { video, timeline } from "../components/media.js";
 // Renomeado: o bloco de vídeo já usa `icon` como nome de campo.
 import { icon as glifo } from "../components/icon.js";
 import { medidas } from "../components/medidas.js";
+import { recipeCatalog } from "../components/recipe.js";
 
 /**
  * Tradutores de bloco: cada tipo do JSON vira um componente existente.
@@ -82,6 +83,8 @@ const TIPOS = {
         <div class="panel__box">${lista}</div>
       </section>`;
   },
+
+  recipes: ({ header, items = [] }) => recipeCatalog({ header, items }),
 
   /**
    * Abertura da home: texto à esquerda e, no desktop, uma imagem compondo à

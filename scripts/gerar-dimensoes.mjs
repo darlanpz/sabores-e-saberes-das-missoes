@@ -6,7 +6,7 @@
  * cresce conforme carrega — e a restauração de scroll no botão Voltar erra o
  * alvo, porque no momento de restaurar o documento ainda está curto.
  *
- * Lê o cabeçalho dos arquivos direto, sem dependência: PNG, WebP e SVG têm a
+ * Lê o cabeçalho dos arquivos direto, sem dependência: PNG, JPEG, WebP e SVG têm a
  * medida nos primeiros bytes.
  */
 import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
@@ -22,6 +22,31 @@ const SAIDA = join(RAIZ, "src", "content", "imagens.js");
 function medirPng(buf) {
   if (buf.readUInt32BE(0) !== 0x89504e47) return null;
   return [buf.readUInt32BE(16), buf.readUInt32BE(20)];
+}
+
+/** JPEG: percorre os segmentos até encontrar um marcador SOF com as medidas. */
+function medirJpeg(buf) {
+  if (buf[0] !== 0xff || buf[1] !== 0xd8) return null;
+
+  let offset = 2;
+  const marcadoresSof = [0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf];
+
+  while (offset + 8 < buf.length) {
+    if (buf[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+
+    const marcador = buf[offset + 1];
+    const tamanho = buf.readUInt16BE(offset + 2);
+    if (marcadoresSof.includes(marcador)) {
+      return [buf.readUInt16BE(offset + 7), buf.readUInt16BE(offset + 5)];
+    }
+    if (tamanho < 2) return null;
+    offset += tamanho + 2;
+  }
+
+  return null;
 }
 
 /** WebP: a medida muda conforme o formato interno (lossy, lossless ou estendido). */
@@ -62,6 +87,7 @@ function medirSvg(buf) {
 function medir(arquivo) {
   const buf = readFileSync(arquivo);
   if (arquivo.endsWith(".png")) return medirPng(buf);
+  if (/\.jpe?g$/i.test(arquivo)) return medirJpeg(buf);
   if (arquivo.endsWith(".webp")) return medirWebp(buf);
   if (arquivo.endsWith(".svg")) return medirSvg(buf);
   return null;

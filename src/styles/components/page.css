@@ -60,6 +60,10 @@
   gap: var(--space-12);
 }
 
+.page__after {
+  margin-top: var(--space-10);
+}
+
 /* Imagem ilustrativa da coluna de texto.
    O fade da base já vem embutido no arquivo — não aplicar máscara por cima. */
 .fade-image {
@@ -100,6 +104,12 @@
   width: 100%;
   max-width: var(--content-max);
   pointer-events: auto;
+}
+
+/* A receita usa boa parte da tela, especialmente no celular. Enquanto esse
+   modal está aberto, o player fixo não disputa espaço com o conteúdo. */
+.modal-receita-aberto .page__player {
+  display: none;
 }
 
 /* Link de salto, visível só ao receber foco pelo teclado.

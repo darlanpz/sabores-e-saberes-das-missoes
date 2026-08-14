@@ -16,6 +16,7 @@ import "./styles/components/media-range.css";
 import "./styles/components/player.css";
 import "./styles/components/modal.css";
 import "./styles/components/quiz.css";
+import "./styles/components/recipe.css";
 import "./styles/components/flipbook.css";
 import "./styles/components/video.css";
 import "./styles/components/timeline.css";

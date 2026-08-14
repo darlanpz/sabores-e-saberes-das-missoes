@@ -25,6 +25,14 @@ let pilha = [];
 let travaPagina = null;
 let globaisRegistrados = false;
 
+/** Evita que o player fixo cubra o conteúdo dos modais de receita. */
+function atualizarPlayerDaPagina() {
+  document.body.classList.toggle(
+    "modal-receita-aberto",
+    aberto?.classList.contains("modal--recipe") ?? false,
+  );
+}
+
 function focaveis(raiz) {
   return [...raiz.querySelectorAll(FOCAVEIS)].filter(
     (el) => el.offsetParent !== null || el === document.activeElement,
@@ -82,6 +90,7 @@ function abrir(dialogo, gatilho) {
   const documento = dialogo.querySelector("iframe[data-modal-src]");
   if (documento && !documento.hasAttribute("src")) documento.src = documento.dataset.modalSrc;
   dialogo.hidden = false;
+  atualizarPlayerDaPagina();
   travarPagina();
   focaveis(dialogo)[0]?.focus();
 }
@@ -96,12 +105,14 @@ function fechar() {
     aberto = anteriorModal.dialogo;
     anterior = anteriorModal.gatilho;
     aberto.removeAttribute("aria-hidden");
+    atualizarPlayerDaPagina();
     retorno?.focus();
     return;
   }
 
   aberto = null;
   anterior = null;
+  atualizarPlayerDaPagina();
   destravarPagina();
   retorno?.focus();
 }
@@ -152,6 +163,7 @@ export function initModals(scope = document) {
   aberto = null;
   anterior = null;
   pilha = [];
+  atualizarPlayerDaPagina();
 
   for (const dialogo of scope.querySelectorAll(".modal")) {
     dialogo.querySelector("[data-modal-close]")?.addEventListener("click", fechar);
