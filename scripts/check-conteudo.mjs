@@ -11,6 +11,8 @@ import { TIPOS_DE_BLOCO, renderBlock } from "../src/render/blocks.js";
 
 const RAIZ = join(import.meta.dirname, "..");
 const conteudo = JSON.parse(readFileSync(join(RAIZ, "src/content/site.json"), "utf8"));
+const codigoVLibras = readFileSync(join(RAIZ, "src/components/vlibras.js"), "utf8");
+const entradaPaginas = readFileSync(join(RAIZ, "src/page.js"), "utf8");
 
 let falhou = false;
 function verificar(grupo, checagens) {
@@ -52,6 +54,12 @@ verificar("conteúdo", [
       (numero) => pages[`banner${numero}`]?.audio?.src === `/audio/audiodescricao-banner-${numero}.MP3`,
     ),
   ],
+]);
+
+verificar("acessibilidade", [
+  ["widget VLibras usa o script oficial", codigoVLibras.includes("https://vlibras.gov.br/app") && codigoVLibras.includes("vlibras-plugin.js")],
+  ["widget declara os três elementos oficiais", ["vw-access-button", "vw-plugin-wrapper", "vw-plugin-top-wrapper"].every((atributo) => codigoVLibras.includes(atributo))],
+  ["VLibras é iniciado em todas as páginas", entradaPaginas.includes("initVLibras();")],
 ]);
 
 /* --- Blocos ---------------------------------------------------------------- */

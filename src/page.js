@@ -39,6 +39,7 @@ import { initReveal } from "./components/reveal.js";
 import { initModals } from "./components/modal.js";
 import { initQuizzes } from "./components/quiz.js";
 import { initRouter } from "./components/router.js";
+import { initVLibras } from "./components/vlibras.js";
 
 const app = document.querySelector("#app");
 
@@ -66,6 +67,7 @@ function montar(slug) {
 }
 
 montar(document.body.dataset.page);
+initVLibras();
 
 // Trocar de página não recarrega: o conteúdo já está aqui, basta remontar.
 // Só entram as rotas que existem no JSON — as demais seguem como navegação
