@@ -8,6 +8,7 @@ import { flipbook } from "../src/components/flipbook.js";
 import { footer } from "../src/components/footer.js";
 import { quizModal } from "../src/components/quiz.js";
 import { recipeCatalog } from "../src/components/recipe.js";
+import { studentRecipesPanel } from "../src/components/student-recipe.js";
 
 const USED = [
   "play", "pause", "stop-circle", "repeat", "circle", "fast-forward",
@@ -59,6 +60,16 @@ const out = [
       images: [{ src: "/img/receitas/quibebe.jpg", alt: "Prato" }],
       ingredients: [{ items: [{ amount: "1", unit: "xícara", item: "Ingrediente" }] }],
       preparation: [{ steps: ["Prepare a receita."] }],
+    }],
+  }),
+  studentRecipesPanel({
+    header: { icon: "book-open", label: "Pratos dos alunos" },
+    items: [{
+      id: "teste-aluno",
+      title: "Prato teste",
+      student: "Aluno teste",
+      images: [{ src: "/img/banner5/alunos/caminho-das-missoes.webp", alt: "Prato teste" }],
+      description: ["Descrição do prato."],
     }],
   }),
   footer(),

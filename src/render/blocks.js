@@ -4,6 +4,7 @@ import { video, timeline } from "../components/media.js";
 import { icon as glifo } from "../components/icon.js";
 import { medidas } from "../components/medidas.js";
 import { recipeCatalog } from "../components/recipe.js";
+import { studentRecipesPanel } from "../components/student-recipe.js";
 
 /**
  * Tradutores de bloco: cada tipo do JSON vira um componente existente.
@@ -85,6 +86,8 @@ const TIPOS = {
   },
 
   recipes: ({ header, items = [] }) => recipeCatalog({ header, items }),
+
+  studentRecipes: ({ header, items = [] }) => studentRecipesPanel({ header, items }),
 
   /**
    * Abertura da home: texto à esquerda e, no desktop, uma imagem compondo à

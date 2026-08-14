@@ -245,6 +245,17 @@
                 "preview": "https://drive.google.com/file/d/1lCjdk1LP014EjiTm7kpCiOhXXWOtIm6E/preview",
                 "opens": "modal-pdf-projeto-4"
               }
+            },
+            {
+              "title": "Gastronomia tradicional: Regiões Missões e Central do RS - Brasil",
+              "meta": "Rut Friederich Marquetto",
+              "action": {
+                "label": "Visualizar PDF",
+                "icon": "file-text",
+                "href": "https://drive.google.com/file/d/1LmaCkWRomKJUvl6xWZNIPTNpm6ZLXye3/view?usp=sharing",
+                "preview": "https://drive.google.com/file/d/1LmaCkWRomKJUvl6xWZNIPTNpm6ZLXye3/preview",
+                "opens": "modal-pdf-projeto-5"
+              }
             }
           ]
         },
@@ -1786,7 +1797,7 @@
           "body": "A cultura alimentar missioneira continua sendo construída todos os dias. Ao longo de mais de quatro séculos, conhecimentos dos povos originários, colonizadores e imigrantes foram incorporados, transformados e adaptados à realidade regional."
         },
         {
-          "type": "panel",
+          "type": "studentRecipes",
           "column": "main",
           "header": {
             "icon": "book-open",
@@ -1794,49 +1805,172 @@
           },
           "items": [
             {
-              "title": "Título do trabalho",
-              "meta": "Aluno",
-              "action": {
-                "label": "Ler trabalho",
-                "icon": "file-text",
-                "href": "#"
-              }
+              "id": "raizes-e-rios",
+              "title": "Raízes e rios",
+              "student": "Vinícius Ribeiro Regazzon",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/raizes-e-rios-1.webp",
+                  "alt": "Prato Raízes e rios com pintado, mousseline de milho e acompanhamentos"
+                },
+                {
+                  "src": "/img/banner5/alunos/raizes-e-rios-2.webp",
+                  "alt": "Segunda apresentação do prato Raízes e rios"
+                }
+              ],
+              "description": [
+                "A ideia da construção deste prato consiste em trabalhar exclusivamente com ingredientes que faziam e ainda fazem parte da alimentação e da cultura das antigas Missões Jesuítico-Guarani. Entre eles estão o milho, o peixe pintado, o amendoim e o limão, apresentados por meio de técnicas contemporâneas, criando uma releitura da gastronomia missioneira.",
+                "A composição do prato reúne uma mousseline de milho, responsável pela cremosidade, uma posta de pintado selada, como a proteína principal, um pangrattato de amendoim, que adiciona textura crocante à preparação, palmito pupunha selado, aire de limão-cravo, trazendo acidez, e brotos comestíveis, que complementam a apresentação visual, aromática e o equilíbrio do conjunto."
+              ]
             },
             {
-              "title": "Título do trabalho",
-              "meta": "Aluno",
-              "action": {
-                "label": "Ler trabalho",
-                "icon": "file-text",
-                "href": "#"
-              }
+              "id": "risoto-gosto-gaucho-matambre",
+              "title": "Risoto Gosto Gaúcho de Matambre",
+              "student": "Leandro Santos de Deus",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/risoto-gosto-gaucho-matambre.webp",
+                  "alt": "Risoto Gosto Gaúcho de Matambre servido em pequenas porções"
+                }
+              ],
+              "description": [
+                "Este prato eleva o matambre como a estrela principal da preparação. Ele é um corte tradicional da cozinha missioneira e gaúcha. Tropeiros, campeiros e indígenas Guarani levavam a carne sob os arreios dos cavalos, onde o calor e o peso do apetrecho ajudavam a salgar e a amaciar a carne durante as longas viagens. Assim, tornou-se um ingrediente-chave que perpassou a história dos povos do Rio Grande do Sul, do Pampa gaúcho e das próprias Missões Jesuítico-Guarani."
+              ]
             },
             {
-              "title": "Título do trabalho",
-              "meta": "Aluno",
-              "action": {
-                "label": "Ler trabalho",
-                "icon": "file-text",
-                "href": "#"
-              }
+              "id": "caminho-das-missoes",
+              "title": "Caminho das Missões",
+              "student": "Andressa Gay Machado",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/caminho-das-missoes.webp",
+                  "alt": "Prato Caminho das Missões com lombo suíno, arroz de milho e redução de butiá"
+                }
+              ],
+              "description": [
+                "Este prato valoriza ingredientes regionais em uma interpretação contemporânea, explorando contrastes entre cremosidade, crocância, acidez e frescor. Ele é composto de lombo suíno empanado e crocante, sobre arroz cremoso de milho com bacon, acompanhado por uma redução artesanal agridoce de butiá, espuma de limão-cravo e finalizado com crocante de milho e brotos frescos."
+              ]
             },
             {
-              "title": "Título do trabalho",
-              "meta": "Aluno",
-              "action": {
-                "label": "Ler trabalho",
-                "icon": "file-text",
-                "href": "#"
-              }
+              "id": "cuca-missioneira",
+              "title": "Cuca Missioneira",
+              "student": "Alcilene Silva Paz Almeida",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/cuca-missioneira.webp",
+                  "alt": "Cuca Missioneira apresentada em prato escuro"
+                }
+              ],
+              "description": [
+                "A Cuca Missioneira representa a união de diferentes tradições que fazem parte da formação cultural da região das Missões. A receita mantém características da cuca de origem alemã, como a massa fermentada e a farofa crocante, mas incorpora a mandioca, um ingrediente muito presente na alimentação dos povos indígenas Guarani e que permanece amplamente utilizado na culinária regional. Essa combinação demonstra como diferentes culturas contribuíram para a construção da identidade alimentar missioneira.",
+                "O uso do doce de leite artesanal como recheio reforça a influência da produção leiteira, bastante presente na região, valorizando ingredientes locais e práticas culinárias transmitidas entre gerações. Assim, a Cuca Missioneira não é apenas uma preparação doce, mas uma expressão da história, da cultura e dos saberes compartilhados no território missioneiro, preservando tradições e fortalecendo a identidade alimentar da região."
+              ]
             },
             {
-              "title": "Título do trabalho",
-              "meta": "Aluno",
-              "action": {
-                "label": "Ler trabalho",
-                "icon": "file-text",
-                "href": "#"
-              }
+              "id": "colheita-missioneira",
+              "title": "Colheita Missioneira",
+              "student": "Adriana Goulart Godois",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/colheita-missioneira.webp",
+                  "alt": "Sobremesa Colheita Missioneira com mousse de queijo colonial, goiabada e crumble"
+                }
+              ],
+              "description": [
+                "Este prato é composto de mousse de queijo colonial, crumble de farinha de milho, esferas de goiabada e redução de goiaba com hortelã. O nome Colheita Missioneira representa os frutos da terra das Missões, valorizando os ingredientes que marcaram a alimentação da região desde o período das primeiras Reduções Jesuítico-Guarani. A palavra 'colheita' remete ao milho, um dos principais alimentos cultivados pelos povos indígenas e amplamente utilizado na culinária missioneira atualmente, além de simbolizar o trabalho, a abundância e a conexão com a terra. Já o termo 'missioneira' faz referência ao patrimônio histórico, cultural e gastronômico da região das Missões, no Rio Grande do Sul, onde ocorreu o encontro entre as tradições indígenas Guarani, a influência dos jesuítas e demais povos que imigraram para este território."
+              ]
+            },
+            {
+              "id": "tarte-tatin-missioneira",
+              "title": "Tarte Tatin Missioneira",
+              "student": "Maria do Carmo Ponce Padilha",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/tarte-tatin-missioneira.webp",
+                  "alt": "Tarte Tatin Missioneira com pinhão, nata e crumble de erva-mate"
+                }
+              ],
+              "description": [
+                "Inspirada na clássica Tarte Tatin francesa, esta releitura valoriza ingredientes que fazem parte da identidade alimentar do Sul do Brasil e da região das Missões. O pinhão, alimento tradicional do inverno e presente na cultura indígena e rural, substitui a maçã caramelizada no recheio, enquanto a farinha de mandioca e a erva-mate torrada fazem parte do crumble que completa a decoração lateral do prato. O creme de nata batida reforça os sabores característicos da culinária regional.",
+                "O toque de erva-mate aproxima a sobremesa de um dos maiores símbolos da cultura missioneira, remetendo ao hábito do chimarrão e às tradições compartilhadas entre os povos da região. Assim, o prato une técnicas da gastronomia clássica com ingredientes locais, criando uma sobremesa que valoriza os sabores das Missões."
+              ]
+            },
+            {
+              "id": "dom-hugo",
+              "title": "Dom Hugo: do churrasco à moda antiga ao assado moderno",
+              "student": "Bernardo Correa Benevenuti",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/dom-hugo.webp",
+                  "alt": "Carré de cordeiro do prato Dom Hugo com mil-folhas de mandioca e abóbora"
+                }
+              ],
+              "description": [
+                "Este prato valoriza ingredientes característicos do terroir missioneiro, unindo tradição e técnicas da gastronomia contemporânea. O carré de cordeiro representa uma proteína amplamente produzida nas Missões e no Rio Grande do Sul, enquanto sua preparação remete à culinária tropeira, que marcou a ocupação e a formação cultural da região. A geleia de bergamota acrescenta frescor e faz referência a uma fruta muito presente nos pomares e no cotidiano das famílias missioneiras.",
+                "A mandioca e a abóbora, ingredientes de forte herança indígena e amplamente utilizados na alimentação regional, aparecem em um mil-folhas, que confere um toque contemporâneo ao prato. A gremolata preparada com ervas da região realça os aromas do terroir missioneiro, enquanto o molho demi-glace, finalizado com vinho de produção regional, valoriza os ingredientes locais e evidencia como a gastronomia pode reinterpretar as tradições sem perder sua identidade cultural."
+              ]
+            },
+            {
+              "id": "ravioli-das-missoes",
+              "title": "Ravióli das Missões",
+              "student": "Lisangela Souza Storch",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/ravioli-das-missoes.webp",
+                  "alt": "Ravióli das Missões com cordeiro, pinhão e farofa de erva-mate"
+                }
+              ],
+              "description": [
+                "Este prato reinterpreta o ravióli clássico italiano a partir da identidade gastronômica das Missões, valorizando ingredientes e saberes do território. A massa foi preparada com farinha de milho crioulo, farinha de trigo e purê de mandioca, fazendo referência à herança indígena Guarani e demonstrando a importância desses ingredientes na alimentação regional. O recheio de cordeiro desfiado e pinhão remete à tradição do fogo de chão, enquanto a erva-mate, incorporada na farofa crocante, remete às riquezas da nossa terra, representando um dos maiores símbolos da cultura missioneira e gaúcha.",
+                "O molho à base de caldo de cordeiro, tomate, cenoura e manteiga complementa os sabores do prato, valorizando ingredientes produzidos na região. A apresentação contemporânea, finalizada com microbrotos, demonstra como técnicas da gastronomia atual podem dialogar com a história, a memória e a identidade alimentar das Missões, preservando a essência dos sabores locais."
+              ]
+            },
+            {
+              "id": "moussaka-missioneira",
+              "title": "Moussaka Missioneira",
+              "student": "Carolina Botelho Campos",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/moussaka-missioneira.webp",
+                  "alt": "Moussaka Missioneira com mandioca, abóbora, charque e queijo colonial"
+                }
+              ],
+              "description": [
+                "A Moussaka Missioneira é uma releitura contemporânea de um clássico da culinária grega, adaptada com ingredientes que representam a identidade alimentar das Missões. A mandioca e a abóbora compõem a base do prato, valorizando produtos amplamente cultivados na região e presentes na alimentação desde a influência dos povos indígenas. O charque, preparado de forma prensada, resgata uma técnica tradicional de conservação da carne muito importante para a cultura gaúcha e missioneira, enquanto o creme de queijo colonial evidencia a tradição leiteira das propriedades rurais da região.",
+                "A finalização reúne elementos que reforçam o terroir missioneiro. A redução de vinho tinto valoriza a produção vitivinícola regional, enquanto a tuille e a terra de erva-mate representam um dos maiores símbolos culturais das Missões, reinterpretado por meio de técnicas da gastronomia contemporânea. Dessa forma, o prato estabelece um diálogo entre tradição e inovação, preservando os sabores e a identidade cultural do território missioneiro."
+              ]
+            },
+            {
+              "id": "uramaki-missioneiro",
+              "title": "Uramaki Missioneiro",
+              "student": "Catia Simone Minozo Kucera",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/uramaki-missioneiro.webp",
+                  "alt": "Uramaki Missioneiro de costela bovina com redução de bergamota"
+                }
+              ],
+              "description": [
+                "Este prato reúne ingredientes que representam diferentes influências da formação gastronômica das Missões. O sushi de costela bovina faz referência à forte tradição da pecuária e do consumo de carne na região, enquanto a costela desfiada valoriza um dos cortes mais presentes na culinária gaúcha. O arroz, base da culinária oriental, simboliza a influência da imigração japonesa, que também contribuiu para a diversidade cultural e alimentar do Rio Grande do Sul.",
+                "O cream cheese utilizado no recheio mantém características do preparo contemporâneo, evidenciando o encontro entre diferentes tradições culinárias. O molho shoyu foi incorporado a uma redução de bergamota para dar um contraste agridoce à preparação e utilizar uma das frutas mais características do inverno gaúcho.",
+                "A terra de erva-mate reforça a identidade missioneira ao destacar um dos principais símbolos econômicos, culturais e históricos da região, enquanto os microbrotos trazem leveza e frescor à apresentação. O prato demonstra como ingredientes e referências de diferentes origens podem dialogar com os produtos locais, resultando em uma releitura contemporânea que valoriza o patrimônio alimentar e a diversidade cultural das Missões."
+              ]
+            },
+            {
+              "id": "heranca-trio",
+              "title": "Herança: um trio que alimenta o coração",
+              "student": "Gabrielle Lago Vieira",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/heranca-trio.webp",
+                  "alt": "Trio de finger foods do prato Herança servido em tábuas de madeira"
+                }
+              ],
+              "description": [
+                "Esta sequência de finger foods valoriza ingredientes e saberes que fazem parte da cultura alimentar missioneira, apresentados por meio de técnicas contemporâneas. A croqueta de mandioca recheada com queijo colonial, acompanhada de maionese de ervas, resgata a mandioca, alimento de origem indígena amplamente cultivado e consumido nas Missões, além de destacar a tradição da produção de queijos coloniais nas propriedades rurais.",
+                "O mil-folhas de massa folhada com espinafre refogado e chimichurri com butiá representa a influência da imigração europeia na culinária regional, enquanto as ervas aromáticas remetem aos temperos cultivados nos quintais missioneiros. O butiá, fruto nativo, resgata a herança dos povos originários e reforça a identidade alimentar das Missões.",
+                "A cestinha de massa de erva-mate, recheada com carne desfiada e finalizada com gema curada, homenageia esta erva, um dos principais símbolos econômicos, históricos e culturais das Missões, além da pecuária, atividade tradicional do território. A combinação dos preparos evidencia o encontro entre as heranças indígenas, jesuíticas, tropeiras e europeias, demonstrando como a gastronomia contemporânea pode reinterpretar ingredientes locais sem perder sua identidade cultural e seu patrimônio alimentar."
+              ]
             }
           ]
         },

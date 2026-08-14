@@ -1,0 +1,22 @@
+.student-recipe-reader__eyebrow {
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.student-recipe-reader__student {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-meta);
+}
+
+.student-recipe-reader__description p {
+  color: var(--color-text);
+}
+
+.student-recipe-reader__description p + p {
+  margin-top: var(--space-3);
+}

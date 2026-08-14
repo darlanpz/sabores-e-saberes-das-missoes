@@ -27,7 +27,7 @@ let globaisRegistrados = false;
 
 /** Evita que o player fixo cubra o conteúdo dos modais de receita. */
 function atualizarPlayerDaPagina() {
-  document.body.classList.toggle(
+  document.body.classList?.toggle(
     "modal-receita-aberto",
     aberto?.classList.contains("modal--recipe") ?? false,
   );
@@ -165,7 +165,20 @@ export function initModals(scope = document) {
   pilha = [];
   atualizarPlayerDaPagina();
 
-  for (const dialogo of scope.querySelectorAll(".modal")) {
+  // Alguns leitores são declarados junto do bloco que os abre. Como a animação
+  // de entrada usa `translate`, esse bloco vira um limite para `position: fixed`.
+  // Levamos esses diálogos para o fim do body, onde fixed volta a usar a viewport.
+  for (const portalAntigo of document.querySelectorAll("[data-modal-portal]")) {
+    portalAntigo.remove();
+  }
+
+  const dialogos = [...scope.querySelectorAll(".modal")];
+  for (const dialogo of dialogos.filter((item) => item.closest(".bloco"))) {
+    dialogo.setAttribute("data-modal-portal", "");
+    document.body.append(dialogo);
+  }
+
+  for (const dialogo of dialogos) {
     dialogo.querySelector("[data-modal-close]")?.addEventListener("click", fechar);
 
     // Clique no overlay, fora do conteúdo.
