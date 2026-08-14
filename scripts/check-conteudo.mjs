@@ -46,6 +46,12 @@ verificar("conteúdo", [
     "toda página do JSON está na navegação",
     slugs.every((s) => site.nav.some((i) => i.slug === s)),
   ],
+  [
+    "cada banner usa sua audiodescrição correspondente",
+    [1, 2, 3, 4, 5].every(
+      (numero) => pages[`banner${numero}`]?.audio?.src === `/audio/audiodescricao-banner-${numero}.MP3`,
+    ),
+  ],
 ]);
 
 /* --- Blocos ---------------------------------------------------------------- */

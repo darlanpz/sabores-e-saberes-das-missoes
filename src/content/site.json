@@ -190,7 +190,7 @@
         "alt": "Ruínas da igreja de São Miguel Arcanjo, em São Miguel das Missões, iluminadas contra o céu noturno"
       },
       "audio": {
-        "src": "/audio/audiodescricao-exemplo.wav",
+        "src": "/audio/audiodescricao-banner-1.MP3",
         "label": "Audiodescrição"
       },
       "blocks": [
@@ -320,7 +320,7 @@
         "position": "50% 0%"
       },
       "audio": {
-        "src": "/audio/audiodescricao-exemplo.wav",
+        "src": "/audio/audiodescricao-banner-2.MP3",
         "label": "Audiodescrição"
       },
       "comic": {
@@ -557,7 +557,7 @@
         "position": "50% 0%"
       },
       "audio": {
-        "src": "/audio/audiodescricao-exemplo.wav",
+        "src": "/audio/audiodescricao-banner-3.MP3",
         "label": "Audiodescrição"
       },
       "blocks": [
@@ -615,7 +615,7 @@
         "position": "50% 0%"
       },
       "audio": {
-        "src": "/audio/audiodescricao-exemplo.wav",
+        "src": "/audio/audiodescricao-banner-4.MP3",
         "label": "Audiodescrição"
       },
       "blocks": [
@@ -1781,7 +1781,7 @@
         "position": "50% 0%"
       },
       "audio": {
-        "src": "/audio/audiodescricao-exemplo.wav",
+        "src": "/audio/audiodescricao-banner-5.MP3",
         "label": "Audiodescrição"
       },
       "blocks": [

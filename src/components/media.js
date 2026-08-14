@@ -20,7 +20,7 @@ export function player({ src, label = "Audiodescrição", small = false } = {}) 
   // meio. No desktop o play sai da linha de controles via `order` — ver
   // player.css. Não duplicar markup por breakpoint.
   return `
-    <div class="player${small ? " player--small" : ""}" data-player data-playing="false">
+    <div class="player${small ? " player--small" : ""}" data-player data-playing="false" data-attention="true">
       <audio data-player-audio src="${src}" preload="metadata"></audio>
 
       <div class="player__info">
@@ -60,6 +60,7 @@ export function player({ src, label = "Audiodescrição", small = false } = {}) 
           data-tooltip="Reproduzir"
           aria-label="Reproduzir ${label.toLowerCase()}"
         >
+          <span class="player__play-pulse" aria-hidden="true"></span>
           <span class="player__icon--play">${icon("play", { fill: true })}</span>
           <span class="player__icon--pause">${icon("pause", { fill: true })}</span>
         </button>

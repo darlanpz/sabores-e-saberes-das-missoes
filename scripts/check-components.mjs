@@ -102,6 +102,7 @@ const playerChecks = [
   ["parar e repetir começam desabilitados", (p.match(/disabled/g) || []).length === 2],
   ["tooltip nos três controles", (p.match(/data-tooltip=/g) || []).length === 3],
   ["tempo decorrido exibido", p.includes("data-player-time")],
+  ["pulso inicial é decorativo", p.includes('data-attention="true"') && /player__play-pulse[^>]*aria-hidden="true"/.test(p)],
 ];
 for (const [nome, ok] of playerChecks) console.log(`${ok ? "OK  " : "FALHA"} player: ${nome}`);
 if (playerChecks.some(([, ok]) => !ok)) process.exitCode = 1;

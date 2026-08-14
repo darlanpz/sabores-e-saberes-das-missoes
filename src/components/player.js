@@ -80,6 +80,9 @@ export function initPlayer(root) {
   }
 
   toggle.addEventListener("click", () => {
+    // O pulso serve apenas para apresentar o controle na entrada da página.
+    // Depois da primeira interação, não volta a competir com o conteúdo.
+    root.dataset.attention = "false";
     if (audio.paused) audio.play();
     else audio.pause();
   });

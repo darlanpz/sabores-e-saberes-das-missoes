@@ -68,6 +68,7 @@
 }
 
 .player__play {
+  position: relative;
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -77,6 +78,41 @@
   background-color: var(--color-accent);
   color: var(--color-primary);
   transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+/* Destaque inicial para pessoas com baixa visão. O anel usa a cor mais clara
+   da paleta e desaparece definitivamente após o primeiro acionamento. */
+.player__play-pulse {
+  position: absolute;
+  inset: calc(var(--space-2) * -1);
+  border: var(--focus-ring-width) solid var(--color-text);
+  border-radius: calc(var(--radius-md) + var(--space-2));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.player[data-attention="true"] .player__play-pulse {
+  animation: player-play-pulse 1.6s var(--ease-out) infinite;
+}
+
+@keyframes player-play-pulse {
+  0% {
+    scale: 0.88;
+    opacity: 1;
+  }
+  75%,
+  100% {
+    scale: 1.28;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player[data-attention="true"] .player__play-pulse {
+    animation: none;
+    scale: 1;
+    opacity: 1;
+  }
 }
 
 .player__play:hover {
