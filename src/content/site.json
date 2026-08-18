@@ -1805,6 +1805,20 @@
           },
           "items": [
             {
+              "id": "risoto-entreveiro",
+              "title": "Risoto de entreveiro",
+              "student": "Roberta da Rocha Meneses",
+              "images": [
+                {
+                  "src": "/img/banner5/alunos/risoto-entrevero.webp",
+                  "alt": "Prato com Risoto de Entrevero produxido por Roberta da Rocha Meneses"
+                }
+              ],
+              "description": [
+                "Esse prato foi desenvolvido com base em ingredientes da culinária missioneira do RS, valorizando alimentos e modos de preparos característicos da região. O entreveiro representa a tradição gaúcha de reunir diferentes tipos de carnes e legumes em um único preparo, refletindo a influência das práticas campeiras e da cultura alimentar das Missões. A escolha do arroz arbóreo une a técnica clássica do risoto italiano à identidade regional, enquanto os pimentões, a cebola, o alho e a salsinha agregam sabor, aroma e cor, respeitando o equilíbrio do prato. A composição busca preservar a essência da cozinha missioneira, aliando tradição, técnica e uma apresentação mais contemporânea."
+              ]
+            },
+            {
               "id": "raizes-e-rios",
               "title": "Raízes e rios",
               "student": "Vinícius Ribeiro Regazzon",
