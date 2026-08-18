@@ -165,6 +165,17 @@ verificar("banner4", [
       .flatMap((b) => b.items)
       .every((item) => "image" in item),
   ],
+  [
+    "os oito marcos usam uma imagem válida do Banner 4",
+    pages.banner4.blocks
+      .find((b) => b.type === "timeline")
+      .items.every(
+        (item, index) =>
+          item.image?.src === `/img/banner4/${index + 1}.webp`
+          && typeof item.image.alt === "string"
+          && item.image.alt.length > 0,
+      ),
+  ],
   ["image nulo não vira <img> quebrada", !html4.includes('src="null"') && !html4.includes("<img src=\"\"")],
   ["dois parágrafos sem título", (html4.match(/<div class="text-section">\s*<p/g) || []).length === 2],
   ["catálogo aparece depois da linha do tempo", html4.indexOf("recipe-catalog") > html4.indexOf("timeline")],
@@ -219,14 +230,15 @@ verificar("home", [
 /* --- Banner 5 -------------------------------------------------------------- */
 
 const html5 = renderPage(site, pages.banner5, "banner5");
+const pratosBanner5 = pages.banner5.blocks.find((bloco) => bloco.type === "studentRecipes").items;
 
 verificar("banner5", [
   ["hero com imagem e alt", html5.includes(pages.banner5.hero.src)],
-  ["onze pratos dos alunos no painel", (html5.match(/class="card card--with-thumb"/g) || []).length === 11],
-  ["todo prato leva botão de leitura", (html5.match(/Ver prato/g) || []).length === 11],
-  ["onze leitores completos", (html5.match(/class="modal modal--recipe modal--student-recipe"/g) || []).length === 11],
+  ["um card por prato dos alunos", (html5.match(/class="card card--with-thumb"/g) || []).length === pratosBanner5.length],
+  ["todo prato leva botão de leitura", (html5.match(/Ver prato/g) || []).length === pratosBanner5.length],
+  ["um leitor completo por prato", (html5.match(/class="modal modal--recipe modal--student-recipe"/g) || []).length === pratosBanner5.length],
   ["nomes dos alunos presentes", ["Vinícius Ribeiro Regazzon", "Andressa Gay Machado", "Gabrielle Lago Vieira"].every((nome) => html5.includes(nome))],
-  ["todo prato tem imagem e descrição", pages.banner5.blocks.find((bloco) => bloco.type === "studentRecipes").items.every((item) => item.images?.length && item.description?.length)],
+  ["todo prato tem imagem e descrição", pratosBanner5.every((item) => item.images?.length && item.description?.length)],
   ["duas imagens ilustrativas", (html5.match(/fade-image__img/g) || []).length === 2],
   ["citação com parágrafo junto", /text-section--highlight[\s\S]{0,400}text-section__body/.test(html5)],
   ["coluna direita cola na rolagem", html5.includes("page__columns--cola-main")],

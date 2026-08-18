@@ -85,7 +85,7 @@
           {
             "src": "/img/logos/logo-08.webp",
             "alt": "400 anos Missões Jesuíticas Guaranis — Secretaria da Cultura do Governo do Estado do Rio Grande do Sul",
-            "width": 312
+            "width": 148
           }
         ]
       }
@@ -663,49 +663,73 @@
             {
               "year": "Muito antes de 1626",
               "title": "Povos Guarani",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/1.webp",
+                "alt": "Representação dos povos Guarani e de seus sistemas alimentares"
+              },
               "description": "Primeiros sistemas alimentares das Missões"
             },
             {
               "year": "1626 – 1634",
               "title": "Jesuítas espanhóis",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/2.webp",
+                "alt": "Representação dos jesuítas espanhóis nas Reduções Jesuítico-Guarani"
+              },
               "description": "Fundação das Reduções Jesuítico-Guarani e organização agrícola e pecuária"
             },
             {
               "year": "1750",
               "title": "Portugueses",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/3.webp",
+                "alt": "Representação da presença portuguesa e de suas práticas culinárias"
+              },
               "description": "Novos temperos, técnicas de conservação e confeitaria"
             },
             {
               "year": "Século XVIII",
               "title": "Africanos",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/4.webp",
+                "alt": "Representação dos saberes culinários dos povos africanos"
+              },
               "description": "Saberes culinários, novos temperos e formas de preparo dos alimentos"
             },
             {
               "year": "Século XIX",
               "title": "Alemães",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/5.webp",
+                "alt": "Representação da imigração alemã e de suas tradições alimentares"
+              },
               "description": "Panificação, conservas, embutidos e laticínios"
             },
             {
               "year": "Século XIX",
               "title": "Italianos",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/6.webp",
+                "alt": "Representação da imigração italiana e de suas tradições alimentares"
+              },
               "description": "Massas, vinhos e valorização da agricultura familiar"
             },
             {
               "year": "Século XIX",
               "title": "Poloneses, austríacos, russos e outros",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/7.webp",
+                "alt": "Representação de imigrantes poloneses, austríacos, russos e outros povos"
+              },
               "description": "Novas receitas, técnicas culinárias e diversificação alimentar"
             },
             {
               "year": "Hoje",
               "title": "A identidade alimentar missioneira",
-              "image": null,
+              "image": {
+                "src": "/img/banner4/8.webp",
+                "alt": "Representação da identidade alimentar missioneira na atualidade"
+              },
               "description": "A identidade alimentar missioneira foi construída ao longo de séculos pelo encontro entre povos, culturas e territórios. Cada migração trouxe novos ingredientes, saberes e tradições que, adaptados aos alimentos locais, continuam vivos na mesa e na memória das Missões."
             }
           ]

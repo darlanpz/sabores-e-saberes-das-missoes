@@ -91,6 +91,6 @@ const APOIADORES_PADRAO = {
     { src: "/img/logos/logo-05.webp", alt: "Unijuí — Universidade Regional", width: 153 },
     { src: "/img/logos/logo-06.webp", alt: "Desenvolvimento Regional Unijuí — Mestrado e Doutorado", width: 120 },
     { src: "/img/logos/logo-07.webp", alt: "Educação nas Ciências — Mestrado e Doutorado", width: 153 },
-    { src: "/img/logos/logo-08.webp", alt: "400 anos Missões Jesuíticas Guaranis — Secretaria da Cultura do Governo do Estado do Rio Grande do Sul", width: 312 },
+    { src: "/img/logos/logo-08.webp", alt: "400 anos Missões Jesuíticas Guaranis — Secretaria da Cultura do Governo do Estado do Rio Grande do Sul", width: 148 },
   ],
 };

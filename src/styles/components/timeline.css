@@ -1,7 +1,7 @@
 /* Timeline (Banner 4) — sequência cronológica, marcada como <ol>.
 
    O período troca de lado entre os breakpoints:
-   - mobile:  divisor | período, imagem, título, descrição
+   - mobile:  período, imagem, título, descrição (sem divisor)
    - desktop: período | divisor | imagem, título, descrição
 
    Como no player, o markup é um só. `display: contents` no bloco de conteúdo
@@ -13,7 +13,8 @@
   flex-direction: column;
   /* O respiro entre itens vive aqui, e não no padding do último texto: assim
      ele não depende de quais campos o item traz. */
-  gap: var(--space-12);
+  /* gap: var(--space-12); */
+  gap: 0;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -21,7 +22,7 @@
 
 .timeline__item {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   column-gap: var(--space-6);
   row-gap: var(--space-3);
 }
@@ -34,8 +35,9 @@
    Esticada na vertical de propósito (`preserveAspectRatio="none"` no arquivo):
    é o que faz a linha percorrer o item inteiro, independente da altura. */
 .timeline__divider {
+  display: none;
   grid-column: 1;
-  grid-row: 1 / -1;
+  grid-row: 1 / 4;
   align-self: stretch;
   width: 3px;
   /* Altura total do item + 48px: a margem negativa estica a linha para além
@@ -51,7 +53,7 @@
 .timeline__title,
 .timeline__subtitle,
 .timeline__description {
-  grid-column: 2;
+  grid-column: 1;
   min-width: 0;
 }
 
@@ -67,7 +69,7 @@
 /* Espaço reservado para a imagem: o bloco accent aparece enquanto não houver
    arquivo, e a <img> ocupa exatamente a mesma caixa quando houver. */
 .timeline__image {
-  height: 180px;
+  height: 280px;
   border-radius: var(--radius-md);
   background-color: var(--color-accent);
   overflow: hidden;
@@ -98,6 +100,7 @@
   line-height: var(--leading-body);
   color: var(--color-text);
   max-width: none;
+  padding-bottom: 48px;
 }
 
 @media (width >= 768px) {
@@ -114,6 +117,7 @@
   }
 
   .timeline__divider {
+    display: block;
     grid-column: 2;
   }
 
