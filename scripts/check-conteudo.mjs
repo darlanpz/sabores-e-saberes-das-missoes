@@ -31,7 +31,14 @@ verificar("conteúdo", [
   ["site e pages existem", Boolean(site) && Boolean(pages)],
   ["navegação declarada", Array.isArray(site.nav) && site.nav.length > 0],
   ["todo item de navegação tem slug", site.nav.every((i) => i.slug && i.href && i.label)],
-  ["rodapé declarado", Boolean(site.footer?.accessibility?.text) && site.footer.supporters.logos.length > 0],
+  [
+    "rodapé declarado",
+    Boolean(site.footer?.accessibility?.text)
+      && Boolean(site.footer?.contact?.whatsapp?.href)
+      && Boolean(site.footer?.contact?.instagram?.href)
+      && Boolean(site.footer?.credit?.href)
+      && site.footer.supporters.logos.length > 0,
+  ],
   ["ao menos uma página", slugs.length > 0],
   // O roteador monta as rotas a partir do href da navegação; se ele não bater
   // com o slug, o clique vira recarregamento de página em vez de troca.
@@ -261,7 +268,7 @@ verificar("banner1", [
   ["botões abrem os leitores", (html.match(/data-abre="modal-pdf-projeto-/g) || []).length === 5],
   ["cinco leitores de PDF", (html.match(/class="modal modal--pdf"/g) || []).length === 5],
   ["pré-visualizações usam o Drive", (html.match(/drive\.google\.com\/file\/d\/[^\"]+\/preview/g) || []).length === 5],
-  ["links de reserva abrem em nova guia", (html.match(/target="_blank"/g) || []).length === 5],
+  ["links de reserva abrem em nova guia", (html.match(/<a class="button"[^>]+target="_blank"/g) || []).length === 5],
   ["imagem ilustrativa com fade", html.includes("fade-image__img")],
   ["player de audiodescrição presente", html.includes("data-player-audio")],
   [

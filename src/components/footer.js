@@ -1,7 +1,7 @@
 import { medidas } from "./medidas.js";
 
 /**
- * Footer — bloco de acessibilidade + apoiadores.
+ * Footer — acessibilidade, contato e apoiadores.
  *
  * Todo o conteúdo entra por parâmetro: os dois títulos, o texto de
  * acessibilidade e a lista de logos.
@@ -11,6 +11,12 @@ import { medidas } from "./medidas.js";
  *   accessibility: {
  *     title: "ACESSIBILIDADE",
  *     text: "Esta exposição conta com audiodescrição…",
+ *   },
+ *   contact: {
+ *     title: "Contato",
+ *     text: "Para mais informações sobre a exposição…",
+ *     whatsapp: { label: "Fale conosco pelo WhatsApp", detail: "Camila Nemitz", href: "https://wa.me/…" },
+ *     instagram: { label: "Siga nosso Instagram", detail: "@gastro_iffar", href: "https://instagram.com/…" },
  *   },
  *   supporters: {
  *     title: "Apoiadores",
@@ -22,35 +28,55 @@ import { medidas } from "./medidas.js";
  * })
  *
  * @param {object} [opts]
- * @param {{title?: string, text?: string, email?: string}} [opts.about]
  * @param {{title?: string, text?: string}} [opts.accessibility]
+ * @param {{title?: string, text?: string, whatsapp?: object, instagram?: object}} [opts.contact]
  * @param {{title?: string, logos?: Array<{src: string, alt: string, width?: number, href?: string}>}} [opts.supporters]
+ * @param {{text?: string, href?: string}} [opts.credit]
  */
-export function footer({ about, accessibility, supporters } = {}) {
-  const sobre = { ...about };
+export function footer({ accessibility, contact, supporters, credit } = {}) {
   const acessibilidade = { ...ACESSIBILIDADE_PADRAO, ...accessibility };
+  const contato = {
+    ...CONTATO_PADRAO,
+    ...contact,
+    whatsapp: { ...CONTATO_PADRAO.whatsapp, ...contact?.whatsapp },
+    instagram: { ...CONTATO_PADRAO.instagram, ...contact?.instagram },
+  };
   const apoiadores = { ...APOIADORES_PADRAO, ...supporters };
+  const credito = { ...CREDITO_PADRAO, ...credit };
 
   return `
     <footer class="footer">
+      <div class="footer__top">
+        <section class="footer__block">
+          <h2 class="footer__title">${acessibilidade.title}</h2>
+          <p class="footer__text">${acessibilidade.text}</p>
+        </section>
 
-      ${
-        sobre.title || sobre.text || sobre.email
-          ? `<section class="footer__block">
-              ${sobre.title ? `<h2 class="footer__title">${sobre.title}</h2>` : ""}
-              ${sobre.text ? `<p class="footer__text">${sobre.text}</p>` : ""}
-              ${sobre.email ? `<a href="mailto:${sobre.email}" class="footer__link">${sobre.email}</a>` : ""}
-            </section>`
-          : ""
-      }
-
-      <section class="footer__block">
-        <h2 class="footer__title">${acessibilidade.title}</h2>
-        <p class="footer__text">${acessibilidade.text}</p>
-      </section>
+        <section class="footer__block">
+          <h2 class="footer__title">${contato.title}</h2>
+          <p class="footer__text">${contato.text}</p>
+          <div class="footer__contact-list">
+            ${itemContato({ ...contato.whatsapp, icon: "/icons/whatsapp-fill.svg" })}
+            ${itemContato({ ...contato.instagram, icon: "/icons/instagram-fill.svg" })}
+          </div>
+        </section>
+      </div>
 
       ${apoiadores.logos.length ? blocoApoiadores(apoiadores) : ""}
+
+      <a class="footer__credit" href="${credito.href}" target="_blank" rel="noopener noreferrer">${credito.text}</a>
     </footer>`;
+}
+
+function itemContato({ label, detail, href, icon }) {
+  return `
+    <a class="footer__contact-card" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${label} — abre em uma nova guia">
+      <img class="footer__contact-icon" src="${icon}" alt="" width="32" height="32" aria-hidden="true">
+      <span class="footer__contact-copy">
+        <strong class="footer__contact-label">${label}</strong>
+        <span class="footer__contact-detail">${detail}</span>
+      </span>
+    </a>`;
 }
 
 function blocoApoiadores({ title, logos }) {
@@ -79,6 +105,26 @@ function itemLogo({ src, alt, width, href }) {
 const ACESSIBILIDADE_PADRAO = {
   title: "ACESSIBILIDADE",
   text: "Esta exposição conta com audiodescrição dos banners e resumos acessíveis dos conteúdos disponíveis nos QR Codes, legendas e janelas de Libras nos vídeos e apostila com descrição dos textos em Braille, promovendo uma experiência inclusiva para todos os públicos.",
+};
+
+const CONTATO_PADRAO = {
+  title: "Contato",
+  text: "Para mais informações sobre a exposição, entre em contato com a equipe do projeto.",
+  whatsapp: {
+    label: "Fale conosco pelo WhatsApp",
+    detail: "Camila Nemitz",
+    href: "https://wa.me/5555996747793",
+  },
+  instagram: {
+    label: "Siga nosso Instagram",
+    detail: "@gastro_iffar",
+    href: "https://www.instagram.com/gastro_iffar",
+  },
+};
+
+const CREDITO_PADRAO = {
+  text: "Desenvolvido por gapz visual.",
+  href: "https://www.gapzvisual.com.br",
 };
 
 const APOIADORES_PADRAO = {

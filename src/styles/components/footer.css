@@ -17,6 +17,69 @@
   gap: var(--space-3);
 }
 
+.footer__top {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.footer__contact-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.footer__contact-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  min-height: 80px;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.footer__contact-card:hover {
+  background-color: color-mix(in srgb, var(--color-secondary) 88%, var(--color-accent));
+  transform: translateY(-2px);
+}
+
+.footer__contact-card:active {
+  transform: translateY(0);
+}
+
+.footer__contact-card:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.footer__contact-icon {
+  width: var(--space-8);
+  height: var(--space-8);
+  flex: 0 0 var(--space-8);
+}
+
+.footer__contact-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
+
+.footer__contact-label {
+  font-weight: var(--weight-bold);
+}
+
+.footer__contact-detail {
+  color: var(--color-text-muted);
+}
+
 /* O bloco de apoiadores respira mais entre o título e as logos. */
 .footer__block--supporters {
   gap: var(--space-6);
@@ -59,8 +122,42 @@
   object-fit: contain;
 }
 
+.footer__credit {
+  align-self: stretch;
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  font-style: italic;
+  line-height: var(--leading-body);
+  text-align: right;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.footer__credit:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
 @media (width >= 768px) {
+  .footer__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__contact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .footer__logos {
     gap: var(--space-15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__contact-card {
+    transition: none;
+  }
+
+  .footer__contact-card:hover {
+    transform: none;
   }
 }

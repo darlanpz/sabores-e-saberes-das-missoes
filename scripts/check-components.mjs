@@ -232,6 +232,12 @@ if (timelineChecks.some(([, ok]) => !ok)) process.exitCode = 1;
 const rodapePadrao = footer();
 const rodapeCustom = footer({
   accessibility: { title: "Acesso para todos", text: "Texto próprio de acessibilidade." },
+  contact: {
+    title: "Fale com a equipe",
+    whatsapp: { href: "https://wa.me/5511999999999" },
+    instagram: { href: "https://www.instagram.com/exemplo" },
+  },
+  credit: { text: "Crédito personalizado", href: "https://exemplo.dev" },
   supporters: {
     title: "Realização",
     logos: [
@@ -245,6 +251,10 @@ const footerChecks = [
   ["logos vêm de img, não de texto", (rodapePadrao.match(/<img[^>]*\/img\/logos\//g) || []).length === 8],
   ["toda logo tem alt descritivo", !/<img(?![^>]*alt="[^"]+")[^>]*class="footer__logo"/.test(rodapePadrao)],
   ["título e texto de acessibilidade parametrizáveis", rodapeCustom.includes("Acesso para todos") && rodapeCustom.includes("Texto próprio de acessibilidade.")],
+  ["contato parametrizável", rodapeCustom.includes("Fale com a equipe") && rodapeCustom.includes("https://wa.me/5511999999999")],
+  ["contatos abrem em nova guia", (rodapeCustom.match(/class="footer__contact-card"[^>]+target="_blank"/g) || []).length === 2],
+  ["crédito parametrizável", rodapeCustom.includes("Crédito personalizado") && rodapeCustom.includes("https://exemplo.dev")],
+  ["crédito abre em nova guia", /footer__credit[^>]+target="_blank"/.test(rodapeCustom)],
   ["título das logos parametrizável", rodapeCustom.includes("Realização")],
   ["lista de logos parametrizável", rodapeCustom.includes("/img/logos/parceiro.webp") && rodapeCustom.includes('alt="Parceiro Um"')],
   ["logo aceita link", rodapeCustom.includes('href="https://exemplo.org"')],
