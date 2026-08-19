@@ -11,5 +11,4 @@
 - entrevista
 
 # banner 4
-- linha do tempo
 - remover tarja receita quibebe
