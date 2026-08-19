@@ -28,6 +28,23 @@
   object-fit: cover;
 }
 
+/* Tela cheia: a tela do aparelho quase nunca é 16:9, então o `cover` do frame
+   cortaria/daria zoom no vídeo para preencher o espaço sobrando. Em fullscreen
+   o frame solta a proporção fixa e o vídeo passa a caber inteiro (`contain`),
+   com a folga preenchida em preto — como qualquer player nativo. */
+.video__frame:fullscreen,
+.video__frame:-webkit-full-screen {
+  aspect-ratio: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.video__frame:fullscreen .video__media,
+.video__frame:-webkit-full-screen .video__media {
+  object-fit: contain;
+  background-color: #000;
+}
+
 /* --------------------------------------------------------------------------
    Play central — estado de pôster, antes de começar
    -------------------------------------------------------------------------- */

@@ -100,7 +100,7 @@ export function video({
   captions,
 } = {}) {
   return `
-    <section class="video" data-video data-playing="false" data-started="false" data-muted="true">
+    <section class="video" data-video data-playing="false" data-started="false" data-muted="false">
       ${sectionHeader({ iconName, label })}
 
       <div class="video__frame">
@@ -111,7 +111,6 @@ export function video({
           ${poster ? `poster="${poster}"` : ""}
           preload="metadata"
           playsinline
-          muted
         >${captions ? `<track kind="captions" srclang="pt-BR" label="Português" src="${captions}" default>` : ""}</video>
 
         <button

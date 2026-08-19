@@ -46,12 +46,12 @@
           {
             "type": "whatsapp",
             "label": "Fale conosco pelo WhatsApp",
-            "detail": "Camila Nemitz",
+            "detail": "55 99674-7793",
             "href": "https://wa.me/5555996747793"
           },
           {
             "type": "instagram",
-            "label": "Siga o instagram do projeto",
+            "label": "Gastronomia IFFar-São Borja",
             "detail": "@gastro_iffar",
             "href": "https://www.instagram.com/gastro_iffar"
           },
@@ -613,8 +613,8 @@
           "column": "main",
           "icon": "message-circle",
           "label": "Acesse a entrevista com pesquisadores sobre como indígenas, espanhóis, portugueses e africanos moldaram a cultura alimentar missioneira.",
-          "src": "/video/exemplo.mp4",
-          "poster": "/video/exemplo-poster.webp"
+          "src": "/video/Entrevista.mp4",
+          "poster": "/video/Entrevista-poster.webp"
         },
         {
           "type": "image",

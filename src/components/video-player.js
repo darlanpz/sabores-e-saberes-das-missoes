@@ -110,8 +110,16 @@ export function initVideo(root) {
   });
 
   fullscreen?.addEventListener("click", () => {
-    if (document.fullscreenElement) document.exitFullscreen();
-    else frame.requestFullscreen?.();
+    const ativo = document.fullscreenElement || document.webkitFullscreenElement;
+    if (ativo) {
+      (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+      return;
+    }
+    if (frame.requestFullscreen) frame.requestFullscreen();
+    else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+    // iOS Safari: elemento genérico não tem Fullscreen API — só o próprio
+    // <video> entra em tela cheia, com os controles nativos do sistema.
+    else media.webkitEnterFullscreen?.();
   });
 
   range.addEventListener("input", () => {
@@ -138,7 +146,11 @@ export function initVideo(root) {
     frame.addEventListener(evento, acordar, { passive: true });
   }
 
-  frame.addEventListener("pointerleave", () => {
+  // Só mouse/caneta "saem" do frame de verdade. Em touch, soltar o dedo
+  // dispara um pointerleave sintético na hora — se contasse, a barra sumiria
+  // assim que a pessoa tirasse o dedo da tela.
+  frame.addEventListener("pointerleave", (e) => {
+    if (e.pointerType === "touch") return;
     if (root.dataset.playing === "true") root.dataset.idle = "true";
   });
 
