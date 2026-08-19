@@ -234,8 +234,11 @@ const rodapeCustom = footer({
   accessibility: { title: "Acesso para todos", text: "Texto próprio de acessibilidade." },
   contact: {
     title: "Fale com a equipe",
-    whatsapp: { href: "https://wa.me/5511999999999" },
-    instagram: { href: "https://www.instagram.com/exemplo" },
+    items: [
+      { type: "whatsapp", label: "WhatsApp", href: "https://wa.me/5511999999999" },
+      { type: "instagram", label: "Perfil um", href: "https://www.instagram.com/exemplo-1" },
+      { type: "instagram", label: "Perfil dois", href: "https://www.instagram.com/exemplo-2" },
+    ],
   },
   credit: { text: "Crédito personalizado", href: "https://exemplo.dev" },
   supporters: {
@@ -252,7 +255,9 @@ const footerChecks = [
   ["toda logo tem alt descritivo", !/<img(?![^>]*alt="[^"]+")[^>]*class="footer__logo"/.test(rodapePadrao)],
   ["título e texto de acessibilidade parametrizáveis", rodapeCustom.includes("Acesso para todos") && rodapeCustom.includes("Texto próprio de acessibilidade.")],
   ["contato parametrizável", rodapeCustom.includes("Fale com a equipe") && rodapeCustom.includes("https://wa.me/5511999999999")],
-  ["contatos abrem em nova guia", (rodapeCustom.match(/class="footer__contact-card"[^>]+target="_blank"/g) || []).length === 2],
+  ["lista aceita vários perfis", ["exemplo-1", "exemplo-2"].every((perfil) => rodapeCustom.includes(perfil))],
+  ["contatos abrem em nova guia", (rodapeCustom.match(/class="footer__contact-card"[^>]+target="_blank"/g) || []).length === 3],
+  ["contato aparece antes da acessibilidade", rodapeCustom.indexOf("Fale com a equipe") < rodapeCustom.indexOf("Acesso para todos")],
   ["crédito parametrizável", rodapeCustom.includes("Crédito personalizado") && rodapeCustom.includes("https://exemplo.dev")],
   ["crédito abre em nova guia", /footer__credit[^>]+target="_blank"/.test(rodapeCustom)],
   ["título das logos parametrizável", rodapeCustom.includes("Realização")],

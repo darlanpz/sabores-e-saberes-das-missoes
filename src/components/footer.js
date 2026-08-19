@@ -15,8 +15,10 @@ import { medidas } from "./medidas.js";
  *   contact: {
  *     title: "Contato",
  *     text: "Para mais informações sobre a exposição…",
- *     whatsapp: { label: "Fale conosco pelo WhatsApp", detail: "Camila Nemitz", href: "https://wa.me/…" },
- *     instagram: { label: "Siga nosso Instagram", detail: "@gastro_iffar", href: "https://instagram.com/…" },
+ *     items: [
+ *       { type: "whatsapp", label: "Fale conosco pelo WhatsApp", href: "https://wa.me/…" },
+ *       { type: "instagram", label: "Siga nosso Instagram", detail: "@gastro_iffar", href: "https://instagram.com/…" },
+ *     ],
  *   },
  *   supporters: {
  *     title: "Apoiadores",
@@ -29,7 +31,7 @@ import { medidas } from "./medidas.js";
  *
  * @param {object} [opts]
  * @param {{title?: string, text?: string}} [opts.accessibility]
- * @param {{title?: string, text?: string, whatsapp?: object, instagram?: object}} [opts.contact]
+ * @param {{title?: string, text?: string, items?: Array<{type: string, label: string, detail?: string, href: string}>}} [opts.contact]
  * @param {{title?: string, logos?: Array<{src: string, alt: string, width?: number, href?: string}>}} [opts.supporters]
  * @param {{text?: string, href?: string}} [opts.credit]
  */
@@ -38,8 +40,7 @@ export function footer({ accessibility, contact, supporters, credit } = {}) {
   const contato = {
     ...CONTATO_PADRAO,
     ...contact,
-    whatsapp: { ...CONTATO_PADRAO.whatsapp, ...contact?.whatsapp },
-    instagram: { ...CONTATO_PADRAO.instagram, ...contact?.instagram },
+    items: contact?.items ?? CONTATO_PADRAO.items,
   };
   const apoiadores = { ...APOIADORES_PADRAO, ...supporters };
   const credito = { ...CREDITO_PADRAO, ...credit };
@@ -48,17 +49,16 @@ export function footer({ accessibility, contact, supporters, credit } = {}) {
     <footer class="footer">
       <div class="footer__top">
         <section class="footer__block">
-          <h2 class="footer__title">${acessibilidade.title}</h2>
-          <p class="footer__text">${acessibilidade.text}</p>
-        </section>
-
-        <section class="footer__block">
           <h2 class="footer__title">${contato.title}</h2>
           <p class="footer__text">${contato.text}</p>
           <div class="footer__contact-list">
-            ${itemContato({ ...contato.whatsapp, icon: "/icons/whatsapp-fill.svg" })}
-            ${itemContato({ ...contato.instagram, icon: "/icons/instagram-fill.svg" })}
+            ${contato.items.map(itemContato).join("")}
           </div>
+        </section>
+
+        <section class="footer__block">
+          <h2 class="footer__title">${acessibilidade.title}</h2>
+          <p class="footer__text">${acessibilidade.text}</p>
         </section>
       </div>
 
@@ -68,13 +68,15 @@ export function footer({ accessibility, contact, supporters, credit } = {}) {
     </footer>`;
 }
 
-function itemContato({ label, detail, href, icon }) {
+function itemContato({ type, label, detail, href }) {
+  const icon = type === "whatsapp" ? "/icons/whatsapp-fill.svg" : "/icons/instagram-fill.svg";
+
   return `
     <a class="footer__contact-card" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${label} — abre em uma nova guia">
       <img class="footer__contact-icon" src="${icon}" alt="" width="32" height="32" aria-hidden="true">
       <span class="footer__contact-copy">
         <strong class="footer__contact-label">${label}</strong>
-        <span class="footer__contact-detail">${detail}</span>
+        ${detail ? `<span class="footer__contact-detail">${detail}</span>` : ""}
       </span>
     </a>`;
 }
@@ -110,16 +112,19 @@ const ACESSIBILIDADE_PADRAO = {
 const CONTATO_PADRAO = {
   title: "Contato",
   text: "Para mais informações sobre a exposição, entre em contato com a equipe do projeto.",
-  whatsapp: {
-    label: "Fale conosco pelo WhatsApp",
-    detail: "Camila Nemitz",
-    href: "https://wa.me/5555996747793",
-  },
-  instagram: {
-    label: "Siga nosso Instagram",
-    detail: "@gastro_iffar",
-    href: "https://www.instagram.com/gastro_iffar",
-  },
+  items: [
+    {
+      type: "whatsapp",
+      label: "Fale conosco pelo WhatsApp",
+      href: "https://wa.me/5555996747793",
+    },
+    {
+      type: "instagram",
+      label: "Siga o Instagram do projeto",
+      detail: "@gastro_iffar",
+      href: "https://www.instagram.com/gastro_iffar",
+    },
+  ],
 };
 
 const CREDITO_PADRAO = {

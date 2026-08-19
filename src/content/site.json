@@ -42,16 +42,44 @@
       "contact": {
         "title": "Contato",
         "text": "Para mais informações sobre a exposição, entre em contato com a equipe do projeto.",
-        "whatsapp": {
-          "label": "Fale conosco pelo WhatsApp",
-          "detail": "Camila Nemitz",
-          "href": "https://wa.me/5555996747793"
-        },
-        "instagram": {
-          "label": "Siga nosso Instagram",
-          "detail": "@gastro_iffar",
-          "href": "https://www.instagram.com/gastro_iffar"
-        }
+        "items": [
+          {
+            "type": "whatsapp",
+            "label": "Fale conosco pelo WhatsApp",
+            "detail": "Camila Nemitz",
+            "href": "https://wa.me/5555996747793"
+          },
+          {
+            "type": "instagram",
+            "label": "Siga o instagram do projeto",
+            "detail": "@gastro_iffar",
+            "href": "https://www.instagram.com/gastro_iffar"
+          },
+          {
+            "type": "instagram",
+            "label": "PPGEC Unijuí",
+            "detail": "@ppgec.unijui",
+            "href": "https://www.instagram.com/ppgec.unijui"
+          },
+          {
+            "type": "instagram",
+            "label": "Universo IFFAR",
+            "detail": "@universoiffar",
+            "href": "https://www.instagram.com/universoiffar.sb"
+          },
+          {
+            "type": "instagram",
+            "label": "PPGDR Unijuí",
+            "detail": "@ppgdrunijui",
+            "href": "https://www.instagram.com/ppgdrunijui"
+          },
+          {
+            "type": "instagram",
+            "label": "Unijuí",
+            "detail": "@unijui",
+            "href": "https://www.instagram.com/unijui"
+          }
+        ]
       },
       "supporters": {
         "title": "Apoiadores",

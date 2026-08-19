@@ -34,8 +34,9 @@ verificar("conteúdo", [
   [
     "rodapé declarado",
     Boolean(site.footer?.accessibility?.text)
-      && Boolean(site.footer?.contact?.whatsapp?.href)
-      && Boolean(site.footer?.contact?.instagram?.href)
+      && Array.isArray(site.footer?.contact?.items)
+      && site.footer.contact.items.length > 1
+      && site.footer.contact.items.every((item) => item.type && item.label && item.href)
       && Boolean(site.footer?.credit?.href)
       && site.footer.supporters.logos.length > 0,
   ],
