@@ -179,7 +179,7 @@ const TYPE_SCALE = [
   { token: "--text-h2", spec: "Cinzel Bold · 24/20px · 1.4", sample: "Conhecer a nossa cultura alimentar é reconhecer as raízes que nos unem.", style: "font-family:var(--font-heading);font-weight:700;font-size:var(--text-h2);line-height:1.4;color:var(--color-accent)" },
   { token: "--text-h3", spec: "Cinzel Bold · 20px · 1.1", sample: "ACESSIBILIDADE", style: "font-family:var(--font-heading);font-weight:700;font-size:var(--text-h3);line-height:1.1;color:var(--color-accent)" },
   { token: "--text-body", spec: "Source Sans 3 Regular · 20/16px · 1.5", sample: "Conheça os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro.", style: "font-size:var(--text-body);line-height:1.5" },
-  { token: "--text-card-title", spec: "Source Sans 3 Regular · 20/16px · 1.2", sample: "A gastronomia como propulsor do desenvolvimento turístico de lugares", style: "font-size:var(--text-card-title);line-height:1.2" },
+  { token: "--text-card-title", spec: "Source Sans 3 Regular · 20/16px · 1.2", sample: "A gastronomia como propulsora do desenvolvimento turístico de lugares", style: "font-size:var(--text-card-title);line-height:1.2" },
   { token: "--text-label", spec: "Source Sans 3 Medium · 20/16px · 1", sample: "Pesquisas e publicações científicas", style: "font-size:var(--text-label);font-weight:500;line-height:1" },
   { token: "--text-action", spec: "Source Sans 3 Regular · 20px · 1 · capitalize", sample: "Ler dissertação", style: "font-size:var(--text-action);line-height:1;text-transform:capitalize" },
   { token: "--text-meta", spec: "Source Sans 3 Regular · 16px · 1.5 · 70%", sample: "Aline Prestes Roque", style: "font-size:var(--text-meta);line-height:1.5;color:var(--color-text-muted)" },
@@ -397,7 +397,7 @@ const conteudo = section({
       modifier: "sg-stage--stack sg-stage--narrow",
       stage: card({
         title:
-          "A gastronomia como propulsor do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
+          "A gastronomia como propulsora do desenvolvimento turístico de lugares: estudo em três municípios missioneiros",
         meta: "Aline Prestes Roque",
         action: { label: "Ler dissertação", iconName: "file-text" },
       }),
@@ -422,7 +422,7 @@ const conteudo = section({
         header: { iconName: "search", label: "Pesquisas e publicações científicas" },
         children: [
           card({
-            title: "A gastronomia como propulsor do desenvolvimento turístico de lugares",
+            title: "A gastronomia como propulsora do desenvolvimento turístico de lugares",
             meta: "Aline Prestes Roque",
             action: { label: "Ler dissertação", iconName: "file-text" },
           }),

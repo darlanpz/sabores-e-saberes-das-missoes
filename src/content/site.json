@@ -227,7 +227,7 @@
               }
             },
             {
-              "title": "A gastronomia como propulsor do desenvolvimento turístico de lugares: Estudo em três municípios missioneiros",
+              "title": "A gastronomia como propulsora do desenvolvimento turístico de lugares: Estudo em três municípios missioneiros",
               "meta": "Aline Prestes Roque",
               "action": {
                 "label": "Visualizar PDF",
@@ -562,7 +562,7 @@
     },
     "banner3": {
       "title": "Banner 3 - O encontro de diferentes culturas transformou os sabores das Missões",
-      "description": "Reduções Jesuítico Guarani: séculos de conflitos, encontros e trocas que formaram a identidade alimentar missioneira.",
+      "description": "Reduções Jesuítico-Guarani: séculos de conflitos, encontros e trocas que formaram a identidade alimentar missioneira.",
       "sticky": "main",
       "hero": {
         "src": "/img/banner3/banner-3-hero.webp",
@@ -578,7 +578,7 @@
           "type": "text",
           "column": "aside",
           "title": "O encontro de diferentes culturas transformou os sabores das Missões",
-          "body": "Reduções Jesuítico Guarani: séculos de conflitos, encontros e trocas que formaram a identidade alimentar missioneira."
+          "body": "Reduções Jesuítico-Guarani: séculos de conflitos, encontros e trocas que formaram a identidade alimentar missioneira."
         },
         {
           "type": "video",
@@ -689,7 +689,7 @@
                 "src": "/img/banner4/2.webp",
                 "alt": "Representação dos jesuítas espanhóis nas Reduções Jesuítico-Guarani"
               },
-              "description": "Fundação das Reduções Jesuítico-Guarani e organização agrícola e pecuária"
+              "description": "Fundação das Reduções Jesuítico-Guarani, da primeira fase das Missões, e organização agrícola e pecuária"
             },
             {
               "year": "1750",
@@ -1391,17 +1391,17 @@
                     {
                       "amount": "1",
                       "unit": "unidade",
-                      "item": "Cebola em brunoise"
+                      "item": "Cebola em Cubinhos"
                     },
                     {
                       "amount": "4",
                       "unit": "dentes",
-                      "item": "Alho em brunoise"
+                      "item": "Alho em Cubinhos"
                     },
                     {
                       "amount": "½",
                       "unit": "unidade",
-                      "item": "Pimentão vermelho em brunoise"
+                      "item": "Pimentão vermelho em Cubinhos"
                     },
                     {
                       "amount": "A gosto",
@@ -1484,7 +1484,7 @@
                     {
                       "amount": "5",
                       "unit": "dentes",
-                      "item": "Alho em brunoise"
+                      "item": "Alho em Cubinhos"
                     },
                     {
                       "amount": "A gosto",
@@ -1542,7 +1542,7 @@
                     {
                       "amount": "1",
                       "unit": "unidade",
-                      "item": "Cebola em brunoise"
+                      "item": "Cebola em Cubinhos"
                     },
                     {
                       "amount": "5",
@@ -1557,7 +1557,7 @@
                     {
                       "amount": "2",
                       "unit": "unidades",
-                      "item": "Tomates concassé"
+                      "item": "Tomates em cubos sem semente"
                     },
                     {
                       "amount": "2",
@@ -1838,7 +1838,7 @@
           "column": "main",
           "header": {
             "icon": "book-open",
-            "label": "Veja os trabalhos dos alunos do Curso de Tecnologia em Gastronomia do IFFar — São Borja, com os alimentos regionais missioneiros apresentados a partir do conceito da 'inovação baseada na tradição' e as redes sociais do curso."
+            "label": "Veja os trabalhos dos alunos do Curso de Tecnologia em Gastronomia do IFFar — São Borja, com os alimentos regionais missioneiros apresentados a partir do conceito da 'inovação baseada na tradição' .."
           },
           "items": [
             {
