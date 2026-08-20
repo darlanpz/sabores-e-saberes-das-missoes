@@ -369,31 +369,19 @@
         "pages": [
           {
             "src": "/img/quadrinho/pagina-01.webp",
-            "alt": "Página 1 do quadrinho"
+            "alt": "Capa: Sabores e Saberes - Uma viagem pela nossa história e gastronomia missioneira"
           },
           {
             "src": "/img/quadrinho/pagina-02.webp",
-            "alt": "Página 2 do quadrinho"
+            "alt": "Página 1: Muito antes de tudo... os primeiros sabores das Missões"
           },
           {
             "src": "/img/quadrinho/pagina-03.webp",
-            "alt": "Página 3 do quadrinho"
+            "alt": "Página 2: Novos povos, novos sabores"
           },
           {
             "src": "/img/quadrinho/pagina-04.webp",
-            "alt": "Página 4 do quadrinho"
-          },
-          {
-            "src": "/img/quadrinho/pagina-05.webp",
-            "alt": "Página 5 do quadrinho"
-          },
-          {
-            "src": "/img/quadrinho/pagina-06.webp",
-            "alt": "Página 6 do quadrinho"
-          },
-          {
-            "src": "/img/quadrinho/pagina-07.webp",
-            "alt": "Página 7 do quadrinho"
+            "alt": "Página 3: Sabores que ficaram"
           }
         ],
         "cta": {
@@ -540,7 +528,7 @@
               "title": "Veja a história em quadrinhos sobre a alimentação dos povos Guarani e responda um desafio.",
               "thumb": {
                 "src": "/img/quadrinho/pagina-01.webp",
-                "alt": "Primeira página do quadrinho",
+                "alt": "Capa do quadrinho Sabores e Saberes",
                 "width": 120,
                 "height": 180
               },
