@@ -93,12 +93,13 @@ const TIPOS = {
    * Abertura da home: texto à esquerda e, no desktop, uma imagem compondo à
    * direita. No mobile a imagem desce para baixo do texto.
    */
-  intro: ({ title, lead, text, image }) => `
+  intro: ({ title, lead, text, note, image }) => `
     <section class="intro">
       <div class="intro__content">
         <h1 class="intro__title">${title}</h1>
         ${lead ? `<p class="intro__lead">${lead}</p>` : ""}
         ${text ? `<p class="intro__text">${text}</p>` : ""}
+        ${note ? `<p class="intro__note">${note}</p>` : ""}
       </div>
       ${
         image
