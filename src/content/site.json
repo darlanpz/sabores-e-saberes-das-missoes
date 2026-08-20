@@ -759,7 +759,7 @@
                 "src": "/img/banner4/8.webp",
                 "alt": "Representação da identidade alimentar missioneira na atualidade"
               },
-              "description": "A identidade alimentar missioneira foi construída ao longo de séculos pelo encontro entre povos, culturas e territórios. Cada migração trouxe novos ingredientes, saberes e tradições que, adaptados aos alimentos locais, continuam vivos na mesa e na memória das Missões."
+              "description": "A identidade alimentar missioneira foi construída ao longo de séculos pelo encontro entre povos, culturas e territórios. Cada etnia trouxe novos ingredientes, saberes e tradições que, adaptados aos alimentos locais, continuam vivos na mesa e na memória das Missões."
             }
           ]
         },
@@ -768,7 +768,7 @@
           "column": "after",
           "header": {
             "icon": "book-open",
-            "label": "Caderno de receitas tradicionais das Missões"
+            "label": "Caderno de receitas étnicas presentes até hoje nas mesas missioneiras"
           },
           "items": [
             {
