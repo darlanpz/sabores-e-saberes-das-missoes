@@ -37,14 +37,6 @@
   max-width: 56ch;
 }
 
-/* Nota de transparência sobre uso de IA — discreta, abaixo do texto principal. */
-.intro__note {
-  font-size: var(--text-small);
-  line-height: var(--leading-body);
-  color: var(--color-text-muted);
-  max-width: 56ch;
-}
-
 .intro__figure {
   margin: 0;
   align-self: center;

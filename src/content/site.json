@@ -126,6 +126,7 @@
           }
         ]
       },
+      "aiNote": "Ferramentas de Inteligência Artificial foram utilizadas como apoio no desenvolvimento de textos, ideias e elementos visuais deste projeto. Todo o conteúdo foi dirigido, selecionado, revisado e adaptado para atender aos objetivos do projeto.",
       "credit": {
         "text": "Desenvolvido por gapz visual.",
         "href": "https://www.gapzvisual.com.br"
@@ -143,7 +144,6 @@
           "title": "Projeto Sabores e Saberes das Missões",
           "lead": "Uma exposição sobre os patrimônios alimentares da região das Missões e sua importância na formação da identidade do povo missioneiro.",
           "text": "Dos primeiros sistemas alimentares Guarani às cozinhas que seguem se transformando hoje, esta é uma história construída pelas relações sociais, históricas, culturais, ambientais e econômicas que marcam este território. Percorra os cinco banners e descubra o que cada povo trouxe para a mesa missioneira.",
-          "note": "Ferramentas de Inteligência Artificial foram utilizadas como apoio no desenvolvimento de textos, ideias e elementos visuais deste projeto. Todo o conteúdo foi dirigido, selecionado, revisado e adaptado para atender aos objetivos do projeto.",
           "image": {
             "src": "/img/banner1/banner-1-1.webp",
             "alt": "Cruz de Lorena em pedra, símbolo das Reduções Jesuítico-Guarani"

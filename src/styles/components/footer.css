@@ -122,6 +122,13 @@
   object-fit: contain;
 }
 
+.footer__ai-note {
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  max-width: none;
+}
+
 .footer__credit {
   align-self: stretch;
   color: var(--color-text-muted);

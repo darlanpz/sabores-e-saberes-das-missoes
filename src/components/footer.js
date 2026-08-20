@@ -33,9 +33,10 @@ import { medidas } from "./medidas.js";
  * @param {{title?: string, text?: string}} [opts.accessibility]
  * @param {{title?: string, text?: string, items?: Array<{type: string, label: string, detail?: string, href: string}>}} [opts.contact]
  * @param {{title?: string, logos?: Array<{src: string, alt: string, width?: number, href?: string}>}} [opts.supporters]
+ * @param {string} [opts.aiNote] nota de transparência sobre uso de IA, exibida abaixo das logos
  * @param {{text?: string, href?: string}} [opts.credit]
  */
-export function footer({ accessibility, contact, supporters, credit } = {}) {
+export function footer({ accessibility, contact, supporters, aiNote, credit } = {}) {
   const acessibilidade = { ...ACESSIBILIDADE_PADRAO, ...accessibility };
   const contato = {
     ...CONTATO_PADRAO,
@@ -63,6 +64,8 @@ export function footer({ accessibility, contact, supporters, credit } = {}) {
       </div>
 
       ${apoiadores.logos.length ? blocoApoiadores(apoiadores) : ""}
+
+      ${aiNote ? `<p class="footer__ai-note">${aiNote}</p>` : ""}
 
       <a class="footer__credit" href="${credito.href}" target="_blank" rel="noopener noreferrer">${credito.text}</a>
     </footer>`;
