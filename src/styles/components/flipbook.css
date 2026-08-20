@@ -66,7 +66,13 @@
 .flipbook__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* `contain`, não `cover`: as páginas do quadrinho não compartilham todas a
+     mesma proporção exata (a arte varia um pouco de página para página), e
+     `cover` cortava conteúdo desenhado perto da borda — ex.: a cruz no
+     rodapé da capa. `contain` garante a página inteira sempre visível,
+     mesmo que sobre uma faixa fina da cor de fundo nas páginas cuja
+     proporção diverge um pouco da caixa. */
+  object-fit: contain;
   pointer-events: none; /* o arrasto é do spread, não da imagem */
 }
 
