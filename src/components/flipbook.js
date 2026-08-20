@@ -293,29 +293,44 @@ export function initFlipbook(root) {
 
   /* --- Arrasto ------------------------------------------------------------ */
 
+  const LIMIAR_DIRECAO = 4; // px — abaixo disso ainda não sabemos o sentido do arrasto
+
   spread.addEventListener("pointerdown", (event) => {
     if (event.button !== 0 || arrasto || virando) return;
     // Botões (navegação e o CTA da última página) ficam com o clique deles.
     if (event.target.closest("button")) return;
 
     const rect = spread.getBoundingClientRect();
-    const naDireita = porVista === 1 || event.clientX - rect.left > rect.width / 2;
-    const sentido = naDireita ? 1 : -1;
 
-    if (!armar(sentido)) return;
-
-    arrasto = {
-      sentido,
-      x0: event.clientX,
-      largura: porVista === 2 ? rect.width / 2 : rect.width,
-      progresso: 0,
-    };
+    if (porVista === 2) {
+      // Duas páginas: o lado tocado já diz o sentido, mesmo sem arrastar.
+      const sentido = event.clientX - rect.left > rect.width / 2 ? 1 : -1;
+      if (!armar(sentido)) return;
+      arrasto = { sentido, x0: event.clientX, largura: rect.width / 2, progresso: 0 };
+    } else {
+      // Página única: não tem "lado direito" — o sentido só existe quando o
+      // dedo de fato se move. Decidir isso antes fazia todo arrasto virar
+      // "avançar", e puxar para a direita nunca voltava a página.
+      arrasto = { sentido: null, x0: event.clientX, largura: rect.width, progresso: 0 };
+    }
     spread.setPointerCapture(event.pointerId);
   });
 
   spread.addEventListener("pointermove", (event) => {
     if (!arrasto) return;
     const dx = event.clientX - arrasto.x0;
+
+    if (arrasto.sentido === null) {
+      if (Math.abs(dx) < LIMIAR_DIRECAO) return;
+      // Arrasta para a esquerda → avança; para a direita → volta.
+      const sentido = dx < 0 ? 1 : -1;
+      if (!armar(sentido)) {
+        arrasto = null;
+        return;
+      }
+      arrasto.sentido = sentido;
+    }
+
     // Adiante puxa para a esquerda; atrás, para a direita.
     const bruto = (arrasto.sentido === 1 ? -dx : dx) / arrasto.largura;
     arrasto.progresso = Math.min(Math.max(bruto, 0), 1);
@@ -325,6 +340,13 @@ export function initFlipbook(root) {
   function soltar(event) {
     if (!arrasto) return;
     const { sentido, progresso } = arrasto;
+    // Nunca chegou a se mover o bastante para escolher um sentido: não havia
+    // folha armada, então não há o que assentar.
+    if (sentido === null) {
+      arrasto = null;
+      spread.releasePointerCapture?.(event.pointerId);
+      return;
+    }
     arrasto = null;
     virando = true;
     spread.releasePointerCapture?.(event.pointerId);

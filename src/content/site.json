@@ -511,8 +511,8 @@
           "type": "video",
           "column": "full",
           "label": "Vídeo imersivo",
-          "src": "/video/exemplo.mp4",
-          "poster": "/video/exemplo-poster.webp"
+          "src": "/video/video-banner-2.mp4",
+          "poster": "/video/video-banner-2-poster.webp"
         },
         {
           "type": "text",

@@ -28,7 +28,6 @@
 
 .flipbook__spread {
   position: relative;
-  display: flex;
   width: 100%;
   aspect-ratio: var(--page-ratio);
   perspective: 2000px;
@@ -46,13 +45,22 @@
 .flipbook__face {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-text);
+  /* Marrom escuro, não a cor clara do papel: com `object-fit: contain`, as
+     páginas cuja proporção diverge um pouco da caixa (ver comentário em
+     `.flipbook__img`) sobram uma faixa fina desse fundo — o mesmo tom do
+     body funde com o resto da página em vez de aparecer como borda branca. */
+  background-color: var(--color-primary);
 }
 
+/* Posicionadas por fora do fluxo, não por flex: a página (e a imagem dentro
+   dela, a 100% de largura/altura) nunca deve influenciar o tamanho do
+   spread — só o `aspect-ratio` acima decide isso. Com `flex`, o navegador
+   às vezes deixava a proporção intrínseca da própria imagem vazar para o
+   tamanho da caixa, e cada página do quadrinho — com sua proporção própria —
+   acabava aparecendo num tamanho ligeiramente diferente. */
 .flipbook__page {
-  flex: 1 0 0;
-  min-width: 0;
-  height: 100%;
+  position: absolute;
+  inset: 0;
 }
 
 /* Lugar sem página: capa fechada, contracapa, ou o fim de um quadrinho com
@@ -210,8 +218,14 @@
     translate: 25% 0;
   }
 
+  /* Livro aberto: cada página ocupa metade do spread. */
   .flipbook__page--left {
     display: block;
+    inset: 0 50% 0 0;
+  }
+
+  .flipbook__page--right {
+    inset: 0 0 0 50%;
   }
 
   /* Volta a ser meia folha: a lombada passa para o meio do spread. */
