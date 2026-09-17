@@ -5,6 +5,8 @@ import { icon as glifo } from "../components/icon.js";
 import { medidas } from "../components/medidas.js";
 import { recipeCatalog } from "../components/recipe.js";
 import { studentRecipesPanel } from "../components/student-recipe.js";
+import { button } from "../components/button.js";
+import { contactForm } from "../components/contact-form.js";
 
 /**
  * Tradutores de bloco: cada tipo do JSON vira um componente existente.
@@ -120,6 +122,31 @@ const TIPOS = {
     <ul class="banner-grid">
       ${items.map((item) => cartaoBanner(item, pages[item.slug])).join("")}
     </ul>`,
+
+  /**
+   * CTA de contato — texto + imagem (como a abertura da Home) com um botão
+   * para `/contato/`. WhatsApp/Instagram ficam só no rodapé, não se repetem
+   * aqui.
+   */
+  contactCta: ({ title, lead, text, image, cta }) => `
+    <section class="contact-cta">
+      <div class="contact-cta__content">
+        <h2 class="contact-cta__title">${title}</h2>
+        ${lead ? `<p class="contact-cta__lead">${lead}</p>` : ""}
+        ${text ? `<p class="contact-cta__text">${text}</p>` : ""}
+        ${cta ? button({ label: cta.label, iconName: cta.icon ?? "arrow-right", href: cta.href }) : ""}
+      </div>
+      ${
+        image
+          ? `<figure class="contact-cta__figure fade-image fade-image--screen fade-image--rounded">
+              <img class="fade-image__img" src="${image.src}"${medidas(image.src)} alt="${image.alt ?? ""}" loading="lazy" decoding="async">
+            </figure>`
+          : ""
+      }
+    </section>`,
+
+  /** Formulário de contato da página `/contato/`. */
+  contactForm: (bloco) => contactForm(bloco),
 };
 
 /** Um card da grade da home. */

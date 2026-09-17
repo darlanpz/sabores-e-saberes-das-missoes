@@ -9,12 +9,14 @@ import { footer } from "../src/components/footer.js";
 import { quizModal } from "../src/components/quiz.js";
 import { recipeCatalog } from "../src/components/recipe.js";
 import { studentRecipesPanel } from "../src/components/student-recipe.js";
+import { contactCard } from "../src/components/contact.js";
+import { contactForm } from "../src/components/contact-form.js";
 
 const USED = [
   "play", "pause", "stop-circle", "repeat", "circle", "fast-forward",
   "file-text", "menu", "x", "search", "video", "message-circle",
   "book-open", "film", "help-circle", "check-circle", "info",
-  "alert-triangle", "alert-circle",
+  "alert-triangle", "alert-circle", "send",
 ];
 
 const missing = USED.filter((n) => !feather.icons[n]);
@@ -74,6 +76,8 @@ const out = [
   }),
   footer(),
   icon("play", { fill: true }), icon("info", { label: "Informação" }),
+  contactCard({ type: "whatsapp", label: "Fale conosco", href: "https://wa.me/5500000000000" }),
+  contactForm(),
 ].join("\n");
 
 console.log("OK  todos os componentes renderizaram sem lançar");
@@ -249,6 +253,34 @@ const rodapeCustom = footer({
   },
 });
 const rodapeSemLogos = footer({ supporters: { logos: [] } });
+
+// --- Formulário de contato ---------------------------------------------------
+const cf = contactForm();
+const cfComAbertura = contactForm({
+  title: "Contato",
+  lead: "Lead de teste",
+  text: "Texto de teste",
+  image: { src: "/img/banner2/banner-2-2.webp", alt: "Imagem de teste" },
+});
+const contactFormChecks = [
+  ["campos obrigatórios presentes", ["name=\"nome\"", "name=\"email\"", "name=\"tipo\"", "name=\"mensagem\""].every((campo) => cf.includes(campo))],
+  ["nome, e-mail, cidade e mensagem têm label associado", ["contato-nome", "contato-email", "contato-cidade", "contato-mensagem"].every((id) => cf.includes(`for="${id}"`) && cf.includes(`id="${id}"`))],
+  ["tipo de mensagem é fieldset+legend, não <select>", cf.includes("<fieldset") && cf.includes("<legend") && !/<select[^>]*name="tipo"/.test(cf)],
+  ["tipo de mensagem é grupo de select-buttons", (cf.match(/class="select-button"/g) || []).length === 3],
+  ["cada opção de tipo é um radio de verdade (acessível)", (cf.match(/type="radio"\s+name="tipo"/g) || []).length === 3],
+  ["honeypot fora da navegação e da árvore de acessibilidade", /visually-hidden" aria-hidden="true"[\s\S]{0,120}name="website"[\s\S]{0,40}tabindex="-1"/.test(cf)],
+  ["cidade é um combobox WAI-ARIA", cf.includes('role="combobox"') && cf.includes('role="listbox"') && cf.includes('aria-autocomplete="list"')],
+  ["cidade usa a mesma classe dos outros campos (largura 100% vem do CSS compartilhado)", /class="form-field__control"[\s\S]{0,100}id="contato-cidade"/.test(cf)],
+  ["cidade não é obrigatória (API externa pode falhar)", !/id="contato-cidade"[^>]*required/.test(cf)],
+  ["erro por campo associado via aria-describedby", cf.includes('aria-describedby="contato-nome-erro"')],
+  ["região de status do envio existe", cf.includes("data-contact-status")],
+  ["botão de envio é submit com ícone", /<button[^>]*type="submit"[^>]*data-contact-submit[^>]*>[\s\S]{0,80}<svg/.test(cf)],
+  ["sem título, não sobra seção de abertura vazia", !cf.includes("contact-page__intro")],
+  ["com título, abertura vem com texto e imagem compondo a página", cfComAbertura.includes("contact-page__intro") && cfComAbertura.includes("intro__figure") && cfComAbertura.includes("banner-2-2.webp")],
+  ["sem undefined vazando", !cf.includes("undefined")],
+];
+for (const [nome, ok] of contactFormChecks) console.log(`${ok ? "OK  " : "FALHA"} formulário: ${nome}`);
+if (contactFormChecks.some(([, ok]) => !ok)) process.exitCode = 1;
 
 const footerChecks = [
   ["logos vêm de img, não de texto", (rodapePadrao.match(/<img[^>]*\/img\/logos\//g) || []).length === 8],

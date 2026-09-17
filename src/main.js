@@ -16,6 +16,7 @@ import "./styles/components/footer.css";
 import "./styles/components/feedback.css";
 import "./styles/components/hero.css";
 import "./styles/components/tooltip.css";
+import "./styles/components/contact-form.css";
 import "./styles/styleguide.css";
 
 import { icon } from "./components/icon.js";
@@ -36,6 +37,7 @@ import { initFlipbooks } from "./components/flipbook.js";
 import { initMenus } from "./components/menu.js";
 import { initModals } from "./components/modal.js";
 import { footer } from "./components/footer.js";
+import { contactForm, initContactForm } from "./components/contact-form.js";
 
 const AUDIO_EXEMPLO = "/audio/audiodescricao-exemplo.wav";
 const VIDEO_EXEMPLO = "/video/exemplo.mp4";
@@ -557,6 +559,18 @@ const rodape = section({
   }),
 });
 
+const formulario = section({
+  number: "10.6",
+  title: "Formulário",
+  note: "Campos com token de cor e raio, sem valor novo. A cidade é um combobox WAI-ARIA que busca os municípios do IBGE sob demanda.",
+  content: block({
+    label: "Formulário de contato",
+    spec: "validação por campo · honeypot · combobox de cidade lazy",
+    modifier: "sg-stage--stack",
+    stage: contactForm(),
+  }),
+});
+
 /* --------------------------------------------------------------------------
    Montagem
    -------------------------------------------------------------------------- */
@@ -571,6 +585,7 @@ const body = [
   conteudo,
   midia,
   rodape,
+  formulario,
 ].join("");
 
 document.querySelector("#app").innerHTML = `
@@ -599,6 +614,7 @@ initPlayers();
 initVideos();
 initFlipbooks();
 initModals();
+initContactForm();
 
 // Na biblioteca, o Menu-button aparece isolado, fora de um header. Aqui ele só
 // alterna o próprio estado para demonstrar os dois ícones.

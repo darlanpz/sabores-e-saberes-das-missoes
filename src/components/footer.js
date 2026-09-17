@@ -1,4 +1,5 @@
 import { medidas } from "./medidas.js";
+import { contactCard } from "./contact.js";
 
 /**
  * Footer — acessibilidade, contato e apoiadores.
@@ -50,10 +51,10 @@ export function footer({ accessibility, contact, supporters, aiNote, credit } = 
     <footer class="footer">
       <div class="footer__top">
         <section class="footer__block">
-          <h2 class="footer__title">${contato.title}</h2>
+          ${contato.title ? `<h2 class="footer__title visually-hidden">${contato.title}</h2>` : ""}
           <p class="footer__text">${contato.text}</p>
           <div class="footer__contact-list">
-            ${contato.items.map(itemContato).join("")}
+            ${contato.items.map(contactCard).join("")}
           </div>
         </section>
 
@@ -69,19 +70,6 @@ export function footer({ accessibility, contact, supporters, aiNote, credit } = 
 
       <a class="footer__credit" href="${credito.href}" target="_blank" rel="noopener noreferrer">${credito.text}</a>
     </footer>`;
-}
-
-function itemContato({ type, label, detail, href }) {
-  const icon = type === "whatsapp" ? "/icons/whatsapp-fill.svg" : "/icons/instagram-fill.svg";
-
-  return `
-    <a class="footer__contact-card" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${label} — abre em uma nova guia">
-      <img class="footer__contact-icon" src="${icon}" alt="" width="32" height="32" aria-hidden="true">
-      <span class="footer__contact-copy">
-        <strong class="footer__contact-label">${label}</strong>
-        ${detail ? `<span class="footer__contact-detail">${detail}</span>` : ""}
-      </span>
-    </a>`;
 }
 
 function blocoApoiadores({ title, logos }) {

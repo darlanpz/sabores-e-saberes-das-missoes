@@ -232,7 +232,36 @@ verificar("home", [
   ["conteúdos de cada banner listados", htmlHome.includes("banner-card__tag")],
   ["sem hero, o header não flutua", htmlHome.includes("page__top--sem-hero")],
   ["sem player de audiodescrição", !htmlHome.includes("data-player-audio")],
+  [
+    "CTA de contato é seção texto + imagem, sem repetir WhatsApp/Instagram",
+    (() => {
+      const secao = htmlHome.match(/<section class="contact-cta">[\s\S]*?<\/section>/)?.[0] ?? "";
+      return (
+        secao.includes("contact-cta__figure")
+        && secao.includes('href="/contato/"')
+        && secao.includes("Entrar em contato")
+        && !secao.includes("wa.me")
+        && !secao.includes("instagram.com")
+      );
+    })(),
+  ],
   ["sem undefined vazando", !htmlHome.includes("undefined")],
+]);
+
+/* --- Contato ----------------------------------------------------------------- */
+
+const htmlContato = renderPage(site, pages.contato, "contato", pages);
+
+verificar("contato", [
+  ["e-mail de destino configurado no site.json", Boolean(site.email?.to) && Boolean(site.email?.fromName)],
+  ["nav aponta para /contato/", site.nav.some((item) => item.slug === "contato" && item.href === "/contato/")],
+  ["abertura com título e apresentação", htmlContato.includes("intro__title") && htmlContato.includes("intro__lead")],
+  ["formulário presente com os campos obrigatórios", ["name=\"nome\"", "name=\"email\"", "name=\"tipo\"", "name=\"mensagem\""].every((campo) => htmlContato.includes(campo))],
+  ["honeypot presente", htmlContato.includes('name="website"')],
+  ["combobox de cidade presente", htmlContato.includes("data-city-combobox")],
+  ["tipo de mensagem é grupo de select-buttons, não <select>", htmlContato.includes("select-buttons") && !/<select[^>]*name="tipo"/.test(htmlContato)],
+  ["sem imagem — só texto e formulário", !htmlContato.includes("intro__figure")],
+  ["sem undefined vazando", !htmlContato.includes("undefined")],
 ]);
 
 /* --- Banner 5 -------------------------------------------------------------- */

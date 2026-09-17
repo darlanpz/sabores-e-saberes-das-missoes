@@ -138,7 +138,71 @@
   color: var(--color-accent);
 }
 
+/* --------------------------------------------------------------------------
+   CTA de contato
+   -------------------------------------------------------------------------- */
+
+.contact-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--space-8) var(--space-12);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.contact-cta__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 56ch;
+}
+
+.contact-cta__title {
+  font-size: var(--text-h2);
+  line-height: var(--leading-tight);
+}
+
+.contact-cta__lead {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-accent);
+}
+
+.contact-cta__text {
+  font-size: var(--text-meta);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+}
+
+/* O botão é filho de um flex column — sem isto ele estica para a largura do
+   texto em vez de ficar do tamanho do próprio conteúdo. */
+.contact-cta__content .button {
+  align-self: flex-start;
+}
+
+.contact-cta__figure {
+  margin: 0;
+  align-self: center;
+}
+
+.contact-cta__figure img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
 @media (width >= 768px) {
+  .contact-cta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: var(--space-12);
+  }
+
+  .contact-cta__figure img {
+    max-width: 440px;
+  }
+
   /* Texto à esquerda, imagem compondo à direita. A coluna da imagem é `auto`
      para ela ocupar só o que precisa e deixar o resto ao texto. */
   .intro {

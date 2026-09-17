@@ -32,23 +32,26 @@
         "label": "Banner 5",
         "href": "/banner5/",
         "slug": "banner5"
+      },
+      {
+        "label": "Contato",
+        "href": "/contato/",
+        "slug": "contato"
       }
     ],
+    "email": {
+      "to": "darlan.mpaz@gmail.com",
+      "fromName": "Sabores e Saberes das Missões"
+    },
     "footer": {
       "accessibility": {
         "title": "ACESSIBILIDADE",
         "text": "Esta exposição conta com audiodescrição dos banners e resumos acessíveis dos conteúdos disponíveis nos QR Codes, legendas e janelas de Libras nos vídeos e apostila com descrição dos textos em Braille, promovendo uma experiência inclusiva para todos os públicos."
       },
       "contact": {
-        "title": "Contato",
-        "text": "Para mais informações sobre a exposição, entre em contato com a equipe do projeto.",
+        "title": "Siga nas redes sociais",
+        "text": "Acompanhe os perfis do projeto e dos parceiros no Instagram.",
         "items": [
-          {
-            "type": "whatsapp",
-            "label": "Fale conosco pelo WhatsApp",
-            "detail": "55 99674-7793",
-            "href": "https://wa.me/5555996747793"
-          },
           {
             "type": "instagram",
             "label": "Gastronomia IFFar-São Borja",
@@ -221,6 +224,21 @@
               ]
             }
           ]
+        },
+        {
+          "type": "contactCta",
+          "column": "full",
+          "title": "Fale com a gente",
+          "lead": "Dúvidas, sugestões ou elogios sobre a exposição? A equipe do projeto quer ouvir você.",
+          "text": "Preencha o formulário de contato — todo retorno ajuda a manter viva a memória alimentar das Missões.",
+          "image": {
+            "src": "/img/banner2/banner-2-2.webp",
+            "alt": "Peixes assando sobre o moquém, estrutura de madeira montada sobre a fogueira"
+          },
+          "cta": {
+            "label": "Entrar em contato",
+            "href": "/contato/"
+          }
         }
       ]
     },
@@ -2066,6 +2084,35 @@
           "column": "aside",
           "text": "Só preservamos aquilo que conhecemos. Só valorizamos aquilo que compreendemos.",
           "body": "Que esta viagem pelos sabores missioneiros desperte o orgulho de uma herança construída por diferentes povos e compartilhada entre gerações. Preservá-la é fortalecer a identidade, a memória e o futuro das Missões."
+        }
+      ]
+    },
+    "contato": {
+      "title": "Contato",
+      "description": "Fale com a equipe do projeto Sabores e Saberes das Missões — dúvidas, sugestões ou elogios sobre a exposição.",
+      "blocks": [
+        {
+          "type": "contactForm",
+          "column": "full",
+          "title": "Contato",
+          "lead": "Sua opinião ajuda a manter viva a memória alimentar das Missões.",
+          "text": "Escreva para a equipe do projeto com dúvidas, sugestões ou elogios sobre a exposição. Respondemos o mais breve possível.",
+          "submitLabel": "Enviar mensagem",
+          "sendingLabel": "Enviando…",
+          "successMessage": "Mensagem enviada! Vamos responder em breve.",
+          "errorMessage": "Não foi possível enviar agora. Tente novamente em instantes.",
+          "tipos": ["Elogio", "Dúvida", "Sugestão"],
+          "labels": {
+            "nome": "Nome",
+            "email": "E-mail",
+            "tipo": "Tipo de mensagem",
+            "cidade": "Cidade",
+            "mensagem": "Mensagem"
+          },
+          "placeholders": {
+            "cidade": "Digite o nome da sua cidade"
+          },
+          "cidadeAjuda": "Buscamos na lista oficial de municípios do IBGE."
         }
       ]
     }

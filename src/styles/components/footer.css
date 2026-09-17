@@ -19,7 +19,7 @@
 
 .footer__top {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-10);
 }
 
 .footer__contact-list {
@@ -80,9 +80,11 @@
   color: var(--color-text-muted);
 }
 
-/* O bloco de apoiadores respira mais entre o título e as logos. */
+/* O bloco de apoiadores respira mais entre o título e as logos, e mais ainda
+   antes dele — separando visualmente das redes sociais e da acessibilidade. */
 .footer__block--supporters {
   gap: var(--space-6);
+  margin-top: var(--space-6);
 }
 
 .footer__title {

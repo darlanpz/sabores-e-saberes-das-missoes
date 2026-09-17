@@ -28,6 +28,7 @@ import "./styles/components/tooltip.css";
 import "./styles/components/page.css";
 import "./styles/components/home.css";
 import "./styles/components/reveal.css";
+import "./styles/components/contact-form.css";
 
 import conteudo from "./content/site.json";
 import { renderPage } from "./render/page.js";
@@ -38,6 +39,7 @@ import { initMenus } from "./components/menu.js";
 import { initReveal } from "./components/reveal.js";
 import { initModals } from "./components/modal.js";
 import { initQuizzes } from "./components/quiz.js";
+import { initContactForm } from "./components/contact-form.js";
 import { initRouter } from "./components/router.js";
 import { initVLibras } from "./components/vlibras.js";
 
@@ -63,6 +65,7 @@ function montar(slug) {
   initFlipbooks();
   initModals();
   initQuizzes();
+  initContactForm();
   initReveal();
 }
 

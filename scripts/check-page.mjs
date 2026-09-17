@@ -58,7 +58,7 @@ const css = readFileSync(join(ASSETS, cssName), "utf8");
 
 const checks = [
   ["página montou", html.length > 10000],
-  ["9 seções", (html.match(/class="sg-section"/g) || []).length === 9],
+  ["10 seções", (html.match(/class="sg-section"/g) || []).length === 10],
   ["sumário preenchido", html.includes('class="sg__toc"') && html.includes('href="#cores"')],
   ["ids sem acento", !/id="[^"]*[áàâãéêíóôõúç]/i.test(html)],
   ["sem undefined vazando", !html.includes("undefined")],

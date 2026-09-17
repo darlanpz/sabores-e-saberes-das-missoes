@@ -18,6 +18,7 @@ npm run dev      # http://localhost:5173
 | `/banner3/` | Terceira página — vídeo dentro da coluna direita |
 | `/banner4/` | Quarta página — linha do tempo em painel, coluna esquerda que cola na rolagem |
 | `/banner5/` | Quinta página — trabalhos dos alunos e encerramento da exposição |
+| `/contato/` | Formulário de contato — envia e-mail via SMTP do Zoho (ver `api/contato.js`) |
 
 ## Onde mexer no conteúdo
 

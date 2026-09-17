@@ -54,6 +54,7 @@ export default defineConfig({
         banner3: raiz("banner3/index.html"),
         banner4: raiz("banner4/index.html"),
         banner5: raiz("banner5/index.html"),
+        contato: raiz("contato/index.html"),
       },
     },
   },

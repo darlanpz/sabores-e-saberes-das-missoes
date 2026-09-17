@@ -44,7 +44,7 @@ function bloco(item, ordem, contexto) {
  * @param {object} [pages] todas as páginas — a grade da home lê os heros daqui
  */
 export function renderPage(site, page, slug, pages = {}) {
-  const contexto = { pages };
+  const contexto = { pages, site };
   const blocos = (page.blocks ?? []).map((item, ordem) => ({ item, ordem }));
 
   const cheios = blocos.filter(({ item }) => item.column === "full");
