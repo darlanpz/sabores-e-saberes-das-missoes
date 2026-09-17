@@ -189,7 +189,7 @@
             {
               "slug": "banner3",
               "title": "O encontro de diferentes culturas",
-              "description": "Reduções Jesuítico-Guarani, domínio português e a presença de africanos escravizados: séculos de trocas que formaram a identidade alimentar missioneira.",
+              "description": "Reduções Jesuítico-Guarani, domínio português e a presença de africanos: séculos de trocas que formaram a identidade alimentar missioneira.",
               "tags": [
                 {
                   "icon": "message-circle",
@@ -632,7 +632,7 @@
         {
           "type": "text",
           "column": "aside",
-          "body": "Jesuítas espanhóis e povos Guarani. Formação, destruição e reorganização das Missões. O domínio português. A presença de africanos escravizados. Dessa convivência nasceram os saberes, sabores, ingredientes e técnicas que você vê aqui."
+          "body": "Jesuítas espanhóis e povos Guarani. Formação, destruição e reorganização das Missões. O domínio português. A presença de africanos. Dessa convivência nasceram os saberes, sabores, ingredientes e técnicas que você vê aqui."
         },
         {
           "type": "image",
@@ -2101,7 +2101,11 @@
           "sendingLabel": "Enviando…",
           "successMessage": "Mensagem enviada! Vamos responder em breve.",
           "errorMessage": "Não foi possível enviar agora. Tente novamente em instantes.",
-          "tipos": ["Elogio", "Dúvida", "Sugestão"],
+          "tipos": [
+            "Elogio",
+            "Dúvida",
+            "Sugestão"
+          ],
           "labels": {
             "nome": "Nome",
             "email": "E-mail",
