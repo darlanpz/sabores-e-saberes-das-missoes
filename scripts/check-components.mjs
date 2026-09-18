@@ -4,7 +4,7 @@ import { header, menuItem, menuButton, logo } from "../src/components/navigation
 import { button, pillButton } from "../src/components/button.js";
 import { sectionHeader, card, panel, textSection, contentList, feedback } from "../src/components/content.js";
 import { player, video, modal, pdfModal, timeline } from "../src/components/media.js";
-import { flipbook } from "../src/components/flipbook.js";
+import { flipbook, zoomModal } from "../src/components/flipbook.js";
 import { footer } from "../src/components/footer.js";
 import { quizModal } from "../src/components/quiz.js";
 import { recipeCatalog } from "../src/components/recipe.js";
@@ -16,7 +16,7 @@ const USED = [
   "play", "pause", "stop-circle", "repeat", "circle", "fast-forward",
   "file-text", "menu", "x", "search", "video", "message-circle",
   "book-open", "film", "help-circle", "check-circle", "info",
-  "alert-triangle", "alert-circle", "send",
+  "alert-triangle", "alert-circle", "send", "zoom-in", "zoom-out", "maximize",
 ];
 
 const missing = USED.filter((n) => !feather.icons[n]);
@@ -155,9 +155,39 @@ const flipChecks = [
   ["spread focável pelo teclado", /data-flip-spread[\s\S]{0,200}tabindex="0"/.test(f)],
   ["status em aria-live", f.includes('aria-live="polite"')],
   ["navegação anterior e próxima", f.includes("data-flip-prev") && f.includes("data-flip-next")],
+  ["sem id de zoom, não sobra gatilho de ampliação", !f.includes("flipbook__zoom-trigger")],
 ];
 for (const [nome, ok] of flipChecks) console.log(`${ok ? "OK  " : "FALHA"} quadrinho: ${nome}`);
 if (flipChecks.some(([, ok]) => !ok)) process.exitCode = 1;
+
+// --- Ampliação (zoom) --------------------------------------------------------
+const fComZoom = flipbook({
+  pages: paginas,
+  zoomId: "modal-teste-zoom",
+  cta: { note: "Nota de teste sobre IA" },
+});
+const zm = zoomModal({ id: "modal-teste-zoom" });
+// O conteúdo de cada página (incluindo o da CTA) é pintado em runtime a
+// partir de `data-pages`, não vem escrito na marcação estática — mesmo
+// motivo pelo qual não há `<img>` de página nenhuma aqui também.
+const paginasComZoom = paginasDe(fComZoom);
+
+const zoomChecks = [
+  ["dois gatilhos de ampliação, um por metade do spread", (fComZoom.match(/flipbook__zoom-trigger/g) || []).length === 4], // classe + modificador, 2x
+  ["gatilhos abrem o modal de zoom certo", (fComZoom.match(/data-abre="modal-teste-zoom"/g) || []).length === 2],
+  ["gatilhos têm aria-label (botão só de ícone)", (fComZoom.match(/data-flip-zoom-trigger="(esq|dir)"[^>]*aria-label="[^"]+"/g) || []).length === 2],
+  ["nota do CTA é parametrizável", paginasComZoom.at(-1)?.note === "Nota de teste sobre IA"],
+  ["sem nota informada, campo simplesmente não existe", !("note" in (paginasDe(f).at(-1) ?? {}))],
+  ["modal de zoom é um diálogo de verdade", zm.includes('role="dialog"') && zm.includes('aria-modal="true"')],
+  ["viewport com arraste/pinça acessível pelo teclado", /data-flip-zoom-viewport[^>]*tabindex="0"/.test(zm)],
+  ["imagem do zoom começa vazia — quem seta é o clique no gatilho", /data-flip-zoom-img[^>]*src=""/.test(zm)],
+  ["controles de zoom têm aria-label", ["Diminuir zoom", "Aumentar zoom", "Redefinir zoom"].every((rotulo) => zm.includes(`aria-label="${rotulo}"`))],
+  ["indicador de porcentagem presente", zm.includes("data-flip-zoom-level")],
+  ["fecha pelo mesmo botão dos outros modais", zm.includes("data-modal-close")],
+  ["sem undefined vazando", !fComZoom.includes("undefined") && !zm.includes("undefined")],
+];
+for (const [nome, ok] of zoomChecks) console.log(`${ok ? "OK  " : "FALHA"} ampliação: ${nome}`);
+if (zoomChecks.some(([, ok]) => !ok)) process.exitCode = 1;
 
 // --- API do quadrinho: quantidade, imagens e CTA são todos parametrizáveis ---
 function paginasDe(markup) {

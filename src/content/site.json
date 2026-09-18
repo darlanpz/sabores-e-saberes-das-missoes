@@ -410,7 +410,8 @@
             "iconName": "play",
             "iconFill": true,
             "opens": "modal-quiz"
-          }
+          },
+          "note": "Os elementos visuais foram criados com o auxílio de Inteligência Artificial"
         }
       },
       "quiz": {

@@ -108,6 +108,53 @@
   max-width: 20ch;
 }
 
+.flipbook__cta-note {
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  max-width: 32ch;
+}
+
+/* --- Ampliar página ---------------------------------------------------------
+   Um botão por metade do spread — no mobile só a direita existe, porque é a
+   única página visível (mesma regra da `.flipbook__page--left`). */
+
+.flipbook__zoom-trigger {
+  position: absolute;
+  z-index: 2;
+  bottom: var(--space-3);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-scrim-strong);
+  color: var(--color-accent);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.flipbook__zoom-trigger:hover {
+  background-color: var(--color-overlay);
+}
+
+.flipbook__zoom-trigger:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.flipbook__zoom-trigger[hidden] {
+  display: none;
+}
+
+.flipbook__zoom-trigger--left {
+  left: var(--space-3);
+}
+
+.flipbook__zoom-trigger--right {
+  right: var(--space-3);
+}
+
 /* --- Folha que vira -------------------------------------------------------- */
 
 .flipbook__leaf {
@@ -259,5 +306,135 @@
 @media (width < 768px) {
   .flipbook__page--left {
     display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Modal de ampliação — barra de controles + área de imagem com zoom/arrasto/
+   pinça. Mesmo tratamento de `.modal--pdf`/`.modal__document`: uma caixa que
+   ocupa a altura da tela, sem reinventar o diálogo em si (isso é `modal.js`).
+   -------------------------------------------------------------------------- */
+
+.modal--zoom {
+  padding: var(--space-4);
+}
+
+.flipbook-zoom {
+  display: flex;
+  flex-direction: column;
+  width: min(1120px, 100%);
+  height: calc(100dvh - (var(--space-4) * 2));
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-modal);
+}
+
+.flipbook-zoom__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-secondary);
+}
+
+.flipbook-zoom__control {
+  display: grid;
+  place-items: center;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.flipbook-zoom__control:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.flipbook-zoom__control:disabled {
+  opacity: var(--opacity-icon-disabled);
+  cursor: not-allowed;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.flipbook-zoom__level {
+  min-width: 4ch;
+  color: var(--color-text);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* Empurra o botão de fechar para a ponta da barra. */
+.flipbook-zoom__bar .modal__close--inline {
+  margin-left: auto;
+}
+
+.flipbook-zoom__viewport {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* O gesto (arrasto/pinça) é todo nosso — nada de o navegador roubar ou
+     atrasar o toque com o próprio zoom/scroll nativo. */
+  touch-action: none;
+  cursor: grab;
+}
+
+.flipbook-zoom__viewport--ativo {
+  cursor: grab;
+}
+
+.flipbook-zoom__viewport:active {
+  cursor: grabbing;
+}
+
+.flipbook-zoom__viewport:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: calc(var(--focus-ring-offset) * -1);
+}
+
+.flipbook-zoom__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  translate: var(--zoom-x, 0px) var(--zoom-y, 0px);
+  scale: var(--zoom-scale, 1);
+  transition: translate var(--duration-fast) var(--ease-standard), scale var(--duration-fast) var(--ease-standard);
+  user-select: none;
+  pointer-events: none; /* o arrasto/pinça é do viewport, não da imagem */
+}
+
+.flipbook-zoom__hint {
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-secondary);
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  text-align: center;
+}
+
+@media (width >= 768px) {
+  .modal--zoom {
+    padding: var(--space-6);
+  }
+
+  .flipbook-zoom {
+    height: calc(100dvh - (var(--space-6) * 2));
+  }
+
+  .flipbook-zoom__bar {
+    padding: var(--space-4) var(--space-6);
   }
 }

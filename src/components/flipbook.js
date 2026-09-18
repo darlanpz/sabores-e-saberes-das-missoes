@@ -1,4 +1,5 @@
 import { pillButton, button } from "./button.js";
+import { icon } from "./icon.js";
 
 const CTA_PADRAO = {
   text: "Já leu a história, responda o desafio!",
@@ -27,11 +28,18 @@ const CTA_PADRAO = {
  *
  * @param {object} opts
  * @param {Array<{src: string, alt?: string}>} opts.pages  quantas quiser
- * @param {{text?: string, action?: object}} [opts.cta]    última página
+ * @param {{text?: string, action?: object, note?: string}} [opts.cta]  última página
  * @param {string} [opts.label]  nome do leitor para leitores de tela
  * @param {string} [opts.id]
+ * @param {string} [opts.zoomId]  id do modal de ampliação (ver `zoomModal`)
  */
-export function flipbook({ pages = [], cta, label = "Quadrinho", id = "flipbook" } = {}) {
+export function flipbook({
+  pages = [],
+  cta,
+  label = "Quadrinho",
+  id = "flipbook",
+  zoomId,
+} = {}) {
   // Merge raso: dá para trocar só o texto e manter o botão padrão, ou o
   // contrário, sem precisar redeclarar o objeto inteiro.
   const chamada = {
@@ -47,6 +55,7 @@ export function flipbook({ pages = [], cta, label = "Quadrinho", id = "flipbook"
       class="flipbook"
       data-flipbook
       data-pages='${JSON.stringify(todas).replace(/'/g, "&apos;")}'
+      ${zoomId ? `data-zoom-id="${zoomId}"` : ""}
       id="${id}"
     >
       <div
@@ -67,6 +76,30 @@ export function flipbook({ pages = [], cta, label = "Quadrinho", id = "flipbook"
         </div>
 
         <span class="flipbook__gutter" aria-hidden="true"></span>
+
+        ${
+          zoomId
+            ? `
+        <button
+          class="flipbook__zoom-trigger flipbook__zoom-trigger--left"
+          type="button"
+          data-flip-zoom-trigger="esq"
+          data-abre="${zoomId}"
+          aria-haspopup="dialog"
+          data-tooltip="Ampliar página"
+          aria-label="Ampliar página à esquerda"
+        >${icon("zoom-in")}</button>
+        <button
+          class="flipbook__zoom-trigger flipbook__zoom-trigger--right"
+          type="button"
+          data-flip-zoom-trigger="dir"
+          data-abre="${zoomId}"
+          aria-haspopup="dialog"
+          data-tooltip="Ampliar página"
+          aria-label="Ampliar página"
+        >${icon("zoom-in")}</button>`
+            : ""
+        }
       </div>
 
       <div class="flipbook__bar">
@@ -87,6 +120,54 @@ function ctaHTML(page) {
     <div class="flipbook__cta">
       <p class="flipbook__cta-text">${page.text}</p>
       ${button(page.action)}
+      ${page.note ? `<p class="flipbook__cta-note">${page.note}</p>` : ""}
+    </div>`;
+}
+
+/**
+ * Modal de ampliação — abre por cima do leitor (mesma pilha do quiz), com a
+ * imagem da página tocada. `initFlipbookZoom` liga o zoom/arrasto/pinça;
+ * quem seta a imagem de cada abertura é `initFlipbook`, via evento
+ * `flipbook-zoom:abrir`.
+ *
+ * @param {object} opts
+ * @param {string} opts.id
+ */
+export function zoomModal({ id = "modal-zoom" } = {}) {
+  return `
+    <div class="modal modal--zoom" id="${id}" role="dialog" aria-modal="true" aria-labelledby="${id}-title" hidden>
+      <div class="flipbook-zoom" data-flip-zoom>
+        <div class="flipbook-zoom__bar">
+          <h2 class="visually-hidden" id="${id}-title">Página ampliada</h2>
+          <button class="flipbook-zoom__control" type="button" data-flip-zoom-out data-tooltip="Diminuir zoom" aria-label="Diminuir zoom">
+            ${icon("zoom-out")}
+          </button>
+          <span class="flipbook-zoom__level" data-flip-zoom-level>100%</span>
+          <button class="flipbook-zoom__control" type="button" data-flip-zoom-in data-tooltip="Aumentar zoom" aria-label="Aumentar zoom">
+            ${icon("zoom-in")}
+          </button>
+          <button class="flipbook-zoom__control" type="button" data-flip-zoom-reset data-tooltip="Redefinir zoom" aria-label="Redefinir zoom">
+            ${icon("maximize")}
+          </button>
+          <button class="modal__close modal__close--inline" type="button" data-modal-close data-tooltip="Fechar" aria-label="Fechar ampliação">
+            ${icon("x")}
+          </button>
+        </div>
+        <div
+          class="flipbook-zoom__viewport"
+          data-flip-zoom-viewport
+          tabindex="0"
+          aria-label="Página ampliada. Arraste para mover, use + e - para o zoom e as setas para navegar quando ampliado."
+        >
+          <!-- width/height fixos e inertes: a imagem real muda de página para
+               página, então o tamanho de verdade vem só do CSS (width/height:
+               auto). Os atributos existem só para satisfazer a checagem de
+               "toda imagem reserva espaço" — aqui não há o que reservar, o
+               modal começa fechado. -->
+          <img class="flipbook-zoom__img" data-flip-zoom-img src="" alt="" width="1" height="1" draggable="false">
+        </div>
+        <p class="flipbook-zoom__hint">Arraste para mover • Duplo toque ou duplo clique para ampliar • Pinça ou roda do mouse para dar zoom</p>
+      </div>
     </div>`;
 }
 
@@ -105,6 +186,8 @@ export function initFlipbook(root) {
   const status = root.querySelector("[data-flip-status]");
   const prevNav = root.querySelector("[data-flip-prev]");
   const nextNav = root.querySelector("[data-flip-next]");
+  const zoomTriggerEsq = root.querySelector('[data-flip-zoom-trigger="esq"]');
+  const zoomTriggerDir = root.querySelector('[data-flip-zoom-trigger="dir"]');
 
   if (!spread || !leaf) return;
 
@@ -180,6 +263,12 @@ export function initFlipbook(root) {
     return temDir ? "capa" : "contracapa";
   }
 
+  /** Só páginas de verdade (imagem) podem ser ampliadas — não a de CTA. */
+  function paginaZoomavel(i) {
+    const page = i !== null ? paginas[i] : null;
+    return page && page.type !== "cta" ? page : null;
+  }
+
   function render() {
     const { esq, dir } = vistaPaginas(vista);
     if (porVista === 2) pintar(left, esq);
@@ -200,6 +289,9 @@ export function initFlipbook(root) {
 
     if (prevNav) prevNav.hidden = vista === 0;
     if (nextNav) nextNav.hidden = vista >= totalVistas() - 1;
+
+    if (zoomTriggerEsq) zoomTriggerEsq.hidden = porVista === 1 || !paginaZoomavel(esq);
+    if (zoomTriggerDir) zoomTriggerDir.hidden = !paginaZoomavel(dir);
   }
 
   /**
@@ -361,6 +453,27 @@ export function initFlipbook(root) {
   nextNav?.querySelector("button")?.addEventListener("click", () => virar(1));
   prevNav?.querySelector("button")?.addEventListener("click", () => virar(-1));
 
+  /**
+   * Ampliar página. O clique no gatilho roda ANTES do listener global do
+   * `modal.js` (que abre o modal de zoom via `data-abre`, na fase de bubble
+   * até o document): dá tempo de trocar a imagem antes do diálogo aparecer.
+   */
+  function abrirZoom(indice) {
+    const page = paginaZoomavel(indice);
+    const zoomId = root.dataset.zoomId;
+    if (!page || !zoomId) return;
+    const modal = document.getElementById(zoomId);
+    const img = modal?.querySelector("[data-flip-zoom-img]");
+    if (img) {
+      img.src = page.src;
+      img.alt = page.alt ?? "";
+    }
+    modal?.dispatchEvent(new CustomEvent("flipbook-zoom:abrir"));
+  }
+
+  zoomTriggerEsq?.addEventListener("click", () => abrirZoom(vistaPaginas(vista).esq));
+  zoomTriggerDir?.addEventListener("click", () => abrirZoom(vistaPaginas(vista).dir));
+
   spread.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") virar(1);
     else if (event.key === "ArrowLeft") virar(-1);
@@ -384,6 +497,192 @@ export function initFlipbook(root) {
   render();
 }
 
+/* -------------------------------------------------------------------------- */
+
+const ZOOM_MIN = 1;
+const ZOOM_MAX = 4;
+const ZOOM_PASSO = 0.6;
+const ZOOM_TOQUE = 2.5; // escala do duplo toque/clique
+const DUPLO_TOQUE_MS = 300;
+const DUPLO_TOQUE_DIST = 24; // px — acima disso já foi arrasto, não toque
+
+/**
+ * Zoom/arrasto/pinça do modal de ampliação. Roda à parte de `initFlipbook`:
+ * o modal é um `.modal` irmão, não aninhado no leitor, então zoom e virada
+ * de página nunca disputam o mesmo gesto.
+ */
+export function initFlipbookZoom(root) {
+  const viewport = root.querySelector("[data-flip-zoom-viewport]");
+  const img = root.querySelector("[data-flip-zoom-img]");
+  const nivel = root.querySelector("[data-flip-zoom-level]");
+  const btnIn = root.querySelector("[data-flip-zoom-in]");
+  const btnOut = root.querySelector("[data-flip-zoom-out]");
+  const btnReset = root.querySelector("[data-flip-zoom-reset]");
+  if (!viewport || !img) return;
+
+  let escala = 1;
+  let x = 0;
+  let y = 0;
+
+  function limitarPan() {
+    // O quanto dá para arrastar sem a imagem sumir da tela — baseado no
+    // tamanho de layout dela (ignora o `transform`, que não altera isso).
+    const limiteX = Math.max(0, (img.offsetWidth * escala - viewport.clientWidth) / 2);
+    const limiteY = Math.max(0, (img.offsetHeight * escala - viewport.clientHeight) / 2);
+    x = Math.min(Math.max(x, -limiteX), limiteX);
+    y = Math.min(Math.max(y, -limiteY), limiteY);
+  }
+
+  function aplicar(animar) {
+    // Instantâneo durante arrasto/pinça (senão o dedo "atrasa" da imagem);
+    // com transição só nos saltos discretos — botão, roda, duplo toque.
+    img.style.transitionDuration = animar ? "" : "0s";
+    img.style.setProperty("--zoom-scale", String(escala));
+    img.style.setProperty("--zoom-x", `${x}px`);
+    img.style.setProperty("--zoom-y", `${y}px`);
+    viewport.classList.toggle("flipbook-zoom__viewport--ativo", escala > 1);
+    if (nivel) nivel.textContent = `${Math.round(escala * 100)}%`;
+    if (btnOut) btnOut.disabled = escala <= ZOOM_MIN + 0.01;
+    if (btnIn) btnIn.disabled = escala >= ZOOM_MAX - 0.01;
+  }
+
+  /** @param {{x: number, y: number}} [foco] ponto (relativo ao centro do viewport) que deve ficar parado ao mudar a escala */
+  function definirEscala(nova, foco, animar = true) {
+    const alvo = Math.min(Math.max(nova, ZOOM_MIN), ZOOM_MAX);
+    if (foco && alvo !== escala) {
+      const fator = alvo / escala;
+      x = foco.x - (foco.x - x) * fator;
+      y = foco.y - (foco.y - y) * fator;
+    }
+    escala = alvo;
+    if (escala <= ZOOM_MIN) {
+      escala = ZOOM_MIN;
+      x = 0;
+      y = 0;
+    }
+    limitarPan();
+    aplicar(animar);
+  }
+
+  function mover(novoX, novoY) {
+    x = novoX;
+    y = novoY;
+    limitarPan();
+    aplicar(false);
+  }
+
+  function alternar(foco) {
+    definirEscala(escala > 1 ? 1 : ZOOM_TOQUE, foco, true);
+  }
+
+  root.addEventListener("flipbook-zoom:abrir", () => definirEscala(1, null, false));
+
+  btnIn?.addEventListener("click", () => definirEscala(escala + ZOOM_PASSO, null, true));
+  btnOut?.addEventListener("click", () => definirEscala(escala - ZOOM_PASSO, null, true));
+  btnReset?.addEventListener("click", () => definirEscala(1, null, true));
+
+  viewport.addEventListener(
+    "wheel",
+    (event) => {
+      event.preventDefault();
+      const rect = viewport.getBoundingClientRect();
+      const foco = { x: event.clientX - rect.left - rect.width / 2, y: event.clientY - rect.top - rect.height / 2 };
+      definirEscala(escala + (event.deltaY < 0 ? ZOOM_PASSO : -ZOOM_PASSO), foco, false);
+    },
+    { passive: false },
+  );
+
+  viewport.addEventListener("keydown", (event) => {
+    const passo = 40;
+    if (event.key === "+" || event.key === "=") definirEscala(escala + ZOOM_PASSO, null, true);
+    else if (event.key === "-") definirEscala(escala - ZOOM_PASSO, null, true);
+    else if (event.key === "0") definirEscala(1, null, true);
+    else if (escala > 1 && event.key === "ArrowLeft") mover(x + passo, y);
+    else if (escala > 1 && event.key === "ArrowRight") mover(x - passo, y);
+    else if (escala > 1 && event.key === "ArrowUp") mover(x, y + passo);
+    else if (escala > 1 && event.key === "ArrowDown") mover(x, y - passo);
+    else return;
+    event.preventDefault();
+  });
+
+  /* --- Arrasto e pinça (Pointer Events) ------------------------------------ */
+
+  const ponteiros = new Map(); // pointerId → {x, y}
+  let arrastoInicio = null; // {x0, y0, panX0, panY0}
+  let pinca = null; // {distancia0, escala0}
+  let ultimoToque = 0;
+
+  const distancia = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+
+  viewport.addEventListener("pointerdown", (event) => {
+    viewport.setPointerCapture(event.pointerId);
+    ponteiros.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (ponteiros.size === 2) {
+      const [a, b] = [...ponteiros.values()];
+      pinca = { distancia0: distancia(a, b), escala0: escala };
+      arrastoInicio = null;
+    } else if (ponteiros.size === 1) {
+      arrastoInicio = { x0: event.clientX, y0: event.clientY, panX0: x, panY0: y, tipo: event.pointerType };
+    }
+  });
+
+  viewport.addEventListener("pointermove", (event) => {
+    if (!ponteiros.has(event.pointerId)) return;
+    ponteiros.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (ponteiros.size === 2 && pinca) {
+      const [a, b] = [...ponteiros.values()];
+      const rect = viewport.getBoundingClientRect();
+      const foco = {
+        x: (a.x + b.x) / 2 - rect.left - rect.width / 2,
+        y: (a.y + b.y) / 2 - rect.top - rect.height / 2,
+      };
+      definirEscala(pinca.escala0 * (distancia(a, b) / pinca.distancia0), foco, false);
+    } else if (ponteiros.size === 1 && arrastoInicio && escala > 1) {
+      mover(
+        arrastoInicio.panX0 + (event.clientX - arrastoInicio.x0),
+        arrastoInicio.panY0 + (event.clientY - arrastoInicio.y0),
+      );
+    }
+  });
+
+  function soltarPonteiro(event) {
+    const inicio = arrastoInicio;
+    ponteiros.delete(event.pointerId);
+    viewport.releasePointerCapture?.(event.pointerId);
+    if (ponteiros.size < 2) pinca = null;
+
+    // Duplo toque: só em touch/caneta — no mouse quem cuida disso é o
+    // `dblclick` nativo, mais confiável do que medir tempo entre cliques.
+    if (ponteiros.size === 0 && inicio && inicio.tipo !== "mouse") {
+      const moveu = Math.hypot(event.clientX - inicio.x0, event.clientY - inicio.y0) > DUPLO_TOQUE_DIST;
+      const agora = Date.now();
+      if (!moveu) {
+        if (agora - ultimoToque < DUPLO_TOQUE_MS) {
+          const rect = viewport.getBoundingClientRect();
+          alternar({ x: event.clientX - rect.left - rect.width / 2, y: event.clientY - rect.top - rect.height / 2 });
+          ultimoToque = 0;
+        } else {
+          ultimoToque = agora;
+        }
+      }
+    }
+    if (ponteiros.size === 0) arrastoInicio = null;
+  }
+
+  viewport.addEventListener("pointerup", soltarPonteiro);
+  viewport.addEventListener("pointercancel", soltarPonteiro);
+
+  viewport.addEventListener("dblclick", (event) => {
+    const rect = viewport.getBoundingClientRect();
+    alternar({ x: event.clientX - rect.left - rect.width / 2, y: event.clientY - rect.top - rect.height / 2 });
+  });
+
+  aplicar(false);
+}
+
 export function initFlipbooks(scope = document) {
   scope.querySelectorAll("[data-flipbook]").forEach(initFlipbook);
+  scope.querySelectorAll("[data-flip-zoom]").forEach(initFlipbookZoom);
 }

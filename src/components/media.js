@@ -1,6 +1,6 @@
 import { icon, audioDescriptionIcon } from "./icon.js";
 import { sectionHeader } from "./content.js";
-import { flipbook } from "./flipbook.js";
+import { flipbook, zoomModal } from "./flipbook.js";
 import { medidas } from "./medidas.js";
 
 /**
@@ -191,6 +191,8 @@ export function modal({
   cta,
   label = "Quadrinho da história",
 } = {}) {
+  const zoomId = `${id}-zoom`;
+
   return `
     <div class="modal" id="${id}" role="dialog" aria-modal="true" aria-label="Leitor de ${label.toLowerCase()}" hidden>
       <button class="modal__close" type="button" data-modal-close data-tooltip="Fechar" aria-label="Fechar leitor">
@@ -198,9 +200,10 @@ export function modal({
       </button>
 
       <div class="modal__reader">
-        ${flipbook({ pages, cta, label, id: `${id}-flipbook` })}
+        ${flipbook({ pages, cta, label, id: `${id}-flipbook`, zoomId })}
       </div>
-    </div>`;
+    </div>
+    ${zoomModal({ id: zoomId })}`;
 }
 
 /** Modal para pré-visualizar um PDF externo, com link de reserva em nova guia. */
